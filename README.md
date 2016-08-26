@@ -1,3 +1,3 @@
 # pandera
 
-This is a Landscape company management system.  ENjoy =)
+This is a Landscape company billing management system.  ENjoy =)
