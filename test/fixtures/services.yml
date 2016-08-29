@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-08-29
+  description: MyText
+  price: 9.99
+  maturity: 2016-08-29
+
+two:
+  date: 2016-08-29
+  description: MyText
+  price: 9.99
+  maturity: 2016-08-29

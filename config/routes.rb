@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  root 'clients#index'
-  resources :clients
+    root 'home#home'
+    resources :clients
+    resources :services
+    get 'home' => 'home#home'
 end
