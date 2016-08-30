@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Client</th>
       <th>Date</th>
       <th>Description</th>
       <th>Price</th>
@@ -16,13 +17,15 @@
   <tbody>
     <% @services.each do |service| %>
       <tr>
+
+        <td><%= link_to Client.find(service.client_id).name, Client.find(service.client_id) %></td>
         <td><%= service.date %></td>
         <td><%= service.description %></td>
         <td><%= service.price %></td>
         <td><%= service.maturity %></td>
-        <td><%= link_to 'Show', service %></td>
+        <td><%= link_to 'Details', service %></td>
         <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

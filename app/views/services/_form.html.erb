@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :client %><br>
+    <%= f.collection_select(:client_id, Client.all, :id, :name) %>
+  </div>
+  <div class="field">
     <%= f.label :date %><br>
     <%= f.date_select :date %>
   </div>
