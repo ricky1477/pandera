@@ -1,0 +1,42 @@
+<%= form_for(@invoice) do |f| %>
+  <% if @invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% @invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="field">
+    <%#= f.label :client_id %><br>
+    <%#= f.number_field :client_id %>
+    <%= f.hidden_field :client_id, :value => params[:client_id] %>
+  </span>
+  <div class="field">
+    <%= f.label :maturity %><br>
+    <%= f.date_select :maturity %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_service %><br>
+    <%= f.date_select :date_of_service %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :total %><br>
+    <%= f.text_field :total %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

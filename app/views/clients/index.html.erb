@@ -13,7 +13,7 @@
           <th>Email</th>
           <th>Phone</th>
           <th>Date of Birth</th>
-          <th colspan="3"></th>
+          <th colspan="4"></th>
         </tr>
       </thead>
 
@@ -27,6 +27,7 @@
             <td><%= client.email %></td>
             <td><%= client.phone %></td>
             <td><%= client.dob %></td>
+            <td><%= link_to 'Create Invoice', new_invoice_path(:client_id => client.id) %></td>
             <td><%= link_to 'Details', client %></td>
             <td><%= link_to 'Edit', edit_client_path(client) %></td>
             <td><%= link_to 'Delete', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
