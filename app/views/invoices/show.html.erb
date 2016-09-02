@@ -2,7 +2,7 @@
 
 <p>
   <strong>Client:</strong>
-  <%= @invoice.client_id %>
+  <%= link_to @invoice.client.name, @invoice.client %>
 </p>
 
 <p>
