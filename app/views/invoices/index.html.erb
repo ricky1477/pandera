@@ -20,7 +20,12 @@
     <tbody>
       <% @invoices.each do |invoice| %>
         <tr>
-          <td><%= link_to invoice.client.name, invoice.client %></td>
+          <td>
+          <% if invoice.client.name.empty? %>
+              <%= link_to invoice.id, invoice.client %>
+            <% else %>
+              <%= link_to invoice.client.name, invoice.client %>
+          <% end %> </td>
           <td><%= invoice.invoice_number %></td>
           <td><%= invoice.maturity %></td>
           <td><%= invoice.date_of_service %></td>
