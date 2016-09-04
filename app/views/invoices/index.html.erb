@@ -21,7 +21,7 @@
       <% @invoices.each do |invoice| %>
         <tr>
           <td>
-          <% if invoice.client.name.empty? %>
+          <% if !invoice.client.name.present? || invoice.client.name.empty? %>
               <%= link_to invoice.id, invoice.client %>
             <% else %>
               <%= link_to invoice.client.name, invoice.client %>
