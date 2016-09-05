@@ -39,8 +39,8 @@
           <td><%= invoice.maturity %></td>
           <td><%= invoice.date_of_service %></td>
           <td><%= invoice.description %></td>
-          <td><%= invoice.price %></td>
-          <td><%= invoice.total %></td>
+          <td><%= '$' if invoice.price %> <%= invoice.price.to_s %> </td>
+          <td><%= '$' if invoice.total %> <%= invoice.total.to_s %></td>
           <td><%= link_to 'Show', invoice %></td>
           <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
           <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>

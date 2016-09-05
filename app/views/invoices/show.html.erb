@@ -27,12 +27,12 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @invoice.price %>
+  <%= '$' + @invoice.price.to_s %>
 </p>
 
 <p>
   <strong>Total:</strong>
-  <%= @invoice.total %>
+  <%= '$' + @invoice.total.to_s %>
 </p>
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
