@@ -4,7 +4,8 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.search(params[:search]).order(sort_column + ' ' +
+      sort_direction).paginate(:per_page => 15, :page => params[:page])
   end
 
   # GET /clients/1
@@ -70,5 +71,13 @@ class ClientsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
       params.require(:client).permit(:name, :street_address, :city, :zipcode, :email, :phone, :dob)
+    end
+
+    def sort_column
+      Client.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

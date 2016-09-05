@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails_12factor', group: :production
 ruby '2.2.5'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
@@ -26,6 +27,9 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 
 # Authentication gem
 gem 'devise'
+
+# Pagination gem
+gem 'will_paginate', '~> 3.0.6'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

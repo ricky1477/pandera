@@ -4,7 +4,8 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.search(params[:search]).order(sort_column + ' ' +
+      sort_direction).paginate(:per_page => 15, :page => params[:page])
   end
 
   # GET /invoices/1
@@ -70,5 +71,13 @@ class InvoicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
       params.require(:invoice).permit(:client_id, :invoice_number, :maturity, :date_of_service, :description, :price, :total)
+    end
+
+    def sort_column
+      Invoice.column_names.include?(params[:sort]) ? params[:sort] : "invoice_number"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
