@@ -33,7 +33,7 @@
     <%= '$' %> <%= f.text_field :price %>
     <span style="color:gray">
       <% past_prices = Client.find(params[:client_id]).invoices.pluck(:price) %>
-      <% if past_prices.length>1 %>
+      <% if past_prices.length>=1 %>
         <%= "Past prices for this client were: " %>
         <% past_prices.each_with_index do |price, index| %>
             <%= '$' + price.to_s.to_f.round(2).to_s %>
@@ -47,7 +47,7 @@
     <%= '$' %> <%= f.text_field :total %>
     <span style="color:gray">
       <% past_totals = Client.find(params[:client_id]).invoices.pluck(:total) %>
-      <% if past_totals.length>1 %>
+      <% if past_totals.length>=1 %>
         <%= "Past totals for this client were: " %>
         <% past_totals.each_with_index do |total, index| %>
             <%= '$' + total.to_s.to_f.round(2).to_s %>
