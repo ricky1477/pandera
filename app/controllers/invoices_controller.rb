@@ -25,13 +25,13 @@ class InvoicesController < ApplicationController
   # POST /invoices
   # POST /invoices.json
   def create
-    @invoice = Invoice.new(invoice_params)
-
+@invoice = Invoice.new(invoice_params)
     respond_to do |format|
       if @invoice.save
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
       else
+        @client_id = params[:invoice][:client_id]
         format.html { render :new }
         format.json { render json: @invoice.errors, status: :unprocessable_entity }
       end
@@ -70,7 +70,7 @@ class InvoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:client_id, :invoice_number, :maturity, :date_of_service, :description, :price, :total)
+      params.require(:invoice).permit(:client_id, :invoice_number, :maturity, :date_of_service, :description, :price, :total, :paid)
     end
 
     def sort_column

@@ -1,6 +1,7 @@
 class Invoice < ActiveRecord::Base
       before_create :compute_invoice_num
       belongs_to :client
+      validates :price, presence: true
 
       def compute_invoice_num
           unless Invoice.exists?(1)
