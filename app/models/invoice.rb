@@ -4,7 +4,7 @@ class Invoice < ActiveRecord::Base
       validates :price, presence: true
 
       def compute_invoice_num
-          unless Invoice.all.length < 1
+          unless Invoice.all.length > 1
             self.invoice_number = ( (1).to_s + Time.now.year.to_s ).to_i
           else
             self.invoice_number = ( (Invoice.last.id + 1).to_s + Time.now.year.to_s ).to_i
