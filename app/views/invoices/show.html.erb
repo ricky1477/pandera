@@ -31,8 +31,9 @@
 </p>
 
 <p>
-  <strong>Total:</strong>
-  <%= '$' + @invoice.total.to_s %>
+  <strong>Client Total:</strong>
+  <% prices = @invoice.client.invoices.where("paid IS FALSE").pluck(:price) %>
+  <%= '$' if prices.length>=1 %><%= prices.inject(0){|sum,x| sum + x } %>
 </p>
 
 <p>
