@@ -17,7 +17,7 @@
     <% if params.has_key?(:client_id) %>
       <%= f.hidden_field :client_id, :value => params[:client_id] %>
     <% else %>
-      <%= f.hidden_field :client_id, :value => @client_id %>
+      <%= f.hidden_field :client_id, :value => @invoice.client_id %>
     <% end %>
   </span>
   <div class="field">
