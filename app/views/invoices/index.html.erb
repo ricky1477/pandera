@@ -53,7 +53,7 @@
   </table>
 </div>
 <% company_receivables = Invoice.where("paid IS FALSE").pluck(:price) %>
-<b>Receivables: $ <%= '0' if company_receivables.length<=0 %><%= company_receivables.inject(0){|sum,x| sum + x } %></b>
+<b>Receivables: $<%= '0' if company_receivables.length<=0 %><%= company_receivables.inject(0){|sum,x| sum + x } %></b>
 <br>
 
 <%= will_paginate @invoices %>
