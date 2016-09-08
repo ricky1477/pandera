@@ -1,17 +1,22 @@
-<h2>Log in</h2>
+<h2 style="margin-right:auto; margin-left:auto; margin-bottom: 25px; text-align : center;">Sign in</h2>
 
+<div style="margin-right:auto; margin-left:auto;text-align : center;">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="form-group">
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, class: "form-control", style: "margin: 0 auto;width: 20%" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", style: "margin: 0 auto;width: 20%" %>
+    </div>
   </div>
 
-  <% if devise_mapping.rememberable? -%>
+  <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
@@ -19,8 +24,9 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Sign in", class: "btn btn-primary", style: "margin-bottom: 25px;" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
