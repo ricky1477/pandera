@@ -1,6 +1,11 @@
 .navbar-default .navbar-nav  > li > a {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
-  color: #4d739a;
+  font-size: 14px;
   color: #68b468;
+}
+#clients_table th, #invoices_table th {
+  padding-top:5px;
+  padding-bottom:4px;
+  background-color: #68b468;
+  border:1px solid #000033;
 }
