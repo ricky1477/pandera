@@ -1,4 +1,5 @@
 class Client < ActiveRecord::Base
+    has_many :services, foreign_key: "client_id"
     has_many :invoices, foreign_key: "client_id"
 
     def self.search(search)

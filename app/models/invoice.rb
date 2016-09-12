@@ -1,10 +1,15 @@
 class Invoice < ActiveRecord::Base
       before_save :compute_invoice_num
+      before_save :link_services_to_invoice
       belongs_to :client
-      validates :price, presence: true
+      has_many :services
 
       def compute_invoice_num
           self.invoice_number = (Invoice.all.length <= 1) ? ((1).to_s + Time.now.year.to_s ).to_i : ( (Invoice.last.id + 1).to_s + Time.now.year.to_s ).to_i
+      end
+
+      def link_services_to_invoice
+        self.services = self.client.services.where("paid IS NOT TRUE")
       end
 
       def self.search(search)

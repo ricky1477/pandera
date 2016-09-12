@@ -12,8 +12,6 @@
   <% end %>
 
   <span class="field">
-    <%#= f.label :client_id %><br>
-    <%#= f.number_field :client_id %>
     <% if params.has_key?(:client_id) %>
       <%= f.hidden_field :client_id, :value => params[:client_id] %>
     <% else %>
@@ -25,46 +23,29 @@
     <%= f.date_select :maturity %>
   </div>
   <div class="field">
-    <%= f.label :date_of_service %><br>
-    <%= f.date_select :date_of_service %>
-  </div>
-  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+  <!--
   <div class="field">
-    <%= f.label :price %><br>
-    <%= '$' %> <%= f.text_field :price %>
+    <%#= f.label :price %><br>
+    <%#= '$' %> <%#= f.text_field :price %>
     <span style="color:gray">
 
-    <% if params.has_key?(:client_id) %>
-      <% past_prices = Client.find(params[:client_id]).invoices.pluck(:price) %>
-    <% else %>
-      <% past_prices = Client.find(f.object.client_id).invoices.pluck(:price) %>
-    <% end %>
-      <% if past_prices.length>=1 %>
-        <%= "Past prices for this client were: " %>
-        <% past_prices.each_with_index do |price, index| %>
-            <%= '$' + price.to_s.to_f.round(2).to_s %>
-            <%= ',' if (index < past_prices.length-1) %>
-        <% end %>
-      <% end %>
-    </span>
-  </div>
-  <!--<div class="field">
-    <%#= f.label :total %><br>
-    <%#= '$' %> <%#= f.text_field :total %>
-    <span style="color:gray">
-      <%# past_totals = Client.find(params[:client_id]).invoices.pluck(:total) %>
-      <%# if past_totals.length>=1 %>
-        <%#= "Past totals for this client were: " %>
-        <%# past_totals.each_with_index do |total, index| %>
-            <%#= '$' + total.to_s.to_f.round(2).to_s %>
-            <%#= ',' if (index < past_totals.length-1) %>
+    <%# if params.has_key?(:client_id) %>
+      <%# past_prices = Client.find(params[:client_id]).invoices.pluck(:price) %>
+    <%# else %>
+      <%# past_prices = Client.find(f.object.client_id).invoices.pluck(:price) %>
+    <%# end %>
+      <%# if past_prices.length>=1 %>
+        <%#= "Past prices for this client were: " %>
+        <%# past_prices.each_with_index do |price, index| %>
+            <%#= '$' + price.to_s.to_f.round(2).to_s %>
+            <%#= ',' if (index < past_prices.length-1) %>
         <%# end %>
       <%# end %>
     </span>
-  </div> -->
+  </div>-->
   <div class="field">
     <%= f.label :paid %><br>
     <%#= f.check_box :paid, :class => "checkbox", style: "margin: 0 auto;" %>

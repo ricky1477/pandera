@@ -11,10 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :client %><br>
-    <%= f.collection_select(:client_id, Client.all, :id, :name) %>
-  </div>
+  <span class="field">
+    <% if params.has_key?(:client_id) %>
+      <%= f.hidden_field :client_id, :value => params[:client_id] %>
+    <% else %>
+      <%= f.hidden_field :client_id, :value => @service.client_id %>
+    <% end %>
+  </span>
   <div class="field">
     <%= f.label :date %><br>
     <%= f.date_select :date %>
@@ -30,6 +33,10 @@
   <div class="field">
     <%= f.label :maturity %><br>
     <%= f.date_select :maturity %>
+  </div>
+  <div class="field">
+    <%= f.label :paid %><br>
+    <%= f.check_box :paid, :class => "checkbox" %>
   </div>
   <div class="actions">
     <%= f.submit %>

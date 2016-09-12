@@ -6,8 +6,6 @@
 </p>
 
 <p>
-
-<p>
   <strong>Date:</strong>
   <%= @service.date %>
 </p>
@@ -25,6 +23,13 @@
 <p>
   <strong>Maturity:</strong>
   <%= @service.maturity %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <% if @service.paid %>
+    <%= @service.paid? 'Yes':'No' %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |

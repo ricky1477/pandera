@@ -65,10 +65,10 @@ div#two {
       <% @client.invoices.each do |invoice| %>
         <tr>
           <td><%= invoice.description %></td>
-          <td><%= invoice.date_of_service %></td>
-          <td><%= invoice.price %></td>
-              <% prices = invoice.client.invoices.where("paid IS FALSE").pluck(:price) %>
-          <td><%= '$' if prices.length>=1 %><%= @total = prices.inject(0){|sum,x| sum + x } %></td>
+          <td><%#= invoice.date_of_service %></td>
+          <td><%#= invoice.price %></td>
+              <%# prices = invoice.client.invoices.where("paid IS FALSE").pluck(:price) %>
+          <td><%#= '$' if prices.length>=1 %><%#= @total = prices.inject(0){|sum,x| sum + x } %></td>
         </tr>
       <% end %>
     </tbody>

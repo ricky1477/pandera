@@ -22,7 +22,7 @@
           <th>Email</th>
           <th>Phone</th>
           <th>DOB</th>
-          <th colspan="4"></th>
+          <th colspan="5"></th>
         </tr>
       </thead>
 
@@ -36,6 +36,7 @@
             <td><%= client.email %></td>
             <td><%= client.phone %></td>
             <td><%= client.dob %></td>
+            <td><%= link_to 'Charge Service', new_service_path(:client_id => client.id) %></td>
             <td><%= link_to 'Create Invoice', new_invoice_path(:client_id => client.id) %></td>
             <td><%= link_to 'Details', client %></td>
             <td><%= link_to 'Edit', edit_client_path(client) %></td>

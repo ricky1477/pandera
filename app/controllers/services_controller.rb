@@ -5,6 +5,8 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = Service.all
+    #@services = Service.search(params[:search]).order(sort_column + ' ' +
+    #  sort_direction).paginate(:per_page => 15, :page => params[:page])
   end
 
   # GET /services/1
@@ -31,6 +33,7 @@ class ServicesController < ApplicationController
         format.html { redirect_to @service, notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else
+        @client_id = params[:service][:client_id]
         format.html { render :new }
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
@@ -69,6 +72,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:date, :description, :price, :maturity, :client_id)
+      params.require(:service).permit(:date, :description, :maturity, :client_id, :paid, :invoice_id)
     end
 end

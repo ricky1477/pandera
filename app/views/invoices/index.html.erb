@@ -18,10 +18,7 @@
         <th>Client</th>
         <th>Invoice number</th>
         <th>Maturity</th>
-        <th>Date of service</th>
         <th>Description</th>
-        <th>Price</th>
-        <th>Client Total</th>
         <th>Paid</th>
         <th colspan="3"></th>
       </tr>
@@ -38,12 +35,8 @@
           <% end %> </td>
           <td><%= invoice.invoice_number %></td>
           <td><%= invoice.maturity %></td>
-          <td><%= invoice.date_of_service %></td>
           <td><%= invoice.description %></td>
-          <td><%= '$' if invoice.price %><%= invoice.price.to_s %> </td>
-              <% prices = invoice.client.invoices.where("paid IS FALSE").pluck(:price) %>
-          <td><%= '$' if prices.length>=1 %><%= prices.inject(0){|sum,x| sum + x } %></td>
-          <td><%= invoice.paid ? 'Yes' : 'No' %></td>
+          <td><%#= invoice.paid ? 'Yes' : 'No' %></td>
           <td><%= link_to 'Show', invoice %></td>
           <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
           <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -52,8 +45,8 @@
     </tbody>
   </table>
 </div>
-<% company_receivables = Invoice.where("paid IS FALSE").pluck(:price) %>
-<b>Receivables: $<%= '0' if company_receivables.length<=0 %><%= company_receivables.inject(0){|sum,x| sum + x } %></b>
+<%# company_receivables = Invoice.where("paid IS FALSE").pluck(:price) %>
+<b>Receivables: $<%#= '0' if company_receivables.length<=0 %><%#= company_receivables.inject(0){|sum,x| sum + x } %></b>
 <br>
 
 <%= will_paginate @invoices %>
