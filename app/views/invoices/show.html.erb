@@ -18,8 +18,8 @@ div#two {
 <section>
     <div id="one">
       <p><b>L&R Landscaping </br>
-      PO Box 9527 </br>
-      Silver Spring, MD 20916 </b> </p> </br>
+      4214 Landgreen St </br>
+      Rockville, MD 20853 </b> </p> </br>
     </div>
 
     <div id="two">
@@ -47,9 +47,16 @@ div#two {
     </div>
 </section>
 
-<h3>Services</h3>
+<section>
+    <div id="one">
+      <h3 style="margin-top: 75px;">Services</h3>
+    </div>
 
-<div class="table-responsive">
+    <div id="two">
+    </div>
+</section>
+
+<div class="table-responsive ">
   <table id="invoice_print_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
     <thead>
       <tr>
@@ -68,7 +75,7 @@ div#two {
           <td><%= service.price %></td>
           <td><%= service.price %></td>
               <% prices = service.client.services.where("paid IS NOT TRUE").pluck(:price) %>
-          <%# '$' if prices.length>=1 %><%= @total = prices.inject(0){|sum,x| sum + x } %>
+          <% '$' if prices.length>=1 %><% @total = prices.inject(0){|sum,x| sum + x } %>
         </tr>
       <% end %>
     </tbody>
@@ -78,8 +85,7 @@ div#two {
 <section>
     <div id="one">
       <p><b>L&R Landscaping </b></br>
-      l&rlandscaping@email.com </br>
-      (240)123-4567</p>
+      (240)330-8652</p>
     </div>
 
     <div id="two">
@@ -87,7 +93,7 @@ div#two {
         <tr>
           <th>Subtotal:</th>
 
-          <td>$<%= @total %></td>
+          <td>$<%= @invoice.total %></td>
         </tr>
         <tr>
           <th>Sales Tax (0.0%)</th>
@@ -95,7 +101,7 @@ div#two {
         </tr>
         <tr>
           <th>Total</th>
-          <td>$<%= @total %></td>
+          <td>$<%= @invoice.total %></td>
         </tr>
         <tr>
           <th>Payments/Credits</th>
@@ -103,13 +109,8 @@ div#two {
         </tr>
         <tr>
           <th>Balance Due</th>
-          <td>$<%= @total %></td>
+          <td>$<%= @invoice.total %></td>
         </tr>
       </table>
     </div>
 </section>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
-
-

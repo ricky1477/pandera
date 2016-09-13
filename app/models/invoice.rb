@@ -1,11 +1,17 @@
 class Invoice < ActiveRecord::Base
       before_save :compute_invoice_num
       before_save :link_services_to_invoice
+      before_save :compute_total
       belongs_to :client
       has_many :services
 
       def compute_invoice_num
           self.invoice_number = (Invoice.all.length <= 1) ? ((1).to_s + Time.now.year.to_s ).to_i : ( (Invoice.last.id + 1).to_s + Time.now.year.to_s ).to_i
+      end
+
+      def compute_total
+          prices =  self.client.services.where("paid IS NOT TRUE").pluck(:price)
+          self.total = prices.inject(0){|sum,x| sum + x } if prices.length>=1
       end
 
       def link_services_to_invoice

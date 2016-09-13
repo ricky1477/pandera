@@ -27,9 +27,7 @@
 
 <p>
   <strong>Paid:</strong>
-  <% if @service.paid %>
-    <%= @service.paid? 'Yes':'No' %>
-  <% end %>
+    <%= @service.paid ?  'Yes' : 'No' %>
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
