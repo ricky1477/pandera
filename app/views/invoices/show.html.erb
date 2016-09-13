@@ -74,7 +74,7 @@ div#two {
           <td><%= service.date %></td>
           <td><%= service.price %></td>
           <td><%= service.price %></td>
-              <% prices = service.client.services.where("paid IS NOT TRUE").pluck(:price) %>
+              <% prices = service.client.services.pluck(:price) %>
           <% '$' if prices.length>=1 %><% @total = prices.inject(0){|sum,x| sum + x } %>
         </tr>
       <% end %>
@@ -93,7 +93,7 @@ div#two {
         <tr>
           <th>Subtotal:</th>
 
-          <td>$<%= @invoice.total %></td>
+          <td>$<%= @total %></td>
         </tr>
         <tr>
           <th>Sales Tax (0.0%)</th>
@@ -101,7 +101,7 @@ div#two {
         </tr>
         <tr>
           <th>Total</th>
-          <td>$<%= @invoice.total %></td>
+          <td>$<%= @total %></td>
         </tr>
         <tr>
           <th>Payments/Credits</th>
@@ -109,7 +109,7 @@ div#two {
         </tr>
         <tr>
           <th>Balance Due</th>
-          <td>$<%= @invoice.total %></td>
+          <td>$<%= @total %></td>
         </tr>
       </table>
     </div>

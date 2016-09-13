@@ -42,9 +42,6 @@ class InvoicesController < ApplicationController
   # PATCH/PUT /invoices/1.json
   def update
     respond_to do |format|
-      Rails.logger.debug('-------')
-      Rails.logger.debug(params)
-      Rails.logger.debug(params[:invoice][:paid])
       if params[:invoice][:paid] == '1'
         @invoice.services.each do |service|
           service.paid = true
