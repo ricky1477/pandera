@@ -47,7 +47,7 @@
     </tbody>
   </table>
 </div>
-<% company_receivables = Service.where("paid IS FALSE").pluck(:price) %>
+<% company_receivables = Service.where("paid IS NOT TRUE").pluck(:price) %>
 <b>Receivables:
 <% if company_receivables.length<=0 %>
   <%= '$0' %>
