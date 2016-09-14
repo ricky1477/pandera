@@ -68,7 +68,7 @@ div#two {
     </thead>
 
     <tbody>
-      <% @invoice.client.services.each do |service| %>
+      <% @invoice.services.each do |service| %>
         <tr>
           <td><%= service.description %></td>
           <td><%= service.date %></td>
