@@ -1,7 +1,7 @@
 class Invoice < ActiveRecord::Base
       before_save :compute_invoice_num
-      before_save :link_services_to_invoice
-      before_save :compute_total
+      before_create :link_services_to_invoice
+      before_create :compute_total
       belongs_to :client
       has_many :services
 
