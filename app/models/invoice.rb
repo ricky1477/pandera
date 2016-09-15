@@ -2,6 +2,7 @@ class Invoice < ActiveRecord::Base
       before_save :compute_invoice_num
       before_create :link_services_to_invoice
       before_create :compute_total
+      before_destroy :unlink_services_to_invoice
       belongs_to :client
       has_many :services
 
@@ -11,6 +12,13 @@ class Invoice < ActiveRecord::Base
 
       def link_services_to_invoice
         self.services = self.client.services.where("paid IS NOT TRUE").where("invoice_id IS NULL")
+      end
+
+      def unlink_services_to_invoice
+        self.services.each do |service|
+            service.invoice_id = nil
+            service.save!
+        end
       end
 
       def compute_total
