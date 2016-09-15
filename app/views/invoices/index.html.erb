@@ -37,19 +37,17 @@
           <td><%= invoice.invoice_number %></td>
           <td><%= invoice.maturity %></td>
           <td><%= invoice.description %></td>
-              <% prices = invoice.services.where("paid IS NOT TRUE").pluck(:price) %>
-              <% @total = prices.inject(0){|sum,x| sum + x } %>
-          <td><%= @total %></td>
+          <td><%= invoice.total %></td>
           <td><%= invoice.paid ? 'Yes' : 'No' %></td>
           <td><%= link_to 'Show', invoice %></td>
           <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-          <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<% company_receivables = Service.where("paid IS NOT TRUE").pluck(:price) %>
+<% company_receivables = Invoice.where("paid IS NOT TRUE").pluck(:total) %>
 <b>Receivables:
 <% if company_receivables.length<=0 %>
   <%= '$0' %>
