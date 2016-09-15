@@ -26,6 +26,11 @@
 </p>
 
 <p>
+  <strong>Invoice:</strong>
+  <%= @service.invoice.invoice_number if @service.invoice %>
+</p>
+
+<p>
   <strong>Paid:</strong>
     <%= @service.paid ?  'Yes' : 'No' %>
 </p>
