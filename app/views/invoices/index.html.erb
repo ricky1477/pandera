@@ -55,5 +55,6 @@
  <%= '$' %><%= company_receivables.inject(0){|sum,x| sum + x } %></b>
 <% end %>
 <br>
+<b>Services without invoice: <%= Service.where("paid IS NOT TRUE").where(invoice_id: nil).count %>
 
 <%= will_paginate @invoices %>
