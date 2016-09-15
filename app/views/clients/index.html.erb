@@ -37,7 +37,7 @@
             <td><%= client.phone %></td>
             <td><%= client.dob %></td>
             <td><%= link_to 'Charge Service', new_service_path(:client_id => client.id) %></td>
-                <% crt_inv = client.services.where("paid IS NOT TRUE").length >= 1  %>
+                <% crt_inv = client.services.where("paid IS NOT TRUE").where("invoice_id IS NULL").length >= 1  %>
             <td><%= link_to_if(crt_inv,'Create Invoice', new_invoice_path(:client_id => client.id) ) %></td>
             <td><%= link_to 'Details', client %></td>
             <td><%= link_to 'Edit', edit_client_path(client) %></td>
