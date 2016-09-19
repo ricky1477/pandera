@@ -13,6 +13,10 @@ class InvoicesController < ApplicationController
   def show
   end
 
+  def show_all
+    @invoices = Invoice.where("paid IS NOT TRUE")
+  end
+
   # GET /invoices/new
   def new
     @invoice = Invoice.new

@@ -58,3 +58,6 @@
 <b>Services without invoice: <%= Service.where("paid IS NOT TRUE").where(invoice_id: nil).count %>
 
 <%= will_paginate @invoices %>
+<br/>
+<br/>
+<%= link_to 'Print all invoices', show_all_path %>
