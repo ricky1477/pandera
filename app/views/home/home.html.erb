@@ -15,7 +15,7 @@
       $('#dynamic_select').on('change', function () {
           var locale = $(this).val(); // get selected value
           if (locale) { // require a URL
-            newUrl = 'http://' + window.location.host + '?locale=' + locale;
+            newUrl = window.location.protocol + '//'  + window.location.host + '?locale=' + locale;
             window.location = newUrl; // redirect
           }
           return false;
