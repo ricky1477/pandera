@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shipping_addresses
     devise_for :admins
     root 'home#home'
     resources :invoices

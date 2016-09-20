@@ -16,9 +16,10 @@ div#two {
 
     <section>
         <div id="one">
-          <p><b>L&R Landscaping </br>
-          4214 Landgreen St </br>
-          Rockville, MD 20853 </b> </p> </br>
+        <% sa = ShippingAddress.where("is_default IS TRUE").first %>
+          <p><b> <%= sa.name %> </br>
+          <%= sa.street %> </br>
+          <%= sa.city + ', ' + sa.state + ' ' + sa.zipcode %></b> </p> </br>
         </div>
 
         <div id="two">

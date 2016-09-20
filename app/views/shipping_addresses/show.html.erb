@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shipping_address.name %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @shipping_address.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @shipping_address.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @shipping_address.state %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @shipping_address.zipcode %>
+</p>
+
+<p>
+  <strong>Default:</strong>
+  <%= @shipping_address.is_default ? 'Yes' : 'No'  %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_shipping_address_path(@shipping_address) %> |
+<%= link_to 'Back', shipping_addresses_path %>

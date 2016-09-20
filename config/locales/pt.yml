@@ -11,3 +11,5 @@ pt:
   listing_clients: 'Listagem de Clientes'
   listing_services: 'Listagem de Serviços'
   listing_invoices: 'Listagem de Faturas'
+  shipping_addresses: 'Endereços de Entrega'
+  listing_shipping_addresses: 'Listagem de Endereços de Entrega'
