@@ -20,4 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+  intro: 'Welcome to the L&R landscape billing system!'
+  home: 'Home'
+  clients: 'Clients'
+  services: 'Services'
+  invoices: 'Invoices'
+  pick_language: 'Pick language'
+  english: 'English'
+  portuguese: 'Portuguese'
+  listing_clients: 'Listing Clients'
+  listing_services: 'Listing Services'
+  listing_invoices: 'Listing Invoices'

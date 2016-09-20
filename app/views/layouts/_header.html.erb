@@ -42,9 +42,9 @@
           <li><%#= link_to('New Checklists', nv_checklists_path) %></li>
           <li><%#= link_to('Used Checklists', uv_checklists_path) %></li>
           <%# else %> -->
-          <li><%= link_to('Clients', clients_path) %></li>
-          <li><%= link_to('Services', services_path) %></li>
-          <li><%= link_to('Invoices', invoices_path) %></li>
+          <li><%= link_to(t('clients'), clients_path) %></li>
+          <li><%= link_to(t('services'), services_path) %></li>
+          <li><%= link_to(t('invoices'), invoices_path) %></li>
           <%# end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

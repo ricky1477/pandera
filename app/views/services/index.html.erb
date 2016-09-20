@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Services</h1>
+<h1><%= t('listing_services') %></h1>
 
 <%= form_tag services_path, :method => 'get', :id => "services_search" do %>
   <%= hidden_field_tag :direction, params[:direction] %>

@@ -1,2 +1,13 @@
 pt:
-  hello: "Oi mundo!"
+  hello: 'Oi mundo!'
+  intro: 'Bem vindo ao sistema de faturamento da L&R landscape!'
+  home: 'Home'
+  clients: 'Clientes'
+  services: 'Serviços'
+  invoices: 'Faturas'
+  pick_language: 'Escolha o idioma'
+  english: 'Inglês'
+  portuguese: 'Português'
+  listing_clients: 'Listagem de Clientes'
+  listing_services: 'Listagem de Serviços'
+  listing_invoices: 'Listagem de Faturas'

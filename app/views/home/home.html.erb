@@ -1,4 +1,24 @@
 <div class="jumbotron">
-  <h2> <p>Welcome to the L&R landscape billing system!</p> </h2>
-  <h1><%= t('hello') %></h1>
+    <h2> <p><%= t('intro') %> </p></h2>
+
+    <select id="dynamic_select">
+      <option value="" selected><%= t('pick_language') %></option>
+      <option value="en"><%= t('english') %></option>
+      <option value="pt"><%= t('portuguese') %></option>
+    </select>
+
 </div>
+
+<script>
+    $(function(){
+      // bind change event to select
+      $('#dynamic_select').on('change', function () {
+          var locale = $(this).val(); // get selected value
+          if (locale) { // require a URL
+            newUrl = 'http://' + window.location.host + '?locale=' + locale;
+            window.location = newUrl; // redirect
+          }
+          return false;
+      });
+    });
+</script>
