@@ -34,6 +34,11 @@ gem 'will_paginate', '~> 3.0.6'
 # I18n gem
 gem 'rails-i18n'
 
+# Carrierwave for image manipulation
+gem 'carrierwave'#, '>= 1.0.0.beta', '< 2.0'
+# Dropbox for image hosting
+gem 'carrierwave-dropbox'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
