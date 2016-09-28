@@ -29,6 +29,13 @@
   <div class="field">
     <%= f.label :price %><br>
     <%= f.text_field :price %>
+    <% past_prices = Service.where(client_id: params[:client_id]).pluck(:price) %>
+    <% if past_prices.length>=1 %>
+        <%= 'Past prices were: ' %>
+        <% past_prices.each_with_index do |price, index| %>
+            <%= '$' + price.to_s.to_f.round(2).to_s %>
+        <% end %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :maturity %><br>
