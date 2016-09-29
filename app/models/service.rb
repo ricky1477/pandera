@@ -3,6 +3,9 @@ class Service < ActiveRecord::Base
       belongs_to :invoice
       validates :price, presence: true
 
+      DESCRIPTION = ['Weekly Cutting', 'Bi-weekly Cutting', 'Mulching', 'Gutter Cleaning', 'Trimming Bushes and Shrubs','Fall Clean-Up',
+      'Fertilizer', 'Aeration and Seeding', 'Power Washing', 'Snow Removal']
+
       def self.search(search)
         if search
 			joins('JOIN clients ON clients.id = services.client_id').
