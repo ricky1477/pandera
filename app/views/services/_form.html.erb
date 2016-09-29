@@ -61,7 +61,7 @@ $('#service_description').change(function() {
   service = service.replace(/\s/g, '.');
   service = '.' + service;
   if ($(service).text().length>0){
-    $('#service_price').val($(service).text().replace(/\s/g, ''));
+    $('#service_price').val($(service+':last').text().replace(/\s/g, ''));
   }
 });
 </script>
