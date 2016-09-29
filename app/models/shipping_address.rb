@@ -1,5 +1,5 @@
 class ShippingAddress < ActiveRecord::Base
-    #before_update :clear_defaults
+    before_update :clear_defaults
 
     def clear_defaults
       if self.is_default_changed?
