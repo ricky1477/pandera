@@ -10,6 +10,13 @@
 <body>
 
 <%= render "layouts/header"%> 
+
+<% if current_page?('/') %>
+    <div class="jumbotron">
+        <%= render 'home' %>
+    </div>
+<% end %>
+
 <div class="container">
     <%= yield %>
 </div>
