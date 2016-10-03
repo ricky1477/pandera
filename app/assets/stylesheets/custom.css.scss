@@ -10,15 +10,19 @@
   border:1px solid #000033;
 }
 .jumbotron {
-    /*background-image: url('http://landscapecreators.com/wp-content/uploads/2013/05/header-lawn.jpg');*/
-    background-image: url('https://www.dropbox.com/s/8vuslqhyk7l7ces/grass2.jpg?dl=0&raw=1');
+    /*background-image: url('http://landscapecreators.com/wp-content/uploads/2013/05/header-lawn.jpg'); */
+    /*background-image: url('https://www.dropbox.com/s/8vuslqhyk7l7ces/grass2.jpg?dl=0&raw=1'); */
+    /*background-image: url('https://www.dropbox.com/s/0vp0nw4oh7oxb66/LAWN_STRIPES_2.jpg?dl=0&raw=1'); */
+    /*background-image: url('https://www.dropbox.com/s/x8bao72if5vzp8q/LAWN_STRIPES_2.jpg?dl=0&raw=1'); */
+    background-image: url('');
+    background-image: url('https://www.dropbox.com/s/1w3io5a7bsa1ot3/home_lawn%202.jpg?dl=0&raw=1');
     color: #696969;
     color: black;
 
     @media screen and (max-width: 768px) {
      text-align: center;
     }
-    padding: 150px 60px 150px 60px;
+    padding: 93px 60px 93px 60px;
 }
 .intro{
     width: 460px;
@@ -28,6 +32,8 @@
     @media screen and (max-width: 425px) { width: 340px; }
     @media screen and (max-width: 400px) { width: 320px; }
     @media screen and (max-width: 380px) { width: 100%; }
+
+    padding: 130px 0px 0px 0px;
 
     line-height: 20px;
 }
