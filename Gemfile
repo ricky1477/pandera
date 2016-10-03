@@ -39,6 +39,9 @@ gem 'carrierwave'#, '>= 1.0.0.beta', '< 2.0'
 # Dropbox for image hosting
 gem 'carrierwave-dropbox'
 
+# Hiding secrets
+gem 'figaro'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
