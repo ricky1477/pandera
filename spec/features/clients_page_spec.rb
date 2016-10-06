@@ -11,4 +11,11 @@ feature 'clients page' do
         expect(page).to have_content('Listagem de Clientes')
         expect(page).to have_content('New Client')
     end
+    scenario 'client content' do
+        visit('/clients')
+        click_on('New Client')
+        expect(page).to have_content('Home')
+        expect(page).to have_content('New Client')
+        expect(page).to have_content('Back')
+    end
 end
