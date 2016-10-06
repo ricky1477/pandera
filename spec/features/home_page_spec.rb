@@ -17,6 +17,7 @@ feature 'home page' do
         visit('/')
         find('#dynamic_select').find(:xpath, '//*[@id="dynamic_select"]/option[2]').select_option
         find('#dynamic_select').find(:xpath, '//*[@id="dynamic_select"]/option[2]').click
+        select('Inglês', from: 'dynamic_select')
         pending # Still need to learn how this works, select is not reloading the page
         expect(page).to have_content('Home')
         expect(page).to have_content('Clientes')
