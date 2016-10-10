@@ -1,6 +1,9 @@
 require 'rails_helper'
+require_relative '../support/new_client_form'
 
 feature 'clients page' do
+    let(:new_client_form) { NewClientForm.new }
+
     scenario 'client content' do
         visit('/clients')
         expect(page).to have_content('Home')
@@ -40,6 +43,15 @@ feature 'clients page' do
         fill_in('Name', with: 'Test')
         fill_in('Street address', with: 'Test')
         click_on('Criar Client')
+        expect(page).to have_content('Name: Test')
+        expect(page).to have_content('Address: Test')
+        expect(page).to have_content('City: Zipcode: Email: Phone:')
+    end
+    scenario 'add new client again' do # Now with NewClientForm helper
+        new_client_form.visit_page.fill_in_with(
+            {name: 'Test',
+            street_address: 'Test'}
+        ).submit
         expect(page).to have_content('Name: Test')
         expect(page).to have_content('Address: Test')
         expect(page).to have_content('City: Zipcode: Email: Phone:')
