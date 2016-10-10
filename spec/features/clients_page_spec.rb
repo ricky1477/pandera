@@ -56,5 +56,19 @@ feature 'clients page' do
         expect(page).to have_content('Address: Test')
         expect(page).to have_content('City: Zipcode: Email: Phone:')
     end
-
+    scenario 'client public page' do
+        client = Client.create(name: 'Test', street_address: 'Test')
+        visit("/clients/#{client.id}")
+        expect(page).to have_content('Name: Test')
+    end
+    scenario 'client public page with factory' do
+        client = FactoryGirl.create(:client)
+        visit("/clients/#{client.id}")
+        expect(page).to have_content('Name: Test2')
+    end
+    scenario 'client list public page with factory and CSS' do
+        clients = FactoryGirl.create_list(:client, 4)
+        visit("/clients")
+        expect(page).to have_css('a' , text: 'Details')
+    end
 end
