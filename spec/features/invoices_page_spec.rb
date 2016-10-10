@@ -13,11 +13,40 @@ feature 'invoices page' do
         expect(page).to have_content('Services without invoice:')
         expect(page).to have_content('Print all invoices')
     end
+    scenario 'invoice#index' do
+        client = FactoryGirl.create(:client)
+        service = FactoryGirl.create(:service, client_id: client.id)
+        sa = FactoryGirl.create(:shipping_address)
+        invoice = FactoryGirl.create(:invoice, client_id: client.id)
+        visit('/invoices')
+        expect(page).to have_content(client.name)
+        expect(page).to have_content(invoice.invoice_number)
+        expect(page).to have_content(invoice.total)
+        expect(page).to have_content(invoice.paid)
+    end
     scenario 'invoice print all' do
+        client = FactoryGirl.create(:client)
+        service = FactoryGirl.create(:service, client_id: client.id)
+        sa = FactoryGirl.create(:shipping_address)
+        invoice = FactoryGirl.create(:invoice, client_id: client.id)
         visit('/invoices')
         expect(page).to have_content('Home')
         click_on('Print all invoices')
-        pending # Add tests once I am able to add test data to db
-        expect(page).to have_content('Dawg')
+        expect(page).to have_content(sa.name)
+        expect(page).to have_content(sa.street)
+        expect(page).to have_content(sa.city)
+        expect(page).to have_content(sa.state)
+        expect(page).to have_content(sa.zipcode)
+        expect(page).to have_content(client.name)
+        expect(page).to have_content(client.street_address)
+        expect(page).to have_content(client.city)
+        expect(page).to have_content(client.zipcode)
+        expect(page).to have_content('Services')
+        expect(page).to have_content('Invoice')
+        expect(page).to have_content(service.description)
+        expect(page).to have_content(service.date)
+        expect(page).to have_content(service.date)
+        expect(page).to have_content(invoice.invoice_number)
+        expect(page).to have_content(invoice.total)
     end
 end

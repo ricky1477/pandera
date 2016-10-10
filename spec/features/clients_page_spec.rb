@@ -64,11 +64,19 @@ feature 'clients page' do
     scenario 'client public page with factory' do
         client = FactoryGirl.create(:client)
         visit("/clients/#{client.id}")
-        expect(page).to have_content('Name: Test2')
+        expect(page).to have_content('Name: TestClient')
     end
     scenario 'client list public page with factory and CSS' do
         clients = FactoryGirl.create_list(:client, 4)
         visit("/clients")
         expect(page).to have_css('a' , text: 'Details')
     end
+    scenario 'test client#index' do
+        FactoryGirl.create(:client)
+        visit("/clients")
+        expect(page).to have_content('TestClientName')
+        expect(page).to have_content('TestClientStreeAddress')
+        expect(page).to have_content('test_client_email')
+    end
+
 end

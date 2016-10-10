@@ -10,4 +10,14 @@ feature 'services page' do
         expect(page).to have_content('Login')
         expect(page).to have_content('Listagem de Serviços')
     end
+    scenario 'test service#index' do
+        client = FactoryGirl.create(:client)
+        service = FactoryGirl.create(:service, client_id: client.id)
+        visit("/services")
+        expect(page).to have_content(client.name)
+        expect(page).to have_content(service.date)
+        expect(page).to have_content(service.description)
+        expect(page).to have_content(service.price)
+    end
+
 end
