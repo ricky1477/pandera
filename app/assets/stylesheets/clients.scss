@@ -1,3 +1,16 @@
 #clients_search{
   float:right;
 }
+
+.client_tr{
+  /*background-color:#4CAF50 !important;
+  background-color:#B0C4DE !important;
+  background-color:#90EE90 !important;
+  background-color:#66CDAA !important;*/
+  background-color:#8FBC8F !important;
+}
+.table-striped>tbody>.client_tr:nth-child(odd){
+  /*background-color:#7FFFD4 !important;
+  background-color:#87CEFA !important;*/
+  background-color:#9ACD32 !important;
+}
