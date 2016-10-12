@@ -69,6 +69,6 @@ class ShippingAddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipping_address_params
-      params.require(:shipping_address).permit(:name, :street, :city, :state, :zipcode, :is_default)
+      params.require(:shipping_address).permit(:name, :street, :city, :state, :zipcode, :is_default, :phone, :email)
     end
 end

@@ -11,6 +11,8 @@
           <th>City</th>
           <th>State</th>
           <th>Zipcode</th>
+          <th>Phone</th>
+          <th>Email</th>
           <th>Default</th>
           <th colspan="3"></th>
         </tr>
@@ -24,6 +26,8 @@
             <td><%= shipping_address.city %></td>
             <td><%= shipping_address.state %></td>
             <td><%= shipping_address.zipcode %></td>
+            <td><%= shipping_address.phone %></td>
+            <td><%= shipping_address.email %></td>
             <td><%= shipping_address.is_default ? 'Yes' : 'No'  %></td>
             <td><%= link_to 'Show', shipping_address %></td>
             <td><%= link_to 'Edit', edit_shipping_address_path(shipping_address) %></td>
