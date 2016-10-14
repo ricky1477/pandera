@@ -29,8 +29,8 @@
       <tbody>
         <% @clients.each do |client| %>
           <% crt_inv = client.services.where("paid IS NOT TRUE").where("invoice_id IS NULL").length >= 1  %>
+          <!--<tr>-->
           <tr <%= 'class=client_tr' if crt_inv %>>
-          <!--<tr <%= 'class=client_tr' %>> -->
             <td><%= client.name %></td>
             <td><%= client.street_address %></td>
             <td><%= client.city %></td>
@@ -39,7 +39,7 @@
             <td><%= client.phone %></td>
             <td><%= client.dob %></td>
             <td><%= link_to 'Charge Service', new_service_path(:client_id => client.id) %></td>
-            <td><%= link_to_if(crt_inv,'Create Invoice', new_invoice_path(:client_id => client.id) ) %></td>
+            <td <%= 'class=client_td' if crt_inv %>><%= link_to_if(crt_inv,'Create Invoice', new_invoice_path(:client_id => client.id) ) %></td>
             <td><%= link_to 'Details', client %></td>
             <td><%= link_to 'Edit', edit_client_path(client) %></td>
             <td><%= link_to 'Delete', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
