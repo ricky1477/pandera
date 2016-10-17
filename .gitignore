@@ -7,8 +7,6 @@
 # Ignore config/database.yml for now
 config/database.yml
 
-update_repo.sh
-
 # Ignore bundler config.
 /.bundle
 
