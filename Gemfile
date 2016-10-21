@@ -74,6 +74,7 @@ group :test do
     gem 'capybara'
     gem 'cucumber-rails', require: false
     gem 'database_cleaner'
+    gem 'poltergeist', '~> 1.11'
 end
 
 group :development do
