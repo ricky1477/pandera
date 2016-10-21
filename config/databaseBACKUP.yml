@@ -1,7 +1,7 @@
 production:
   adapter: postgresql
   encoding: unicode
-  database: pandera_development
+  database: pandera_production
   pool: 5
   username: rkreyhsig9620
   password: password1
@@ -12,7 +12,7 @@ development:
   database: pandera_development
   pool: 5
   username: rkreyhsig9620
-  password: 
+  password:
 
 test:
   adapter: postgresql

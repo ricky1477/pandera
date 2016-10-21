@@ -1,7 +1,7 @@
 production:
   adapter: postgresql
   encoding: unicode
-  database: pandera_development
+  database: pandera_production
   pool: 5
   username: lotbud
   password: password1
