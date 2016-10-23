@@ -72,11 +72,11 @@ feature 'clients page' do
         expect(page).to have_css('a' , text: 'Details')
     end
     scenario 'test client#index' do
-        FactoryGirl.create(:client)
+        client = FactoryGirl.create(:client)
         visit("/clients")
-        expect(page).to have_content('TestClientName')
-        expect(page).to have_content('TestClientStreeAddress')
-        expect(page).to have_content('test_client_email')
+        expect(page).to have_content(client.name)
+        expect(page).to have_content(client.street_address)
+        expect(page).to have_content(client.email)
     end
 
 end
