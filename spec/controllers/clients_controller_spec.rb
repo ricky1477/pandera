@@ -3,8 +3,30 @@ require 'rails_helper'
 describe ClientsController do
 	# get put post delete
 
+
+	describe "GET index" do
+		it "renders :index template" do
+			get :index
+			expect(response).to render_template(:index)
+		end
+	end
+
+	describe "GET edit" do
+		let(:client)  {FactoryGirl.create(:client)}
+
+		it "renders :edit template" do
+			get :edit, id: client
+			expect(response).to render_template(:edit)
+		end
+
+		it "assigns the requested client to template" do
+			get :edit, id: client
+			expect(assigns(:client)).to eq(client)
+		end
+	end
+
 	describe "GET new" do
-		it "renders new template" do
+		it "renders :new template" do
 			get :new
 			expect(response).to render_template(:new)
 		end
@@ -16,7 +38,8 @@ describe ClientsController do
 	end
 
 	describe "GET show" do
-	let(:client)  {FactoryGirl.create(:client)}
+		let(:client)  {FactoryGirl.create(:client)}
+
 		it "renders show template" do
 			#get :show, id: client.id
 			get :show, id: client
