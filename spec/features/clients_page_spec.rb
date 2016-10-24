@@ -4,6 +4,21 @@ require_relative '../support/new_client_form'
 feature 'clients page' do
     let(:new_client_form) { NewClientForm.new }
 
+    def create_admin
+        visit('/admins/sign_up')
+        fill_in('Email', with: 'test@mail.com')
+        fill_in('Password', with: 'secret')
+        fill_in('Password confirmation', with: 'secret')
+        click_on('Sign up')
+    end
+
+    def sign_in
+        visit('/admins/sign_in')
+        fill_in('Email', with: 'test@mail.com')
+        fill_in('Password', with: 'secret')
+        click_on('Sign in')
+    end
+
     scenario 'client content' do
         visit('/clients')
         expect(page).to have_content('Home')
@@ -15,6 +30,8 @@ feature 'clients page' do
         expect(page).to have_content('New Client')
     end
     scenario 'new client content' do
+        create_admin
+        sign_in
         visit('/clients')
         click_on('New Client')
         expect(page).to have_content('Home')
@@ -22,6 +39,8 @@ feature 'clients page' do
         expect(page).to have_content('Back')
     end
     scenario 'new client test validation' do
+        create_admin
+        sign_in
         visit('/clients')
         click_on('New Client')
         click_on('Criar Client')
@@ -30,6 +49,8 @@ feature 'clients page' do
         expect(page).to have_content('Street address não pode estar em branco')
     end
     scenario 'add new client fail no street address' do
+        create_admin
+        sign_in
         visit('/clients')
         click_on('New Client')
         fill_in('Name', with: 'Test')
@@ -38,6 +59,8 @@ feature 'clients page' do
         expect(page).to have_content('Street address não pode estar em branco')
     end
     scenario 'add new client' do
+        create_admin
+        sign_in
         visit('/clients')
         click_on('New Client')
         fill_in('Name', with: 'Test')
@@ -48,6 +71,8 @@ feature 'clients page' do
         expect(page).to have_content('City: Zipcode: Email: Phone:')
     end
     scenario 'add new client again' do # Now with NewClientForm helper
+        create_admin
+        sign_in
         new_client_form.visit_page.fill_in_with(
             {name: 'Test',
             street_address: 'Test'}
@@ -57,11 +82,15 @@ feature 'clients page' do
         expect(page).to have_content('City: Zipcode: Email: Phone:')
     end
     scenario 'client public page' do
-        client = Client.create(name: 'Test', street_address: 'Test')
+        create_admin
+        sign_in
+        client = FactoryGirl.create(:client)
         visit("/clients/#{client.id}")
         expect(page).to have_content('Name: Test')
     end
     scenario 'client public page with factory' do
+        create_admin
+        sign_in
         client = FactoryGirl.create(:client)
         visit("/clients/#{client.id}")
         expect(page).to have_content('Name: TestClient')
@@ -72,6 +101,8 @@ feature 'clients page' do
         expect(page).to have_css('a' , text: 'Details')
     end
     scenario 'test client#index' do
+        create_admin
+        sign_in
         client = FactoryGirl.create(:client)
         visit("/clients")
         expect(page).to have_content(client.name)
