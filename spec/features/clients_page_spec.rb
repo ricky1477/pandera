@@ -3,6 +3,7 @@ require_relative '../support/new_client_form'
 
 feature 'clients page' do
     let(:new_client_form) { NewClientForm.new }
+    let(:test_client) { FactoryGirl.create(:client) }
 
     def create_admin
         visit('/admins/sign_up')
@@ -82,18 +83,8 @@ feature 'clients page' do
         expect(page).to have_content('City: Zipcode: Email: Phone:')
     end
     scenario 'client public page' do
-        create_admin
-        sign_in
-        client = FactoryGirl.create(:client)
-        visit("/clients/#{client.id}")
-        expect(page).to have_content('Name: Test')
-    end
-    scenario 'client public page with factory' do
-        create_admin
-        sign_in
-        client = FactoryGirl.create(:client)
-        visit("/clients/#{client.id}")
-        expect(page).to have_content('Name: TestClient')
+        visit("/clients/#{test_client.id}")
+        expect(page).to have_content('Name: TestClientName')
     end
     scenario 'client list public page with factory and CSS' do
         clients = FactoryGirl.create_list(:client, 4)
@@ -101,8 +92,6 @@ feature 'clients page' do
         expect(page).to have_css('a' , text: 'Details')
     end
     scenario 'test client#index' do
-        create_admin
-        sign_in
         client = FactoryGirl.create(:client)
         visit("/clients")
         expect(page).to have_content(client.name)
