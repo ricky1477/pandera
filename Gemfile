@@ -76,6 +76,7 @@ group :test do
     gem 'cucumber-rails', require: false
     gem 'database_cleaner'
     gem 'poltergeist', '~> 1.11'
+    gem 'selenium-webdriver', '~> 2.48', '>= 2.48.1'
 end
 
 group :development do
