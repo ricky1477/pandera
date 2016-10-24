@@ -8,7 +8,6 @@ require 'rspec/rails'
 require 'devise'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -30,6 +29,12 @@ Capybara.javascript_driver = :poltergeist
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  if config.filter_manager.inclusions[:visual]
+    Capybara.javascript_driver = :selenium
+    config.filter_manager.inclusions.delete(:visual)
+  else
+    Capybara.javascript_driver = :poltergeist
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
