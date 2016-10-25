@@ -211,7 +211,7 @@ describe InvoicesController do
 
 			it "deletes invoices from db" do
 				delete :destroy, id: invoice
-				expect(Client.exists?(invoice.id)).to be_falsy
+				expect(Invoice.exists?(invoice.id)).to be_falsy
 			end
 		end
 	end

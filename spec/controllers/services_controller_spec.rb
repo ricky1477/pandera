@@ -221,7 +221,7 @@ describe ServicesController do
 
 			it "deletes services from db" do
 				delete :destroy, id: service
-				expect(Client.exists?(service.id)).to be_falsy
+				expect(Service.exists?(service.id)).to be_falsy
 			end
 		end
 	end
