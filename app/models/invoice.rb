@@ -4,6 +4,7 @@ class Invoice < ActiveRecord::Base
       before_create :compute_total
       before_destroy :unlink_services_to_invoice
       belongs_to :client
+      validates :client_id, presence: true
       has_many :services
 
       def compute_invoice_num
