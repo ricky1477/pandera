@@ -1,5 +1,6 @@
 class ShippingAddressesController < ApplicationController
   before_action :set_shipping_address, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /shipping_addresses
   # GET /shipping_addresses.json
