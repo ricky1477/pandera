@@ -3,11 +3,12 @@ class Service < ActiveRecord::Base
       belongs_to :invoice
       validates :price, presence: true
       validates :client_id, presence: true
+      before_destroy :check_invoice_association
 
       DESCRIPTION = ['Weekly Cutting', 'Bi-weekly Cutting', 'Mulching', 'Gutter Cleaning', 'Trimming Bushes and Shrubs','Fall Clean-Up',
       'Fertilizer', 'Aeration and Seeding', 'Power Washing', 'Snow Removal']
 
-      def self.search(search)
+    def self.search(search)
         if search
 			joins('JOIN clients ON clients.id = services.client_id').
             where(' clients.name ILIKE ? OR CAST( date AS text ) ILIKE ?
@@ -17,6 +18,10 @@ class Service < ActiveRecord::Base
         else
             where(nil)
         end
+    end
+
+    def check_invoice_association
+        return false if self.invoice
     end
 
 end

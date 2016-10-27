@@ -56,10 +56,14 @@ class ServicesController < ApplicationController
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
-    @service.destroy
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
-      format.json { head :no_content }
+        if @service.destroy
+            format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+            format.json { head :no_content }
+        else
+            format.html { redirect_to services_url, notice: 'Service could not be destroyed because it belongs to an invoice.' }
+            format.json { render json: @service.errors, status: :unprocessable_entity }
+        end
     end
   end
 
