@@ -5,19 +5,12 @@ feature 'clients page' do
     let(:new_client_form) { NewClientForm.new }
     let(:test_client) { FactoryGirl.create(:client) }
 
-    def create_admin
+    def create_admin # This creates admin and automatically signs him/her in
         visit('/admins/sign_up')
         fill_in('Email', with: 'test@mail.com')
         fill_in('Password', with: 'secret')
         fill_in('Password confirmation', with: 'secret')
         click_on('Sign up')
-    end
-
-    def sign_in
-        visit('/admins/sign_in')
-        fill_in('Email', with: 'test@mail.com')
-        fill_in('Password', with: 'secret')
-        click_on('Sign in')
     end
 
     scenario 'client content' do
@@ -32,7 +25,6 @@ feature 'clients page' do
     end
     scenario 'new client content' do
         create_admin
-        sign_in
         visit('/clients')
         click_on('New Client')
         expect(page).to have_content('Home')
@@ -41,7 +33,6 @@ feature 'clients page' do
     end
     scenario 'new client test validation' do
         create_admin
-        sign_in
         visit('/clients')
         click_on('New Client')
         click_on('Criar Client')
@@ -51,7 +42,6 @@ feature 'clients page' do
     end
     scenario 'add new client fail no street address' do
         create_admin
-        sign_in
         visit('/clients')
         click_on('New Client')
         fill_in('Name', with: 'Test')
@@ -61,7 +51,6 @@ feature 'clients page' do
     end
     scenario 'add new client' do
         create_admin
-        sign_in
         visit('/clients')
         click_on('New Client')
         fill_in('Name', with: 'Test')
@@ -73,7 +62,6 @@ feature 'clients page' do
     end
     scenario 'add new client again' do # Now with NewClientForm helper
         create_admin
-        sign_in
         new_client_form.visit_page.fill_in_with(
             {name: 'Test',
             street_address: 'Test'}
