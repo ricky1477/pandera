@@ -20,5 +20,6 @@ RSpec.describe Service, type: :model do
 				expect(service.client).to eq(client)
 			end
 		end
+		it { should belong_to(:client) }
 	end
 end

@@ -77,6 +77,7 @@ group :test do
     gem 'database_cleaner'
     gem 'poltergeist', '~> 1.11'
     gem 'selenium-webdriver', '~> 2.48', '>= 2.48.1'
+    gem 'shoulda-matchers', require: false
 end
 
 group :development do

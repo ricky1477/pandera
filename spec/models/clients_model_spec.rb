@@ -15,5 +15,8 @@ RSpec.describe Client, type: :model do
 			client.valid?
 			expect(client.errors[:street_address]).not_to be_empty
 		end
+		it { should validate_presence_of(:name) }
+		it { should validate_presence_of(:street_address) }
+
 	end
 end

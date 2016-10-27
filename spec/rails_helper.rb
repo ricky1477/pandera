@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'shoulda/matchers'
 require 'devise'
 require 'database_cleaner'
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -30,6 +31,8 @@ require 'capybara/poltergeist'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include Shoulda::Matchers
+
   if config.filter_manager.inclusions[:visual]
     Capybara.javascript_driver = :selenium
     config.filter_manager.inclusions.delete(:visual)
@@ -64,4 +67,12 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include Devise::TestHelpers, type: :controller
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
