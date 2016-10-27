@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :invoice do
-        invoice_number 9876543210
         description 'TestInvoiceDescription'
+        total '56.00'
     end
 end
