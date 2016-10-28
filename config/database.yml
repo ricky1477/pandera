@@ -3,7 +3,8 @@ production:
   encoding: unicode
   database: pandera_production
   pool: 5
-  username: rkreyhsig9620
+  username: lotbud
+  #username: rkreyhsig9620
   password: password1
 
 development:
@@ -11,13 +12,16 @@ development:
   encoding: unicode
   database: pandera_development
   pool: 5
-  username: rkreyhsig9620
-  password:
+  username: lotbud
+  #username: rkreyhsig9620
+  password: password1
+  host: localhost
 
 test:
   adapter: postgresql
   encoding: unicode
   database: pandera_test
   pool: 5
-  username: rkreyhsig9620
+  username: lotbud
+  #username: rkreyhsig9620
   password: password1
