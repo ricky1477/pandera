@@ -6,6 +6,7 @@
 
 # Ignore config/database.yml for now
 config/database.yml
+/config/database.yml
 
 # Ignore bundler config.
 /.bundle
