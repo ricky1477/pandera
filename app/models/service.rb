@@ -4,7 +4,7 @@ class Service < ActiveRecord::Base
       validates :price, presence: true
       validates :client_id, presence: true
       before_destroy :check_invoice_association
-      before_create :price
+      before_save :price
 
       DESCRIPTION = ['Weekly Cutting', 'Bi-weekly Cutting', 'Mulching', 'Gutter Cleaning', 'Trimming Bushes and Shrubs','Fall Clean-Up',
       'Fertilizer', 'Aeration and Seeding', 'Power Washing', 'Snow Removal']
