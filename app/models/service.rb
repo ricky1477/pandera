@@ -4,6 +4,7 @@ class Service < ActiveRecord::Base
       validates :price, presence: true
       validates :client_id, presence: true
       before_destroy :check_invoice_association
+      before_create :price
 
       DESCRIPTION = ['Weekly Cutting', 'Bi-weekly Cutting', 'Mulching', 'Gutter Cleaning', 'Trimming Bushes and Shrubs','Fall Clean-Up',
       'Fertilizer', 'Aeration and Seeding', 'Power Washing', 'Snow Removal']
@@ -22,6 +23,12 @@ class Service < ActiveRecord::Base
 
     def check_invoice_association
         return false if self.invoice
+    end
+
+    # Remove commas and dollar signs before saving to DB
+    def price=(value)
+        value = value.to_s.tr('$ ,', '').to_f
+        write_attribute(:price, value)
     end
 
 end
