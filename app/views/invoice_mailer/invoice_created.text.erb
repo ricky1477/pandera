@@ -1,1 +1,9 @@
-<%= invoice_url(@invoice.id) %>
+Hello <%= @invoice.client.name %>!
+
+Your monthly invoice is ready: <%= invoice_url(@invoice.id) %>
+
+And can be paid at: <%= root_url %>charges/new?invoice_id=<%=@invoice.id.to_s%>
+
+Thanks,
+
+<%= ShippingAddress.where(is_default: true).first.name %>
