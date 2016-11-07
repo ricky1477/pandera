@@ -3,6 +3,7 @@ class Client < ActiveRecord::Base
     has_many :invoices, foreign_key: "client_id"
     validates :name, presence: true
     validates :street_address, presence: true
+    validates :email, presence: true
 
     def self.search(search)
         if search
