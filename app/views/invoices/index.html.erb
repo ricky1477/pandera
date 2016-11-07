@@ -54,7 +54,7 @@
 <% end %>
 <br>
 <b>Services without invoice: <%= Service.where("paid IS NOT TRUE").where(invoice_id: nil).count %>
-
+<br>
 <%= will_paginate @invoices %>
 <br/>
 <br/>
