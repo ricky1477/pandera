@@ -1,5 +1,6 @@
 class Invoice < ActiveRecord::Base
-      before_save :compute_invoice_num
+      before_create :compute_invoice_num
+      before_save :check_if_paid
       before_create :link_services_to_invoice
       before_create :compute_total
       before_destroy :unlink_services_to_invoice
@@ -9,6 +10,15 @@ class Invoice < ActiveRecord::Base
 
       def compute_invoice_num
           self.invoice_number = (Invoice.all.length <= 0) ? ((1).to_s + Time.now.year.to_s ).to_i : ( (Invoice.last.id + 1).to_s + Time.now.year.to_s ).to_i
+      end
+
+      def check_if_paid
+          if self.paid
+            self.services.each do |service|
+                service.paid = true
+                service.save!
+            end
+          end
       end
 
       def link_services_to_invoice

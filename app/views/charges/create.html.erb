@@ -1,1 +1,4 @@
 <h2>Thanks, you paid <strong>$<%= @invoice.total %></strong> to <%= ShippingAddress.where(is_default: true).first.name %>!</h2>
+
+<% @invoice.paid = true %>
+<% @invoice.save! %>
