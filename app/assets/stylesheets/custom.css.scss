@@ -40,3 +40,14 @@
     float: left;
     @media screen and (max-width: 768px) { float: center; }
 }
+
+.form-control{
+    @media screen and (max-width: 990px) { width: 30% !important }
+    @media screen and (max-width: 650px) { width: 33% !important }
+    @media screen and (max-width: 550px) { width: 36% !important }
+    @media screen and (max-width: 450px) { width: 39% !important }
+    @media screen and (max-width: 400px) { width: 42% !important }
+    @media screen and (max-width: 375px) { width: 45% !important }
+    @media screen and (max-width: 350px) { width: 48% !important }
+    @media screen and (max-width: 325px) { width: 51% !important }
+}
