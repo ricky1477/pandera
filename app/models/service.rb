@@ -27,6 +27,7 @@ class Service < ActiveRecord::Base
 
     # Remove commas and dollar signs before saving to DB
     def price=(value)
+        return unless value && value.strip.length > 0
         value = value.to_s.tr('$ ,', '').to_f
         write_attribute(:price, value)
     end

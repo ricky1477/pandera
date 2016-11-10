@@ -130,21 +130,23 @@ describe InvoicesController do
 			context "valid data" do
 				let(:client)  {FactoryGirl.create(:client)}
 				let(:valid_data) { FactoryGirl.attributes_for(:invoice, client_id: client.id) }
-
-				#let(:invoiceCreated) { FactoryGirl.create(:invoice, client_id: client.id) }
+				let(:shipping_address)  {FactoryGirl.create(:shipping_address)}
 
 				it "redirects to invoices#show" do
+                    shipping_address
 					post :create, invoice: valid_data
 					expect(response).to redirect_to(invoice_path(assigns[:invoice]))
 				end
 
 				it "creates new invoice in database" do
+                    shipping_address
 					expect{
 						post :create, invoice: valid_data
 					}.to change(Client, :count).by(1)
 				end
 
 				it "test mailer" do
+                    shipping_address
 					post :create, invoice: valid_data
 					expect(ActionMailer::Base.deliveries.count).to eq(3)
 					expect(ActionMailer::Base.deliveries.last.to).to include(client.email)

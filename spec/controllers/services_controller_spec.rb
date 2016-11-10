@@ -193,10 +193,6 @@ describe ServicesController do
 					put :update, id: service, service: invalid_data
 					expect(response).to render_template(:edit)
 				end
-				it "renders :edit template#{2}" do
-					put :update, id: service, service: invalid_data2
-					expect(response).to render_template(:edit)
-				end
 				it "does not creates new service in database" do
 					put :update, id: service, service: invalid_data
 					service.reload
