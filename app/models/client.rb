@@ -4,6 +4,7 @@ class Client < ActiveRecord::Base
     validates :name, presence: true
     validates :street_address, presence: true
     validates :email, presence: true
+    validates :phone, presence: true
 
     def self.search(search)
         if search

@@ -36,7 +36,7 @@ feature 'clients page' do
         visit('/clients')
         click_on('New Client')
         click_on('Criar Client')
-        expect(page).to have_content('2 errors prohibited this client from being saved:')
+        expect(page).to have_content('4 errors prohibited this client from being saved:')
         expect(page).to have_content('Name não pode estar em branco')
         expect(page).to have_content('Street address não pode estar em branco')
     end
@@ -46,7 +46,7 @@ feature 'clients page' do
         click_on('New Client')
         fill_in('Name', with: 'Test')
         click_on('Criar Client')
-        expect(page).to have_content('1 error prohibited this client from being saved:')
+        expect(page).to have_content('3 errors prohibited this client from being saved:')
         expect(page).to have_content('Street address não pode estar em branco')
     end
     scenario 'add new client' do
@@ -55,20 +55,28 @@ feature 'clients page' do
         click_on('New Client')
         fill_in('Name', with: 'Test')
         fill_in('Street address', with: 'Test')
+        fill_in('Email', with: 'test@mail.com')
+        fill_in('Phone', with: '2403456789')
         click_on('Criar Client')
+        expect(page).to have_content('Client was successfully created.')
         expect(page).to have_content('Name: Test')
         expect(page).to have_content('Address: Test')
-        expect(page).to have_content('City: Zipcode: Email: Phone:')
+        expect(page).to have_content('Email: test@mail.com')
+        expect(page).to have_content('Phone: 2403456789')
+        expect(page).to have_content('City: Zipcode: Email:')
     end
     scenario 'add new client again' do # Now with NewClientForm helper
         create_admin
         new_client_form.visit_page.fill_in_with(
             {name: 'Test',
-            street_address: 'Test'}
+            street_address: 'Test',
+            email: 'test@mail.com',
+            phone: 'Test'}
         ).submit
         expect(page).to have_content('Name: Test')
         expect(page).to have_content('Address: Test')
-        expect(page).to have_content('City: Zipcode: Email: Phone:')
+        expect(page).to have_content('Email: test@mail.com')
+        expect(page).to have_content('City: Zipcode:')
     end
     scenario 'client public page' do
         visit("/clients/#{test_client.id}")
