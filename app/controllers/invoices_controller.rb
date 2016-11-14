@@ -34,6 +34,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       if @invoice.save
         InvoiceMailer.invoice_created(@invoice).deliver_now
+        InvoiceSmsMailer.invoice_created(@invoice).deliver_now
 
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
