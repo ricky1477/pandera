@@ -6,6 +6,15 @@ class Client < ActiveRecord::Base
     validates :email, presence: true
     validates :phone, presence: true
 
+    CARRIERS = [['AT&T' ,'@txt.att.net'],
+                ['Boost Mobile' ,'@sms.myboostmobile.com'],
+                ['Sprint' ,'@messaging.sprintpcs.com'],
+                ['T-Mobile' ,'@tmomail.net'],
+                ['U.S. Celular' ,'@email.uscc.net'],
+                ['Verizon' ,'@vtext.com'],
+                ['Virgin Mobile' ,'@vmobl.com'],
+                ['Altel' ,'@sms.altelwireless.com']]
+
     def self.search(search)
         if search
             where('name ILIKE ? OR email ILIKE ? OR phone ILIKE ? OR CAST( dob AS text ) ILIKE ?

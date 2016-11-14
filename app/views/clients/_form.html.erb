@@ -36,6 +36,10 @@
     <%= f.text_field :phone %>
   </div>
   <div class="field">
+    <%= f.label :sms_gateway, 'Carrier' %><br>
+    <%= f.select :sms_gateway, options_for_select(Client::CARRIERS), class: 'sms_gateway' %>
+  </div>
+  <div class="field">
     <%= f.label :dob, "Date of Birth" %><br>
     <%#= f.text_field :dob %>
     <%= f.date_select(:dob, :order => [:month, :day, :year], :start_year => Time.now.year - 80) %>
