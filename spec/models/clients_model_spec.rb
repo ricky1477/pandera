@@ -14,7 +14,7 @@ RSpec.describe Client, type: :model do
 			expect(Client.search('StreetAddress')).to include(client)
 			expect(Client.search('Gaithersburg')).to include(client)
 			expect(Client.search('20853')).to include(client)
-			expect(Client.search('(301) 519-210X')).to include(client)
+			expect(Client.search('301519210X')).to include(client)
 		end
 	end
 end

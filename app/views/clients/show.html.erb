@@ -33,5 +33,11 @@
   <%= @client.dob %>
 </p>
 
+<p>
+  <strong>Carrier:</strong>
+  <%= Client::CARRIERS.select{ |carrier, email| email == @client.sms_gateway }[0][0] if @client.sms_gateway %>
+</p>
+
+
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

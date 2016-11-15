@@ -148,8 +148,8 @@ describe InvoicesController do
 				it "test mailer" do
                     shipping_address
 					post :create, invoice: valid_data
-					expect(ActionMailer::Base.deliveries.count).to eq(3)
-					expect(ActionMailer::Base.deliveries.last.to).to include(client.email)
+					expect(ActionMailer::Base.deliveries.count).to eq(6) #One email and one SMS email for each invoice created
+					expect(ActionMailer::Base.deliveries.last.to).to include(client.phone+client.sms_gateway)
 				end
 			end
 			context "invalid data" do

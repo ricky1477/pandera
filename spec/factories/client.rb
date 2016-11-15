@@ -5,6 +5,7 @@ FactoryGirl.define do
         sequence(:email) { |n| "test_client_email#{n}@mail.com" }
         city 'Gaithersburg'
         zipcode '20853'
-        phone '(301) 519-210X'
+        phone '301519210X'
+        sms_gateway '@tmomail.net'
     end
 end
