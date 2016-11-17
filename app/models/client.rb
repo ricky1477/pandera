@@ -1,6 +1,7 @@
 class Client < ActiveRecord::Base
     has_many :services, foreign_key: "client_id"
     has_many :invoices, foreign_key: "client_id"
+    has_many :estimates, foreign_key: "client_id"
     validates :name, presence: true
     validates :street_address, presence: true
     validates :email, presence: true

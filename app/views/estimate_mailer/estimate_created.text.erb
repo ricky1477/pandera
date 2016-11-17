@@ -1,6 +1,9 @@
 Hello <%= @estimate.client.name %>!
 
 Your estimate is ready: <%= estimate_url(@estimate.id) %>
+Description: <%= @estimate.description %>
+Price: <%= @estimate.price %>
+Notes: <%= @estimate.notes %>
 
 Thanks,
 
