@@ -1,0 +1,7 @@
+Hello <%= @estimate.client.name %>!
+
+Your estimate is ready: <%= estimate_url(@estimate.id) %>
+
+Thanks,
+
+<%= ShippingAddress.where(is_default: true).first.name %>
