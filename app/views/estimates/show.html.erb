@@ -1,0 +1,22 @@
+<p>
+  <strong>Description:</strong>
+  <%= @estimate.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @estimate.price %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @estimate.client_id %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @estimate.notes %>
+</p>
+
+<%= link_to 'Edit', edit_estimate_path(@estimate) %> |
+<%= link_to 'Back', estimates_path %>

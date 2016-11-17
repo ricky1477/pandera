@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :estimates
   resources :charges
   resources :shipping_addresses
     devise_for :admins

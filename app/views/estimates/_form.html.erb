@@ -1,0 +1,36 @@
+<%= form_for(@estimate) do |f| %>
+  <% if @estimate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estimate.errors.count, "error") %> prohibited this estimate from being saved:</h2>
+
+      <ul>
+      <% @estimate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="field">
+    <% if params.has_key?(:client_id) %>
+      <%= f.hidden_field :client_id, :value => params[:client_id] %>
+    <% else %>
+      <%= f.hidden_field :client_id, :value => @estimate.client_id %>
+    <% end %>
+  </span>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.select(:description, Service::DESCRIPTION, {include_blank: true}) %></td>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
