@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     resources :clients
     resources :services
     get 'home' => 'home#home'
+    get 'googlea87d8b3af5e98ec8.html', :to => redirect('googlea87d8b3af5e98ec8.html')
 end
