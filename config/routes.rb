@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     resources :services
     get 'home' => 'home#home'
     get 'googlea87d8b3af5e98ec8.html', :to => redirect('googlea87d8b3af5e98ec8.html')
-    match 'favicon.ico' => 'https://www.dropbox.com/s/92xvznr5p84zswn/favicon-32x32.png?dl=0&raw=1'
+    #match 'favicon.ico' => 'https://www.dropbox.com/s/92xvznr5p84zswn/favicon-32x32.png?dl=0&raw=1'
 end
