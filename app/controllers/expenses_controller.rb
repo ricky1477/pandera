@@ -4,7 +4,12 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
+    #@invoices = Invoice.search(params[:search]).order(sort_column + ' ' +
+    #  sort_direction).paginate(:per_page => 15, :page => params[:page])
+    #@expenses = Expense.search(params[:search]).order(sort_column + ' ' +
+    #  sort_direction).paginate(:per_page => 15, :page => params[:page])
     @expenses = Expense.all
+    @invoices = Invoice.where(paid: true)
   end
 
   # GET /expenses/1

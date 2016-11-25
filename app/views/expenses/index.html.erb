@@ -1,3 +1,43 @@
+<h1>Listing Gain</h1>
+
+<div class="table-responsive">
+  <table id="invoices_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Invoice number</th>
+        <th>Maturity</th>
+        <th>Description</th>
+        <th>Total</th>
+        <th>Paid</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @invoices.each do |invoice| %>
+        <tr>
+          <td>
+          <% if !invoice.client.name.present? || invoice.client.name.empty? %>
+              <%= link_to invoice.client.id, invoice.client %>
+            <% else %>
+              <%= link_to invoice.client.name, invoice.client %>
+          <% end %> </td>
+          <td><%= invoice.invoice_number %></td>
+          <td><%= invoice.maturity %></td>
+          <td><%= invoice.description %></td>
+          <td><%= invoice.total %></td>
+          <td><%= invoice.paid ? 'Yes' : 'No' %></td>
+          <td><%= link_to 'Show', invoice %></td>
+          <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+          <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
 <h1>Listing Expenses</h1>
 
 <div class="table-responsive">
