@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     get 'home' => 'home#home'
     get 'googlea87d8b3af5e98ec8.html', :to => redirect('googlea87d8b3af5e98ec8.html')
     get 'favicon.ico', :to => redirect('https://www.dropbox.com/s/92xvznr5p84zswn/favicon-32x32.png?dl=0&raw=1')
+    get 'apple-touch-icon.png', :to => redirect('https://www.dropbox.com/s/zf61qb2eh45pzkm/apple-touch-icon.png?dl=0&raw=1')
     get 'apple-touch-icon-120x120-precomposed.png', :to => redirect('https://www.dropbox.com/s/zf61qb2eh45pzkm/apple-touch-icon.png?dl=0&raw=1')
 end
