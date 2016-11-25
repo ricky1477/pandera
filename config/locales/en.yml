@@ -26,6 +26,8 @@ en:
   clients: 'Clients'
   services: 'Services'
   invoices: 'Invoices'
+  estimates: 'Estimates'
+  dashboard: 'Dashboard'
   pick_language: 'Pick language'
   english: 'English'
   portuguese: 'Portuguese'
