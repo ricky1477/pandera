@@ -6,6 +6,7 @@ pt:
   services: 'Serviços'
   invoices: 'Faturas'
   estimates: 'Estimativas'
+  dashboard: 'Painel de Instrumentos'
   pick_language: 'Escolha o idioma'
   english: 'Inglês'
   portuguese: 'Português'
