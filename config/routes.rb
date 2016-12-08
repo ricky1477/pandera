@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'invoices_show_all' => 'invoices#show_all', as: 'show_all'
     resources :clients
     resources :services
+    get 'shalom' => 'home#shalom'
     get 'home' => 'home#home'
     get 'dashboard' => 'expenses#index'
     get 'googlea87d8b3af5e98ec8.html', :to => redirect('googlea87d8b3af5e98ec8.html')
