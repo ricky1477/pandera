@@ -8,7 +8,7 @@ feature 'home page' do
         expect(page).to have_content('Serviços')
         expect(page).to have_content('Faturas')
         expect(page).to have_content('Login')
-        expect(page).to have_content('Bem vindo ao sistema de faturamento da Nice and Green Lanscaping!')
+        expect(page).to have_content('Bem vindo ao sistema de faturamento da Grasshopper Lanscaping!')
         expect(page).to have_content('Escolha o idioma')
         expect(page).to have_content('Inglês ')
         expect(page).to have_content('Português')
@@ -25,7 +25,7 @@ feature 'home page' do
         expect(page).to have_content('Services')
         expect(page).to have_content('Invoices')
         expect(page).to have_content('Login')
-        expect(page).to have_content('Welcome to the Nice and Green Lanscaping billing system!')
+        expect(page).to have_content('Welcome to the Grasshopper Lanscaping billing system!')
         expect(page).to have_selector('#dynamic_select', visible: true)
         #save_screenshot('/Users/ricardokreyhsig/Desktop/pic.png')
     end
