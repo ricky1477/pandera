@@ -71,7 +71,7 @@ class InvoicesController < ApplicationController
   def destroy
     @invoice.destroy
     respond_to do |format|
-      format.html { redirect_to invoices_url, notice: 'Invoice was successfully destroyed.' }
+      format.html { redirect_to invoices_url, notice: 'Invoice was successfully deleted.' }
       format.json { head :no_content }
     end
   end
