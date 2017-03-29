@@ -37,7 +37,8 @@
           <td><%= invoice.description %></td>
           <td><%= invoice.total %></td>
           <td><%= invoice.paid ? 'Yes' : 'No' %></td>
-          <td><%= link_to 'Show', invoice %></td>
+          <!--<td><%#= link_to 'Show', invoice %></td> -->
+          <td><%= link_to 'Show', invoice_path(invoice.id, :format => :pdf) %></td>
           <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
           <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -57,5 +58,7 @@
 <br>
 <%= will_paginate @invoices %>
 <br/>
+<%= link_to 'Print all invoices', show_all_path(:format => :pdf) %>
 <br/>
-<%= link_to 'Print all invoices', show_all_path %>
+<br/>
+<br/>

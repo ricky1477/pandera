@@ -27,6 +27,16 @@ class InvoicesController < ApplicationController
 
   def show_all
     @invoices = Invoice.where("paid IS NOT TRUE")
+		respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoicePdf.new(@invoices, view_context)
+        send_data pdf.render, filename:
+        "all_unpaid_invoices.pdf",
+        type: "application/pdf",
+				disposition: "inline"
+      end
+    end
   end
 
   # GET /invoices/new
