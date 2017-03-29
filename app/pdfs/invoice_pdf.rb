@@ -1,4 +1,5 @@
 class InvoicePdf < Prawn::Document
+ 	require "open-uri"
 
   def initialize(invoices, view)
     super()
@@ -6,7 +7,7 @@ class InvoicePdf < Prawn::Document
     @view = view
 		if invoices.class.to_s == 'Invoice'
 			@invoice = @invoices
-    	#logo
+    	logo
 			title
 			bill_to
 			services
@@ -14,7 +15,7 @@ class InvoicePdf < Prawn::Document
 		else
 			@invoices.each_with_index do |invoice, i|
 				@invoice = invoice
-    		#logo
+    		logo
 				title
 				bill_to
 				services
@@ -25,10 +26,7 @@ class InvoicePdf < Prawn::Document
   end
 
 	def logo
-    logopath =  "#{Rails.root}/app/assets/images/logo.png"
-    image logopath, :width => 197, :height => 91
-    move_down 10
-    draw_text "Receipt", :at => [220, 575], size: 22
+    image open("http://pandera.ml/images/pandera_app/grassHopperLogo.png"), :width => 240, :height => 80
   end
 
 	def title
@@ -43,7 +41,7 @@ class InvoicePdf < Prawn::Document
 		 :at => [400,695], :height => 100, :width => 100, :style => :bold, :size => 12
 		text_box "Invoice# #{@invoice.invoice_number}",
 		 :at => [400,680], :height => 100, :width => 100, :style => :bold, :size => 12
-		text " \n " * 5
+		text " \n " * 2
 	end
 
 	def bill_to
