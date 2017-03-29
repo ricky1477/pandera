@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125210842) do
+ActiveRecord::Schema.define(version: 20170329004145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20161125210842) do
     t.string   "zipcode"
     t.string   "street_address"
     t.string   "sms_gateway"
+    t.text     "notes"
   end
 
   create_table "estimates", force: :cascade do |t|

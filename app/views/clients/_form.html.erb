@@ -36,6 +36,10 @@
     <%= f.text_field :phone %>
   </div>
   <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="field">
     <%= f.label :sms_gateway, 'Carrier' %><br>
     <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), class: 'sms_gateway' %>
   </div>

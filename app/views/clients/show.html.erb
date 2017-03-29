@@ -34,6 +34,11 @@
 </p>
 
 <p>
+  <strong>Notes:</strong>
+  <%= @client.notes %>
+</p>
+
+<p>
   <strong>Carrier:</strong>
   <%= Client::CARRIERS.select{ |carrier, email| email == @client.sms_gateway }[0][0] if @client.sms_gateway %>
 </p>
