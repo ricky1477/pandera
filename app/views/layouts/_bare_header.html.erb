@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <b> <%= link_to image_tag("https://www.dropbox.com/s/5v9ty6k0flb0u7z/pandera_logo%202.png?dl=0&raw=1", :alt => "Pandera Logo"), root_path %> </b>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_admin %>
+          <li><%= link_to('Settings', edit_admin_registration_path) %></li>
+          <li><%= link_to('Logout', destroy_admin_session_path, method: :delete) %></li>
+        <% else %>
+          <li><%= link_to('Login', new_admin_session_path) %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

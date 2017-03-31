@@ -1,7 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body>
+<head>
+  <title><%= 'Development | ' if Rails.env.development? %>Pandera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render "layouts/bare_header"%>
+
+<% if current_page?('/') %>
+    <div class="jumbotron">
+        <%= render 'home' %>
+    </div>
+<% end %>
+
+<div class="container">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name == 'notice' ? "success" : "danger" %> alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
+      <% end %>
+    <% end %>
     <%= yield %>
-  </body>
+</div>
+
+</body>
 </html>
