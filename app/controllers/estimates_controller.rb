@@ -1,5 +1,6 @@
 class EstimatesController < ApplicationController
   before_action :set_estimate, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:index, :new, :create, :edit, :update, :destroy]
 
   # GET /estimates
   # GET /estimates.json
