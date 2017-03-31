@@ -7,6 +7,9 @@ class InvoicesController < ApplicationController
   def index
     #@invoices = Invoice.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 15, :page => params[:page])
     @invoices = Invoice.search(params[:search]).order("created_at DESC").paginate(:per_page => 15, :page => params[:page])
+    if params[:overdue]
+      @invoices = @invoices.where('? > maturity', Date.today).where('paid IS NOT TRUE')
+    end
   end
 
   # GET /invoices/1
