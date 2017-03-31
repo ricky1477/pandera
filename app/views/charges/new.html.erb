@@ -1,5 +1,66 @@
 <%= form_tag charges_path do %>
   <article>
+      <%= hidden_field :invoice_id, params[:invoice_id] %>
+      <% invoice = Invoice.find(params[:invoice_id]) %>
+      <div>Please pay your invoice to <%= ShippingAddress.where(is_default: true).first.name %> in the amount of: $<%= invoice.total %></div>
+    <%= label_tag(:amount, 'Payment Amount:') %>
+    <%= text_field_tag(:amount) %>
+  </article>
+  <article>
+    <%= hidden_field_tag(:stripeToken) %>
+  </article>
+  <button id='donateButton'>Donate</button>
+<% end %>
+<br>
+	<div id="error_explanation">
+		<p> Please enter a valid amount in USD ($). </p>
+    <% if flash[:error].present? %>
+      <p><%= flash[:error] %></p>
+    <% end %>
+	</div>
+
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<script>
+var handler = StripeCheckout.configure({
+  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+	email: '<%= Invoice.find(params[:invoice_id]).client.email %>',
+  locale: 'auto',
+  name: '<%= ShippingAddress.where(is_default: true).first.name %>',
+  description: 'Monthly Invoice',
+  token: function(token) {
+    $('input#stripeToken').val(token.id);
+    $('form').submit();
+  }
+});
+
+
+$('#donateButton').on('click', function(e) {
+  e.preventDefault();
+
+  $('#error_explanation').html('');
+
+  var amount = $('input#amount').val();
+  amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+  amount = parseFloat(amount);
+
+  if (isNaN(amount)) {
+    $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+  }
+  else {
+    amount = amount * 100; // Needs to be an integer!
+    handler.open({
+      amount: Math.round(amount)
+    })
+  }
+});
+</script>
+
+
+<!--<%= form_tag charges_path do %>
+  <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
         <p><%= flash[:error] %></p>
@@ -18,4 +79,4 @@
           data-email="<%= invoice.client.email %>"
           data-amount="<%= invoice.total * 100 %>"
           data-locale="auto"></script>
-<% end %>
+<% end %> -->

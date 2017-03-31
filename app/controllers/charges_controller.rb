@@ -8,7 +8,7 @@ class ChargesController < ApplicationController
       @invoice = Invoice.find(invoice_id)
 
       # Amount in cents
-      @amount = (@invoice.total * 100).to_i
+      @amount = (params[:amount] * 100).to_i
 
       customer = Stripe::Customer.create(
         :email => @invoice.client.email,
@@ -16,10 +16,10 @@ class ChargesController < ApplicationController
       )
 
       charge = Stripe::Charge.create(
-        :customer    => customer.id,
-        :amount      => @amount,
-        :description => @invoice.description,
-        :currency    => 'usd'
+				:customer    => customer.id,
+				:description => @invoice.description,
+				:amount      => @amount,
+				:currency    => 'usd'
       )
 
     rescue Stripe::CardError => e
