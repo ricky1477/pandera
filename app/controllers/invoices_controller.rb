@@ -51,6 +51,11 @@ class InvoicesController < ApplicationController
   def edit
   end
 
+  def payment_reminder
+    @invoice = Invoice.find(params[:id])
+    InvoiceMailer.invoice_reminder(@invoice).deliver_now
+  end
+
   # POST /invoices
   # POST /invoices.json
   def create

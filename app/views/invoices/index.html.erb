@@ -22,7 +22,7 @@
         <th>Total</th>
         <th>Paid</th>
         <th>Check Number</th>
-        <th colspan="3"></th>
+        <th colspan="4"></th>
       </tr>
     </thead>
 
@@ -41,7 +41,7 @@
           <td><%= invoice.total %></td>
           <td><%= invoice.paid ? 'Yes' : 'No' %></td>
           <td><%= invoice.check_number %></td>
-          <!--<td><%#= link_to 'Show', invoice %></td> -->
+          <td><%= button_to 'Send Reminder', invoices_payment_reminder_path(id: invoice.id), style: 'width: 80px;white-space: normal;', method: :post, data: { confirm: 'Send an email?' } %> </td>
           <td><%= link_to 'Show', invoice_path(invoice.id, :format => :pdf) %></td>
           <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
           <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
