@@ -4,4 +4,9 @@ class InvoiceSmsMailer < ApplicationMailer
 		mail to: invoice.client.phone+invoice.client.sms_gateway,
 			 subject: 'Your monthly invoice has been created!'
 	end
+	def invoice_reminder(invoice)
+		@invoice = invoice
+		mail to: invoice.client.phone+invoice.client.sms_gateway,
+			 subject: 'Your monthly invoice is overdue!'
+	end
 end
