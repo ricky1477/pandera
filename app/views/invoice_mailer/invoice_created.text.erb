@@ -1,6 +1,7 @@
 Hello <%= @invoice.client.name %>!
 
 Your monthly invoice is ready: <%= invoice_url(@invoice.id) %>
+Your monthly invoice is ready: <%= invoice_url(@invoice.id, :format => :pdf) %>
 
 And can be paid at: <%= root_url %>charges/new?invoice_id=<%=@invoice.id.to_s%>
 
