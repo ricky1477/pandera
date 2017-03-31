@@ -1,0 +1,9 @@
+Hello <%= @invoice.client.name %>!
+
+Your monthly invoice is overdue: <%= invoice_url(@invoice.id, :format => :pdf) %>
+
+And can be paid at: <%= root_url %>charges/new?invoice_id=<%=@invoice.id.to_s%>
+
+Thanks,
+
+<%= ShippingAddress.where(is_default: true).first.name %>
