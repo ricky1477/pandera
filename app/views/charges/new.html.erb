@@ -9,7 +9,7 @@
   <article>
     <%= hidden_field_tag(:stripeToken) %>
   </article>
-  <button id='donateButton'>Donate</button>
+  <button id='payButton'>Pay</button>
 <% end %>
 <br>
 	<div id="error_explanation" style="width:307px;">
@@ -36,7 +36,7 @@ var handler = StripeCheckout.configure({
 });
 
 
-$('#donateButton').on('click', function(e) {
+$('#payButton').on('click', function(e) {
   e.preventDefault();
 
   $('#error_explanation').html('');
