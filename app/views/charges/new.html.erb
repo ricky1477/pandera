@@ -2,7 +2,7 @@
   <article>
       <%= hidden_field :invoice_id, params[:invoice_id] %>
       <% invoice = Invoice.find(params[:invoice_id]) %>
-      <div>Please pay your invoice to <%= ShippingAddress.where(is_default: true).first.name %> in the amount of: $<%= invoice.total %></div>
+      <div>Please pay your invoice to <%= ShippingAddress.where(is_default: true).first.name %> in the amount of: $<%= invoice.total %>. Your account balance is of $<%= invoice.client.credit %>.</div>
     <%= label_tag(:amount, 'Payment Amount:') %>
     <%= text_field_tag(:amount) %>
   </article>
@@ -13,7 +13,7 @@
 <% end %>
 <br>
 	<div id="error_explanation" style="width:307px;">
-		<p> Please enter a valid amount in USD ($). </p>
+		<!--<p> Please enter a valid amount in USD ($). </p> -->
     <% if flash[:error].present? %>
       <p><%= flash[:error] %></p>
     <% end %>
