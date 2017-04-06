@@ -6,7 +6,7 @@ class InvoicesController < ApplicationController
   # GET /invoices.json
   def index
     #@invoices = Invoice.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 15, :page => params[:page])
-    @invoices = Invoice.search(params[:search]).order("created_at DESC").paginate(:per_page => 15, :page => params[:page])
+    @invoices = Invoice.search(params[:search]).order("created_at DESC").paginate(:per_page => 10, :page => params[:page])
     if params[:overdue]
       @invoices = @invoices.where('? > maturity', Date.today).where('paid IS NOT TRUE')
     end
@@ -65,8 +65,7 @@ class InvoicesController < ApplicationController
       if @invoice.save
         InvoiceMailer.invoice_created(@invoice).deliver_now
         InvoiceSmsMailer.invoice_created(@invoice).deliver_now
-
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
+        format.html { redirect_to invoice_path(@invoice.id, :format => :pdf), notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
       else
         @client_id = params[:invoice][:client_id]
