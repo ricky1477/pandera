@@ -54,8 +54,10 @@
 
 <%
     location = Geocoder.search(@client.street_address)
-    lat = location[0].latitude
-    lng = location[0].longitude
+    if location && location[0]
+      lat = location[0].latitude
+      lng = location[0].longitude
+    end
 %>
 
 <div id="map_wrapper">
