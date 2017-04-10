@@ -65,15 +65,14 @@
    <script type="text/javascript">
     $(function loadScript(){
      var locations = [
-         ['<%= @client.name %>', <%= lat %> , <%= lng %>]
-
+         ['<%= link_to 'Directions', "http://maps.apple.com/?q=#{lat},#{lng}"%>', <%= lat %> , <%= lng %>]
      ];
 
      var map = new google.maps.Map(document.getElementById('map'), {
-       zoom: 20,
-       center: new google.maps.LatLng(<%= lat %>,<%= lng %>),
-       mapTypeId: google.maps.MapTypeId.SATELLITE
-     });
+   zoom: 20,
+   center: new google.maps.LatLng(<%= lat %>,<%= lng %>),
+   mapTypeId: google.maps.MapTypeId.SATELLITE
+ });
 
      var infowindow = new google.maps.InfoWindow();
 
