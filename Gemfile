@@ -45,6 +45,8 @@ gem 'figaro'
 # Stripe for payments
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
+gem 'geocoder'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

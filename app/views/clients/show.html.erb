@@ -51,3 +51,65 @@
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
+
+<%
+    location = Geocoder.search(@client.street_address)
+    lat = location[0].latitude
+    lng = location[0].longitude
+%>
+
+<div id="map_wrapper">
+  <div id="map"></div>
+</div>
+
+   <script type="text/javascript">
+    $(function loadScript(){
+     var locations = [
+         ['<%= @client.name %>', <%= lat %> , <%= lng %>]
+
+     ];
+
+     var map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 20,
+       center: new google.maps.LatLng(<%= lat %>,<%= lng %>),
+       mapTypeId: google.maps.MapTypeId.SATELLITE
+     });
+
+     var infowindow = new google.maps.InfoWindow();
+
+     var marker, i;
+
+     for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+           map: map,
+           icon: greenPin
+         });
+
+       google.maps.event.addListener(marker, 'click', (function(marker, i) {
+         return function() {
+           infowindow.setContent(locations[i][0]);
+           infowindow.open(map, marker);
+         }
+       })(marker, i));
+     }
+   })
+
+   </script>
+
+   <style>
+   #map_wrapper {
+     height: 355px;
+     margin: -295px 0px 0 210px;
+   }
+
+   #map {
+       width: 100%;
+       height: 100%;
+   }
+   @media (max-width: 550px) {
+       #map_wrapper {
+         margin: 0px 0px 0px 0px;
+       }
+   }
+   </style>
