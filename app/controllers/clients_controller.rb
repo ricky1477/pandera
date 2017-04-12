@@ -63,6 +63,25 @@ class ClientsController < ApplicationController
     end
   end
 
+  def create_monthly_invoices
+    @invoice_num = 0
+    # Clients that need invoices
+    @clients = Client.joins(:services).where("invoice_id IS NULL").uniq
+    @clients.each do |client|
+      invoice = Invoice.new(client_id: client.id, maturity: Date.today + 30, description: Date.today.strftime("%B").to_s + ' invoice')
+      invoice.services = client.services.where("invoice_id IS NULL")
+      invoice.save!
+      InvoiceMailer.invoice_created(invoice).deliver_now
+      InvoiceSmsMailer.invoice_created(invoice).deliver_now
+      invoice.services.each do |srvc|
+        srvc.invoice_id = invoice.id
+        srvc.save!
+      end
+      @invoice_num += 1
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client

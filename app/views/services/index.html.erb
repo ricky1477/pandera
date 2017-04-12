@@ -32,7 +32,7 @@
             <td><%= service.description %></td>
             <td><%= service.price %></td>
             <td><%= service.maturity %></td>
-            <td><%= service.invoice.invoice_number if service.invoice %></td>
+            <td><%= service.invoice.id if service.invoice %></td>
             <td><%= service.paid ? 'Yes' : 'No' %></td>
             <td><%= link_to 'Details', service %></td>
             <td><%= link_to 'Edit', edit_service_path(service) %></td>

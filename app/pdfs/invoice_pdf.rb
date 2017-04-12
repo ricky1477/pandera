@@ -39,7 +39,7 @@ class InvoicePdf < Prawn::Document
 		 :at => [400,720], :height => 100, :width => 100, :style => :bold, :size => 25
 		text_box date,
 		 :at => [400,695], :height => 100, :width => 100, :style => :bold, :size => 12
-		text_box "Invoice# #{@invoice.invoice_number}",
+		text_box "Invoice ID# #{@invoice.id}",
 		 :at => [400,680], :height => 100, :width => 100, :style => :bold, :size => 12
 		text " \n " * 2
 	end
@@ -67,15 +67,15 @@ class InvoicePdf < Prawn::Document
 		sa = ShippingAddress.where("is_default IS TRUE").first
 		text_box "Please make checks payable to: \n #{sa.name}",
 			:at => [0,35], :height => 100, :width => 250, :size => 12
-		text_box "Subtotal #{@invoice.total}",
+		text_box "Subtotal $#{@invoice.total}",
 			:at => [390,100], :height => 100, :width => 150, :style => :bold, :size => 12
 		text_box "Sales Tax (0.0%)",
 			:at => [390,80], :height => 100, :width => 150, :style => :bold, :size => 12
-		text_box "Total: #{@invoice.total}",
+		text_box "Total: $#{@invoice.total}",
 			:at => [390,60], :height => 100, :width => 150, :style => :bold, :size => 12
-		text_box "Payments/Credits",
+		text_box "Payments/Credits $#{@invoice.client.credit}",
 			:at => [390,40], :height => 100, :width => 190, :style => :bold, :size => 12
-		text_box "Balance Due: #{@invoice.total}",
+		text_box "Balance Due: $#{@invoice.total+@invoice.client.credit if @invoice.client.credit}",
 			:at => [390,20], :height => 100, :width => 150, :style => :bold, :size => 12
 	end
 
