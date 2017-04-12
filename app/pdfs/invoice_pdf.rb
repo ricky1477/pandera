@@ -39,7 +39,7 @@ class InvoicePdf < Prawn::Document
 		 :at => [400,720], :height => 100, :width => 100, :style => :bold, :size => 25
 		text_box date,
 		 :at => [400,695], :height => 100, :width => 100, :style => :bold, :size => 12
-		text_box "Invoice# #{@invoice.invoice_number}",
+		text_box "Invoice ID# #{@invoice.id}",
 		 :at => [400,680], :height => 100, :width => 100, :style => :bold, :size => 12
 		text " \n " * 2
 	end

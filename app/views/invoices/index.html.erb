@@ -16,7 +16,7 @@
     <thead>
       <tr>
         <th>Client</th>
-        <th>Invoice number</th>
+        <th>Invoice ID</th>
         <th>Maturity</th>
         <th>Description</th>
         <th>Total</th>
@@ -35,7 +35,7 @@
             <% else %>
               <%= link_to invoice.client.name, invoice.client %>
           <% end %> </td>
-          <td><%= invoice.invoice_number %></td>
+          <td><%= invoice.id %></td>
           <td><%= invoice.maturity %></td>
           <td><%= invoice.description %></td>
           <td><%= invoice.total %></td>
