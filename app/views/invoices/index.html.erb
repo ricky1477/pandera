@@ -63,6 +63,8 @@
 <br>
 <%= will_paginate @invoices %>
 <br/>
+
+<%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
 <%= link_to 'Print all invoices', show_all_path(:format => :pdf) %>
 <br/>
 <br/>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     root 'home#home'
     resources :invoices
     get 'invoices_show_all' => 'invoices#show_all', as: 'show_all'
+    get 'create_monthly_invoices' => 'clients#create_monthly_invoices'
     resources :clients
     resources :services
     post 'invoices/payment_reminder'
