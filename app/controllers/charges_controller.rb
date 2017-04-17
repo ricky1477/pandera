@@ -27,7 +27,11 @@ class ChargesController < ApplicationController
         @client.credit = @client.credit - (@invoice.total - (@amount.to_f/100))
         @client.save!
       elsif @amount > @invoice.total
+        if @client.credit
         @client.credit = @client.credit + ((@amount.to_f/100) - @invoice.total)
+        else
+           @client.credit = ((@amount.to_f/100) - @invoice.total)
+        end
         @client.save!
       end
 
