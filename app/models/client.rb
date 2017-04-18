@@ -2,10 +2,10 @@ class Client < ActiveRecord::Base
     has_many :services, foreign_key: "client_id"
     has_many :invoices, foreign_key: "client_id"
     has_many :estimates, foreign_key: "client_id"
-    validates :name, presence: true
+    validates :name, presence: true#, uniqueness: true
     validates :street_address, presence: true
-    validates :email, presence: true
-    validates :phone, presence: true
+    #validates :email, presence: true
+    #validates :phone, presence: true
 
     CARRIERS = [['AT&T' ,'@txt.att.net'],
                 ['Boost Mobile' ,'@sms.myboostmobile.com'],
