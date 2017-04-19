@@ -42,7 +42,7 @@
           <td><%= invoice.paid ? 'Yes' : 'No' %></td>
           <td><%= invoice.check_number %></td>
           <td><%= button_to 'Send Reminder', invoices_payment_reminder_path(id: invoice.id), style: 'white-space: normal;', class: 'rick_button', method: :post, data: { confirm: 'Send an email?' } %> </td>
-          <td style="padding-top: 15px;"><%= link_to 'Pay', new_charge_path(invoice_id: invoice.id), class: 'rick_button' %> </td>
+          <td style="padding-top: 15px;"><%= link_to 'Pay', new_charge_path(invoice_id: invoice.id), target: :_blank , class: 'rick_button' %> </td>
           <td><%= link_to 'Show', invoice_path(invoice.id, :format => :pdf) %></td>
           <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
           <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
