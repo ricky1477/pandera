@@ -27,7 +27,7 @@ class Client < ActiveRecord::Base
         end
     end
 
-    def phone=(val)
-        write_attribute(:phone, val.gsub!(Regexp.union('(', ')', '-'), ''))
+    def curated_phone
+        self.phone.gsub!(Regexp.union('(', ')', '-',' '), '')
     end
 end
