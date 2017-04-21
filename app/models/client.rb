@@ -26,4 +26,8 @@ class Client < ActiveRecord::Base
             where(nil)
         end
     end
+
+    def phone=(val)
+        write_attribute(:phone, val.gsub!(Regexp.union('(', ')', '-'), ''))
+    end
 end
