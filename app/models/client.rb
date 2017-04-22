@@ -7,7 +7,8 @@ class Client < ActiveRecord::Base
     #validates :email, presence: true
     #validates :phone, presence: true
 
-    CARRIERS = [['AT&T' ,'@txt.att.net'],
+    CARRIERS = [['' ,''],
+                ['AT&T' ,'@txt.att.net'],
                 ['Boost Mobile' ,'@sms.myboostmobile.com'],
                 ['Sprint' ,'@messaging.sprintpcs.com'],
                 ['T-Mobile' ,'@tmomail.net'],
