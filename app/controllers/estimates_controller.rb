@@ -30,7 +30,7 @@ class EstimatesController < ApplicationController
     respond_to do |format|
       if @estimate.save
         EstimateMailer.estimate_created(@estimate).deliver_now if @estimate.client.email.present?
-        EstimateSmsMailer.estimate_created(@estimate).deliver_now if @estimate.client.phone.present? && @invoice.client.sms_gateway.present?
+        EstimateSmsMailer.estimate_created(@estimate).deliver_now if @estimate.client.phone.present? && @estimate.client.sms_gateway.present?
         format.html { redirect_to @estimate, notice: 'Estimate was successfully created.' }
         format.json { render :show, status: :created, location: @estimate }
       else
