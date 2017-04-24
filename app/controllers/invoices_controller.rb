@@ -53,8 +53,8 @@ class InvoicesController < ApplicationController
 
   def payment_reminder
     @invoice = Invoice.find(params[:id])
-    InvoiceMailer.invoice_reminder(@invoice).deliver_now
-    InvoiceSmsMailer.invoice_reminder(@invoice).deliver_now
+    InvoiceMailer.invoice_reminder(@invoice).deliver_now if @invoice.client.email.present?
+    InvoiceSmsMailer.invoice_reminder(@invoice).deliver_now if @invoice.client.phone.present?
   end
 
   # POST /invoices
