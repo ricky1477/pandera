@@ -90,7 +90,7 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:name, :street_address, :city, :zipcode, :email, :phone, :dob, :sms_gateway, :notes, :credit)
+      params.require(:client).permit(:name, :street_address, :city, :state, :zipcode, :email, :phone, :dob, :sms_gateway, :notes, :credit)
     end
 
     def sort_column

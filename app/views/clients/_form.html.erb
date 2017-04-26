@@ -24,6 +24,10 @@
     <%= f.text_field :city %>
   </div>
   <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
     <%= f.label :zipcode %><br>
     <%= f.text_field :zipcode %>
   </div>
@@ -43,12 +47,12 @@
     <%= f.label :sms_gateway, 'Carrier' %><br>
     <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), class: 'sms_gateway' %>
   </div>
-  <!--<div class="field">
-    <%#= f.label :dob, "Date of Birth" %><br>
+  <div class="field">
+    <%= f.label :dob, "Date of Birth" %><br>
     <%#= f.text_field :dob %>
-    <%#= f.date_select(:dob, :order => [:month, :day, :year], :start_year => Time.now.year - 80) %>
+    <%= f.date_select(:dob, :order => [:month, :day, :year], :start_year => Time.now.year - 80) %>
     <%#= u.label :date %> <%#= u.date_select(:date, :order => [:month, :day, :year]) %>
-  </div> -->
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -14,6 +14,11 @@
 </p>
 
 <p>
+  <strong>State:</strong>
+  <%= @client.state %>
+</p>
+
+<p>
   <strong>Zipcode:</strong>
   <%= @client.zipcode %>
 </p>
@@ -26,6 +31,11 @@
 <p>
   <strong>Phone:</strong>
   <%= @client.phone %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @client.dob %>
 </p>
 
 <p style="width: 200px;">
@@ -96,7 +106,7 @@
    <style>
    #map_wrapper {
      height: 355px;
-     margin: -270px 0px 0 210px;
+     margin: -300px 0px 0 210px;
    }
 
    #map {

@@ -15,10 +15,9 @@
         <tr>
           <th>Name</th>
           <th>Address</th>
-          <th>City</th>
-          <th>Zipcode</th>
           <th>Email</th>
           <th>Phone</th>
+          <th>DOB</th>
           <th style="padding-right:20px;">Carrier</th>
           <th colspan="6"></th>
         </tr>
@@ -31,10 +30,9 @@
           <tr <%= 'class=client_tr' if crt_inv %>>
             <td><%= client.name %></td>
             <td><%= client.street_address %></td>
-            <td><%= client.city %></td>
-            <td><%= client.zipcode %></td>
             <td><%= client.email %></td>
             <td><%= client.phone %></td>
+            <td><%= client.dob %></td>
             <td><%= Client::CARRIERS.select{ |carrier, email| email == client.sms_gateway }[0][0] if client.sms_gateway %></td>
             <td><%= link_to 'Make Estimate', new_estimate_path(:client_id => client.id) %></td>
             <td><%= link_to 'Charge Service', new_service_path(:client_id => client.id) %></td>
