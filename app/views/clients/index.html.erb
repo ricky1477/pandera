@@ -17,7 +17,6 @@
           <th>Address</th>
           <th>Email</th>
           <th>Phone</th>
-          <th>DOB</th>
           <th style="padding-right:20px;">Carrier</th>
           <th colspan="6"></th>
         </tr>
@@ -32,7 +31,6 @@
             <td><%= client.street_address %></td>
             <td><%= client.email %></td>
             <td><%= client.phone %></td>
-            <td><%= client.dob %></td>
             <td><%= Client::CARRIERS.select{ |carrier, email| email == client.sms_gateway }[0][0] if client.sms_gateway %></td>
             <td><%= link_to 'Make Estimate', new_estimate_path(:client_id => client.id) %></td>
             <td><%= link_to 'Charge Service', new_service_path(:client_id => client.id) %></td>
