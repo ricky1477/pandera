@@ -29,6 +29,6 @@ class Client < ActiveRecord::Base
     end
 
     def curated_phone
-        self.phone.gsub(Regexp.union('(', ')', '-',' ', '+1'), '')
+        self.phone.gsub(Regexp.union('(', ')', '-',' ', '+1','.'), '')
     end
 end
