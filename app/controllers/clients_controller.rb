@@ -71,8 +71,8 @@ class ClientsController < ApplicationController
       invoice = Invoice.new(client_id: client.id, maturity: Date.today + 30, description: Date.today.strftime("%B").to_s + ' invoice')
       invoice.services = client.services.where("invoice_id IS NULL")
       invoice.save!
-      InvoiceMailer.invoice_created(invoice).deliver_now
-      InvoiceSmsMailer.invoice_created(invoice).deliver_now
+      InvoiceMailer.invoice_created(invoice).deliver_now if @invoice.client.email.present?
+      InvoiceSmsMailer.invoice_created(invoice).deliver_now if @invoice.client.phone.present? && @invoice.client.sms_gateway.present?
       invoice.services.each do |srvc|
         srvc.invoice_id = invoice.id
         srvc.save!
