@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :clients
     resources :services
     post 'invoices/payment_reminder'
+    post 'create_services' => 'clients#create_services'
     get 'home' => 'home#home'
     get 'dashboard' => 'expenses#index'
     get 'googlea87d8b3af5e98ec8.html', :to => redirect('googlea87d8b3af5e98ec8.html')

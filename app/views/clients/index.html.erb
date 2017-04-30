@@ -2,32 +2,6 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 
-<!--<script src="/assets/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="/assets/jquery.modal.min.css" type="text/css" media="screen" />
-
-    <div id="ex1" style="display:none;">
-        <p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
-          </div>
-
-              <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
--->
-
-
-<!--  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#dialog" ).dialog();
-  } );
-  </script>
-
-
-<div id="dialog" title="Basic dialog">
-  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-</div> -->
-
 <%= form_tag clients_path, :method => 'get', :id => "clients_search" do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
@@ -54,7 +28,6 @@
       <tbody>
         <% @clients.each do |client| %>
           <% crt_inv = client.services.where("paid IS NOT TRUE").where("invoice_id IS NULL").length >= 1  %>
-          <!--<tr>-->
           <tr <%= 'class=client_tr' if crt_inv %>>
             <td><%= client.name %></td>
             <td><%= client.street_address %></td>
@@ -63,7 +36,6 @@
             <td><%= client.dob %></td>
             <td><%= Client::CARRIERS.select{ |carrier, email| email == client.sms_gateway }[0][0] if client.sms_gateway %></td>
             <td><%= link_to 'Make Estimate', new_estimate_path(:client_id => client.id) %></td>
-            <td><%= link_to 'Charge Service', new_service_path(:client_id => client.id) %></td>
 						<td><a class="create-services" id="<%= client.id %>" name="<%= client.name %>">Charge Services</a></td>
             <td <%= 'class=client_td' if crt_inv %>><%= link_to_if(crt_inv,'Create Invoice', new_invoice_path(:client_id => client.id) ) %></td>
             <td><%= link_to 'Details', client %></td>
@@ -116,15 +88,14 @@
     function addUser() {
       var valid = true;
       allFields.removeClass( "ui-state-error" );
-
-      alert($('#id').val()+'&'+$('#name').val()+'&'+$('#service_date_1i').val()+'&'+$('#service_date_2i').val()+'&'+$('#service_date_3i').val()+'&'+$('#service_description').val()+'&'+$('#service_price').val()+'&'+$('#service_quantity').val());
-		/*$.ajax({
+      data = {client:{id:$('#id').val()}, service:{description:$('#service_description').val(), price:$('#service_price').val(), quantity:$('#service_quantity').val()},date_y:$('#service_date_1i').val(),date_m:$('#service_date_2i').val(),date_d:$('#service_date_3i').val()};
+		$.ajax({
 			type: "POST",
-			url: url,
+			url: '/create_services',
 			data: data,
-			success: success,
-			dataType: dataType
-		});*/
+      success: function(resultData) { alert("Save Complete") },
+			dataType: 'json'
+		});
      if ( valid ) {
         $( "#users tbody" ).append( "<tr>" +
           "<td>" + name.val() + "</td>" +
@@ -266,8 +237,7 @@
     <input type="text" name="service[price]" id="service_price">
   </span>
 	<label for="name">Quantity</label>
-		<select name="service[quantity]" id="service_quantity"><option value=""></option>
-			<option value="1">1</option>
+		<select name="service[quantity]" id="service_quantity"><option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
 			<option value="4">4</option>
