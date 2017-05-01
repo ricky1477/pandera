@@ -1,4 +1,4 @@
-<h1><%= t('listing_services') %></h1>
+<h1><%= t('services') %></h1>
 
 <%= form_tag services_path, :method => 'get', :id => "services_search" do %>
   <%= hidden_field_tag :direction, params[:direction] %>
@@ -27,7 +27,7 @@
       <tbody>
         <% @services.each do |service| %>
           <tr>
-            <td><%= link_to Client.find(service.client_id).name, Client.find(service.client_id) %></td>
+            <td><%= link_to service.client.name, service.client %></td>
             <td><%= service.date %></td>
             <td><%= service.description %></td>
             <td><%= service.price %></td>
