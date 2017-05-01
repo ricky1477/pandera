@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     #@services = Service.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 15, :page => params[:page])
-    @services = Service.search(params[:search]).order("created_at DESC").order(sort_column + ' ' + sort_direction).paginate(:per_page => 15, :page => params[:page])
+    @services = Service.includes(:client, :invoice).search(params[:search]).order("created_at DESC").order(sort_column + ' ' + sort_direction).paginate(:per_page => 15, :page => params[:page])
   end
 
   # GET /services/1
