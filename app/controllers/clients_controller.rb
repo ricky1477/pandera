@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    @clients = Client.includes(:services).search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     #@clients = Client.search(params[:search]).order("created_at DESC").paginate(:per_page => 15, :page => params[:page])
   end
 
@@ -36,6 +36,19 @@ class ClientsController < ApplicationController
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def create_services
+    services = params[:service]
+
+    services[:quantity].to_i.times do
+			date = DateTime.new(params[:date_y].to_i, params[:date_m].to_i, params[:date_d].to_i)
+      s = Service.create(client_id: client_params[:id], date: date, description: services[:description], price: services[:price])
+    end
+
+    respond_to do |format|
+        format.js { redirect_to clients_path, notice: 'Services were successfully added.' }
     end
   end
 
@@ -90,7 +103,7 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:name, :street_address, :city, :state, :zipcode, :email, :phone, :dob, :sms_gateway, :notes, :credit)
+      params.require(:client).permit(:id, :name, :street_address, :city, :state, :zipcode, :email, :phone, :dob, :sms_gateway, :notes, :credit)
     end
 
     def sort_column
