@@ -44,6 +44,10 @@
     <%= f.text_area :notes %>
   </div>
   <div class="field">
+    <%= f.label :credit %><br>
+    <%= f.text_field :credit %>
+  </div>
+  <div class="field">
     <%= f.label :sms_gateway, 'Carrier' %><br>
     <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), class: 'sms_gateway' %>
   </div>
