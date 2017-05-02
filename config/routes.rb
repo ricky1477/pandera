@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     get 'home' => 'home#home'
     get 'dashboard' => 'expenses#index'
     get 'googlea87d8b3af5e98ec8.html', :to => redirect('googlea87d8b3af5e98ec8.html')
-    get 'favicon.ico', :to => redirect('https://www.dropbox.com/s/92xvznr5p84zswn/favicon-32x32.png?dl=0&raw=1')
-    get 'apple-touch-icon.png', :to => redirect('https://www.dropbox.com/s/zf61qb2eh45pzkm/apple-touch-icon.png?dl=0&raw=1')
-    get 'apple-touch-icon-76x76.png', :to => redirect('https://www.dropbox.com/s/zf61qb2eh45pzkm/apple-touch-icon.png?dl=0&raw=1')
-    get 'apple-touch-icon-120x120-precomposed.png', :to => redirect('https://www.dropbox.com/s/zf61qb2eh45pzkm/apple-touch-icon.png?dl=0&raw=1')
+    get 'favicon.ico', :to => redirect('http://pandera.ml/images/pandera_app/favicon-32x32.png')
+    get 'apple-touch-icon.png', :to => redirect('http://pandera.ml/images/pandera_app/apple-touch-icon.png')
+    get 'apple-touch-icon-76x76.png', :to => redirect('http://pandera.ml/images/pandera_app/apple-touch-icon-76x76.png')
+    get 'apple-touch-icon-120x120-precomposed.png', :to => redirect('http://pandera.ml/images/pandera_app/apple-touch-icon-120x120-precomposed.png')
 end
