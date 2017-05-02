@@ -64,6 +64,9 @@ class InvoicePdf < Prawn::Document
 	end
 
 	def footer
+    balance = @invoice.total
+    balance += @invoice.client.credit if @invoice.client.credit
+    balance = 0 if @invoice.paid == true
 		sa = ShippingAddress.where("is_default IS TRUE").first
 		text_box "Please make checks payable to: \n #{sa.name}",
 			:at => [0,35], :height => 100, :width => 250, :size => 12
@@ -75,7 +78,7 @@ class InvoicePdf < Prawn::Document
 			:at => [390,60], :height => 100, :width => 150, :style => :bold, :size => 12
 		text_box "Payments/Credits $#{@invoice.client.credit}",
 			:at => [390,40], :height => 100, :width => 190, :style => :bold, :size => 12
-		text_box "Balance Due: $#{@invoice.total+@invoice.client.credit if @invoice.client.credit}",
+		text_box "Balance Due: $#{balance}",
 			:at => [390,20], :height => 100, :width => 150, :style => :bold, :size => 12
 	end
 
