@@ -7,7 +7,7 @@ class Service < ActiveRecord::Base
       before_save :price
 
       DESCRIPTION = ['Weekly Cutting', 'Bi-weekly Cutting', 'Mulching', 'Gutter Cleaning', 'Trimming Bushes and Shrubs','Fall Clean-Up',
-      'Fertilizer', 'Aeration and Seeding', 'Power Washing', 'Snow Removal']
+      'Fertilizer', 'Aeration and Seeding', 'Power Washing', 'Snow Removal', 'Other']
 
     def self.search(search)
         if search
