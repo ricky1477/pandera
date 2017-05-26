@@ -44,7 +44,7 @@ class ClientsController < ApplicationController
 
     services[:quantity].to_i.times do
 			date = DateTime.new(params[:date_y].to_i, params[:date_m].to_i, params[:date_d].to_i)
-      s = Service.create(client_id: client_params[:id], date: date, description: services[:description], price: services[:price])
+      s = Service.create(client_id: client_params[:id], date: date, description: services[:description], notes: services[:notes], price: services[:price])
     end
 
     respond_to do |format|

@@ -29,6 +29,10 @@
     <%= f.select(:description, Service::DESCRIPTION, {include_blank: true}) %></td>
   </div>
   <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="field">
     <%= f.label :price %><br>
     <%= f.text_field :price %>
     <% past_list = Service.where(client_id: params[:client_id]).pluck(:price, :description) %>
@@ -42,7 +46,7 @@
         <% end %>
     <% end %>
   </div>
-  <!--<div class="field">
+ <!--<div class="field">
     <%#= f.label :maturity %><br>
     <%#= f.date_select :maturity %>
   </div> -->

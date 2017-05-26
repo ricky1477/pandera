@@ -75,7 +75,7 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:date, :description, :maturity, :client_id, :paid, :invoice_id, :price)
+      params.require(:service).permit(:date, :description, :maturity, :client_id, :paid, :invoice_id, :price, :notes)
     end
     def sort_column
       Service.column_names.include?(params[:sort]) ? params[:sort] : "id"
