@@ -96,7 +96,7 @@
     function addUser() {
       var valid = true;
       allFields.removeClass( "ui-state-error" );
-      data = {client:{id:$('#id').val()}, service:{description:$('#service_description').val(), price:$('#service_price').val(), quantity:$('#service_quantity').val()},date_y:$('#service_date_1i').val(),date_m:$('#service_date_2i').val(),date_d:$('#service_date_3i').val()};
+      data = {client:{id:$('#id').val()}, service:{description:$('#service_description').val(),notes:$('#service_notes').val(),price:$('#service_price').val(), quantity:$('#service_quantity').val()},date_y:$('#service_date_1i').val(),date_m:$('#service_date_2i').val(),date_d:$('#service_date_3i').val()};
 		$.ajax({
 			type: "POST",
 			url: '/create_services',
@@ -117,7 +117,7 @@
 
     dialog = $( "#dialog-form" ).dialog({
       autoOpen: false,
-      height: 400,
+      height: 450,
       width: 350,
       modal: true,
       buttons: {
@@ -162,7 +162,7 @@
 	<span class="field">
       <input value="<%= %>" type="hidden" name="service[client_id]" id="service_client_id">
   </span>
-<div class="field">
+  <div class="field">
     <label for="service_date">Date</label>
     <select id="service_date_1i" name="service[date(1i)]">
 			<option value="2012">2012</option>
@@ -239,8 +239,11 @@
 			<option value="Snow Removal">Snow Removal</option>
 			<option value="Other">Other</option></select>
 	</br>
-	</br>
-    <span class="field">
+  <span class="field">
+    <label for="service_notes">Notes</label>
+      <textarea name="service[notes]" id="service_notes"></textarea>
+  </span>
+  <span class="field">
     <label for="service_price">Price</label>
     <input type="text" name="service[price]" id="service_price">
   </span>
