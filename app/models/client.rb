@@ -31,4 +31,12 @@ class Client < ActiveRecord::Base
     def curated_phone
         self.phone.gsub(Regexp.union('(', ')', '-',' ', '+1','.'), '')
     end
+    def self.to_csv(options = {})
+      CSV.generate(options) do |csv|
+        csv << column_names
+        all.each do |client|
+          csv << client.attributes.values_at(*column_names)
+        end
+      end
+    end
 end

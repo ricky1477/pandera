@@ -7,6 +7,11 @@ class ClientsController < ApplicationController
   def index
     @clients = Client.includes(:services).search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     #@clients = Client.search(params[:search]).order("created_at DESC").paginate(:per_page => 15, :page => params[:page])
+    respond_to do |format|
+      format.html
+      format.csv { send_data Client.all.to_csv }
+			#format.xls # { send_data @products.to_csv(col_sep: "\t") }
+    end
   end
 
   # GET /clients/1

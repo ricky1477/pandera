@@ -10,6 +10,12 @@ class InvoicesController < ApplicationController
     if params[:overdue]
       @invoices = @invoices.where('? > maturity', Date.today).where('paid IS NOT TRUE')
     end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Invoice.all.to_csv }
+      #format.xls # { send_data @products.to_csv(col_sep: "\t") }
+    end
   end
 
   # GET /invoices/1

@@ -42,8 +42,12 @@
       </tbody>
     </table>
 </div>
-
-<br>
+<br/>
+<p style="text-align: right;margin-top:-23px;">
+  Download:
+  <%= link_to "CSV", services_path(format: "csv") %>
+  <!--| <%#= link_to "Excel", clients_path(format: "xls") %> -->
+</p>
 
 <%= will_paginate @services %> </br>
 <br/>
