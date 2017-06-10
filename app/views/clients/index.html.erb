@@ -49,6 +49,12 @@
 
 <%= link_to 'New Client', new_client_path %> |
 <%= link_to 'Create all monthly invoices', create_monthly_invoices_path %>
+<p style="text-align: right;margin-top:-23px;">
+  Download:
+  <%= link_to "CSV", clients_path(format: "csv") %>
+  <!--| <%#= link_to "Excel", clients_path(format: "xls") %> -->
+</p>
+
 <br/>
 <%= will_paginate @clients %> </br>
 <br/>

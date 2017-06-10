@@ -66,6 +66,11 @@
 
 <%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
 <%= link_to 'Print all invoices', show_all_path(:format => :pdf) %>
+<p style="text-align: right;margin-top:-23px;">
+  Download:
+  <%= link_to "CSV", invoices_path(format: "csv") %>
+  <!--| <%#= link_to "Excel", clients_path(format: "xls") %> -->
+</p>
 <br/>
 <br/>
 <br/>
