@@ -19,6 +19,7 @@
           <th>Address</th>
           <th>Email</th>
           <th>Phone</th>
+          <th>DOB</th>
           <th style="padding-right:20px;">Carrier</th>
           <th colspan="7"></th>
         </tr>
@@ -32,6 +33,7 @@
             <td><%= client.street_address %></td>
             <td><%= client.email %></td>
             <td><%= client.phone %></td>
+            <td><%= client.dob %></td>
             <td><%= Client::CARRIERS.select{ |carrier, email| email == client.sms_gateway }[0][0] if client.sms_gateway %></td>
             <td><%= link_to 'Make Estimate', new_estimate_path(:client_id => client.id) %></td>
 						<td><a class="create-services" id="<%= client.id %>" name="<%= client.name %>">Charge Services</a></td>
@@ -46,12 +48,13 @@
 </div>
 
 <%= link_to 'New Client', new_client_path %> |
-<%= link_to 'Create all monthly invoices', create_monthly_invoices_path %>
-<p style="text-align: right;margin-top:-23px;">
+<%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
+<!--<p style="text-align: right;margin-top:-19px;"> -->
+<span>
   Download:
   <%= link_to "CSV", clients_path(format: "csv") %>
   <!--| <%#= link_to "Excel", clients_path(format: "xls") %> -->
-</p>
+</span>
 
 <br/>
 <%= will_paginate @clients %> </br>
