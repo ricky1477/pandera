@@ -47,11 +47,10 @@ class ClientsController < ApplicationController
   def create_services
     services = params[:service]
 
-    services[:quantity].to_i.times do
-			date = DateTime.new(params[:date_y].to_i, params[:date_m].to_i, params[:date_d].to_i)
-      s = Service.create(client_id: client_params[:id], date: date, description: services[:description], notes: services[:notes], price: services[:price])
+    dates = [ services[:date1], services[:date2], services[:date3], services[:date4] ]
+    services[:quantity].to_i.times do |i|
+      s = Service.create(date: dates[i].to_date ,client_id: client_params[:id], description: services[:description], notes: services[:notes], price: services[:price])
     end
-
     respond_to do |format|
         format.js { redirect_to clients_path, notice: 'Services were successfully added.' }
     end
