@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post 'create_services' => 'clients#create_services'
     get 'home' => 'home#home'
     get 'dashboard' => 'expenses#index'
+    get 'schedule', :to => redirect('schedule.erb.html')
     get 'googlea87d8b3af5e98ec8.html', :to => redirect('googlea87d8b3af5e98ec8.html')
     get 'favicon.ico', :to => redirect('http://pandera.ml/images/pandera_app/favicon-32x32.png')
     get 'apple-touch-icon.png', :to => redirect('http://pandera.ml/images/pandera_app/apple-touch-icon.png')
