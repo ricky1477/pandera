@@ -47,7 +47,7 @@ class ClientsController < ApplicationController
   def create_services
     services = params[:service]
 
-    dates = [ services[:date1], services[:date2], services[:date3], services[:date4] ]
+    dates = [ services[:date1], services[:date2], services[:date3], services[:date4], services[:date5], services[:date6] ]
     services[:quantity].to_i.times do |i|
       s = Service.create(date: dates[i].to_date ,client_id: client_params[:id], description: services[:description], notes: services[:notes], price: services[:price])
     end
