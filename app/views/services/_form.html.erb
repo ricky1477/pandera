@@ -24,9 +24,7 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%#= f.text_area :description %>
-    <%#= f.select("service", "description", Service::DESCRIPTION, {include_blank: true}) %>
-    <%= f.select(:description, Service::DESCRIPTION, {include_blank: true}) %></td>
+    <%= f.select(:description, Service::DESCRIPTION, {include_blank: true }, id: 'service_description_two' ) %></td>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
@@ -34,40 +32,33 @@
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, id: 'service_price_two' %>
     <% past_list = Service.where(client_id: params[:client_id]).pluck(:price, :description) %>
     <% if past_list.length>=1 %>
         <%#= 'Past prices were: ' %>
         <% past_list.each do |price, description| %>
             <div class="<%=description%>" style="display:none">
                 <%= '$' + price.to_s %>
-                <%#= '$' + price.to_s.to_f.round(2).to_s %>
             </div>
         <% end %>
     <% end %>
   </div>
- <!--<div class="field">
-    <%#= f.label :maturity %><br>
-    <%#= f.date_select :maturity %>
-  </div> -->
-  <!--<div class="field">
-    <%#= f.label :paid %><br>
-    <%#= f.check_box :paid, :class => "checkbox" %>
-  </div> -->
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
 
 <script>
-$('#service_description').change(function() {
-  service = $("#service_description").val();
-  service = service.replace(/\s/g, '.');
-  service = '.' + service;
-  if ($(service).text().length>0){
-    $('#service_price').val($(service+':last').text().replace(/\s/g, ''));
-  } else {
-    $('#service_price').val('');
-  }
+$(document).ready(function(){ /*code here*/
+  $('#service_description_two').change(function() {
+    service = $("#service_description_two").val();
+    service = service.replace(/\s/g, '.');
+    service = '.' + service;
+    if ($(service).text().length>0){
+      $('#service_price_two').val($(service+':last').text().replace(/\s/g, ''));
+    } else {
+      $('#service_price_two').val('');
+    }
+  });
 });
 </script>
