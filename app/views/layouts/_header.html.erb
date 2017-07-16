@@ -46,15 +46,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <%# if current_user %>
-          <!--<li><%#= link_to('Check In', new_vehicle_path) %></li>
-          <li><%#= link_to('Used Checklists', uv_checklists_path) %></li>
-          <%# else %> -->
           <li><%= link_to(t('clients'), clients_path) %></li>
           <li><%= link_to(t('services'), services_path) %></li>
           <li><%= link_to(t('invoices'), invoices_path) %></li>
           <li><%= link_to(t('estimates'), estimates_path) %></li>
           <li><%= link_to('Schedule', schedule_path) %></li>
-          <!--<li><%#= link_to(t('dashboard'), expenses_path) %></li> -->
           <%# end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -62,8 +58,6 @@
           <li><%= link_to('Settings', edit_admin_registration_path) %></li>
           <li><%= link_to('Logout', destroy_admin_session_path, method: :delete) %></li>
         <% else %>
-          <!--<li><%#= link_to('Register', new_admin_registration_path) %></li>-->
-          <!--<li><%#= link_to(t('shipping_addresses'), shipping_addresses_path) %></li>-->
           <li><%= link_to('Login', new_admin_session_path) %></li>
         <% end %>
       </ul>
@@ -73,6 +67,16 @@
 
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
+    $(document).ready(function(){ /*code here*/
+      // Get Last service price on modal
+			$('#service_description').change(function() {
+				service = $("#service_description").val();
+				$.getJSON("last_service_price?id="+id.value+"&description="+service, function(data){
+					$('#service_price').val(data);
+				});
+			});
+		});
+
       $(function() {
              $("#datepicker1").datepicker({dateFormat: 'dd-mm-yy'});
              $("#datepicker2").datepicker({dateFormat: 'dd-mm-yy'});

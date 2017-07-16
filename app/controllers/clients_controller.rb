@@ -96,7 +96,15 @@ class ClientsController < ApplicationController
       end
       @invoice_num += 1
     end
+  end
 
+  def last_service_price
+    @client = Client.find(params[:id])
+    description = params[:description]
+    last_price = @client.services.where(description: description).last.price if @client.services.where(description: description).last
+    respond_to do |format|
+      format.json { render :json => last_price }
+    end
   end
 
   private
