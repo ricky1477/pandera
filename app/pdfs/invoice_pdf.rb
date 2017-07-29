@@ -54,10 +54,10 @@ class InvoicePdf < Prawn::Document
 	def services
 		text " \n " * 3
 		text 'Services', style: :bold, size: 18
-		data = [["Description                                       ", "Date of service                     ", "Price         ", "Total          "]]
+		data = [["Description         ", "Notes",  "Date of service                     ", "Price         ", "Total          "]]
 
 		@invoice.services.each do |srvc|
-			data << [srvc.description, srvc.date.to_s, srvc.price.to_s, srvc.price.to_s]
+			data << [srvc.description, srvc.notes, srvc.date.to_s, srvc.price.to_s, srvc.price.to_s]
 		end
 
 		table(data, :row_colors => ["F0F0F0","FFFFFF"])
