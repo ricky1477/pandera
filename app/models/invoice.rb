@@ -55,9 +55,10 @@ class Invoice < ActiveRecord::Base
 
     def self.to_csv(options = {})
       CSV.generate(options) do |csv|
-        csv << column_names
+        csv << ['Client Name', 'Invoice Number', 'Description', 'Total', 'Paid', 'Check Number']
         all.each do |invoice|
-          csv << invoice.attributes.values_at(*column_names)
+            data = [invoice.client.name, invoice.invoice_number, invoice.description, invoice.total, invoice.paid.present?, invoice.check_number]
+            csv << data
         end
       end
     end

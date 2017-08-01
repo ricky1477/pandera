@@ -13,8 +13,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data Invoice.all.to_csv }
-      #format.xls # { send_data @products.to_csv(col_sep: "\t") }
+      format.csv { send_data @invoices.to_csv }
     end
   end
 
