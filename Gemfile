@@ -23,13 +23,14 @@ gem 'jquery-rails'
 # Twitter Bootstrap gem
 gem "therubyracer"
 gem "less-rails"
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-
-# Authentication gem
-gem 'devise'
+gem 'twitter-bootstrap-rails'
 
 # Pagination gem
 gem 'will_paginate', '~> 3.0.6'
+gem 'bootstrap-will_paginate'
+
+# Authentication gem
+gem 'devise'
 
 # I18n gem
 gem 'rails-i18n'
