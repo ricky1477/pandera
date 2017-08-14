@@ -134,15 +134,13 @@
       data = {client:{id:$('#id').val()}, service:{description:$('#service_description').val(),notes:$('#service_notes').val(),price:$('#service_price').val(), quantity:$('#service_quantity').val(),date1:$('#datepicker1').val(),date2:$('#datepicker2').val(),date3:$('#datepicker3').val(),date4:$('#datepicker4').val(),date5:$('#datepicker5').val(),date6:$('#datepicker6').val()}};
 		$.ajax({
 			type: "POST",
+            async: false,
 			url: '/create_services',
 			data: data,
-            success: function(resultData) { alert("Save Complete") },
+            success: alert('Services were successfully added!'),
 			dataType: 'json'
 		});
      if ( valid ) {
-        $( "#users tbody" ).append( "<tr>" +
-          "<td>" + name.val() + "</td>" +
-        "</tr>" );
         dialog.dialog( "close" );
       }
       dialog = $( "#dialog-form" );
