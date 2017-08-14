@@ -13,45 +13,49 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
     <%= f.label :street_address %><br>
-    <%= f.text_field :street_address %>
+    <%= f.text_field :street_address, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
     <%= f.label :city %><br>
-    <%= f.text_field :city %>
+    <%= f.text_field :city, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
     <%= f.label :state %><br>
-    <%= f.text_field :state %>
+    <%= f.text_field :state, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
     <%= f.label :zipcode %><br>
-    <%= f.text_field :zipcode %>
+    <%= f.text_field :zipcode, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
+    <%= f.text_area :notes, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
     <%= f.label :credit %><br>
-    <%= f.text_field :credit %>
+    <%= f.text_field :credit, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
     <%= f.label :sms_gateway, 'Carrier' %><br>
-    <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), class: 'sms_gateway' %>
+    <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), class: 'sms_gateway form-control', style: "width: 25%" %>
+  </div>
+  <div class="field">
+    <%= f.label :dob, "Date of Birth" %><br>
+    <%= f.date_select(:dob, :order => [:month, :day, :year], :start_year => Time.now.year - 80) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>
