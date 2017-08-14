@@ -20,42 +20,21 @@
   </span>
   <div class="field">
     <%= f.label :maturity %><br>
-    <%= f.date_select :maturity %>
+    <%= f.date_select :maturity, class: "form-control", style: "width: 40%" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control", style: "width: 40%" %>
   </div>
-  <!--
-  <div class="field">
-    <%#= f.label :price %><br>
-    <%#= '$' %> <%#= f.text_field :price %>
-    <span style="color:gray">
-
-    <%# if params.has_key?(:client_id) %>
-      <%# past_prices = Client.find(params[:client_id]).invoices.pluck(:price) %>
-    <%# else %>
-      <%# past_prices = Client.find(f.object.client_id).invoices.pluck(:price) %>
-    <%# end %>
-      <%# if past_prices.length>=1 %>
-        <%#= "Past prices for this client were: " %>
-        <%# past_prices.each_with_index do |price, index| %>
-            <%#= '$' + price.to_s.to_f.round(2).to_s %>
-            <%#= ',' if (index < past_prices.length-1) %>
-        <%# end %>
-      <%# end %>
-    </span>
-  </div>-->
   <div class="field">
     <%= f.label :paid %><br>
-    <%#= f.check_box :paid, :class => "checkbox", style: "margin: 0 auto;" %>
     <%= f.check_box :paid, :class => "checkbox" %>
   </div>
   <div class="field">
     <%= f.label :check_number %><br>
-    <%= f.text_field :check_number %>
+    <%= f.text_field :check_number, class: "form-control", style: "width: 40%" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>

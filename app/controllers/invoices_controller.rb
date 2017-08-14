@@ -70,7 +70,7 @@ class InvoicesController < ApplicationController
       if @invoice.save
         InvoiceMailer.invoice_created(@invoice).deliver_now if @invoice.client.email.present?
         InvoiceSmsMailer.invoice_created(@invoice).deliver_now if @invoice.client.phone.present? && @invoice.client.sms_gateway.present?
-        format.html { redirect_to invoice_path(@invoice.id, :format => :pdf), notice: 'Invoice was successfully created.' }
+        format.html { redirect_to invoices_path, notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
       else
         @client_id = params[:invoice][:client_id]
