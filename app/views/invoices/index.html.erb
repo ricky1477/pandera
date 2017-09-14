@@ -1,6 +1,6 @@
-<h1><%= t('invoices') %></h1>
+<h1 class="page_title_invoices"><%= t('invoices') %></h1>
 
-<%= form_tag invoices_path, :method => 'get', :id => "invoices_search", :style => "margin: -33px 0 0 0;" do %>
+<%= form_tag invoices_path, :method => 'get', :id => "invoices_search", :style => "margin: -37px 0 0 0;" do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
   <p>

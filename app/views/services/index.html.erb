@@ -1,6 +1,6 @@
-<h1><%= t('services') %></h1>
+<h1 class="page_title"><%= t('services') %></h1>
 
-<%= form_tag services_path, :method => 'get', :id => "services_search", :style => "margin: -33px 0 0 0;" do %>
+<%= form_tag services_path, :method => 'get', :id => "services_search", :style => "margin: -40px 0 0 0;" do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
   <p>

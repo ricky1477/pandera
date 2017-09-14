@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 
-<h1 style="font-size: 36px;font-family: verdana, arial, helvetica, sans-serif;"><%= t('clients') %></h1>
-<%= form_tag clients_path, :method => 'get', :id => "clients_search", :style => "margin: -33px 0 0 0;" do %>
+<!--<h1 style="font-size: 36px;font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= t('clients') %></h1> -->
+<h1 style="font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= t('clients') %></h1>
+<%= form_tag clients_path, :method => 'get', :id => "clients_search", :style => "margin: -36px 0 0 0;" do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
   <p>
