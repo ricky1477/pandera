@@ -6,45 +6,46 @@
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
   <p>
-    <%= text_field_tag :search, params[:search], style: "display: initial" %>
-    <%= submit_tag "Search", :name => nil, class: "btn btn-default", style: "padding: 3px 2px 1px 2px;" %>
+    <b>Search:  </b><%= text_field_tag :search, params[:search], style: "display: initial" %>
   </p>
 <% end %>
 
-<div class="table-responsive">
-    <table id="clients_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Address</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>DOB</th>
-          <th style="padding-right:20px;">Carrier</th>
-          <th colspan="7"></th>
-        </tr>
-      </thead>
+<div id="clients">
+	<div class="table-responsive">
+		<table id="clients_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
+		  <thead>
+			<tr>
+			  <th>Name</th>
+			  <th>Address</th>
+			  <th>Email</th>
+			  <th>Phone</th>
+			  <th>DOB</th>
+			  <th style="padding-right:20px;">Carrier</th>
+			  <th colspan="7"></th>
+			</tr>
+		  </thead>
 
-      <tbody>
-        <% @clients.each do |client| %>
-          <% crt_inv = client.services.where("paid IS NOT TRUE").where("invoice_id IS NULL").length >= 1  %>
-          <tr <%= 'class=client_tr' if crt_inv %>>
-            <td><%= client.name %></td>
-            <td><%= client.street_address %></td>
-            <td><%= client.email %></td>
-            <td><%= client.phone %></td>
-            <td><%= client.dob %></td>
-            <td><%= Client::CARRIERS.select{ |carrier, email| email == client.sms_gateway }[0][0] if client.sms_gateway %></td>
-            <td><%= link_to 'Make Estimate', new_estimate_path(:client_id => client.id) %></td>
-						<td><a class="create-services" id="<%= client.id %>" name="<%= client.name %>">Charge Services</a></td>
-            <td <%= 'class=client_td' if crt_inv %>><%= link_to_if(crt_inv,'Create Invoice', new_invoice_path(:client_id => client.id) ) %></td>
-            <td><%= link_to 'Details', client %></td>
-            <td><%= link_to 'Edit', edit_client_path(client) %></td>
-            <td><%= link_to 'Delete', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+		  <tbody>
+			<% @clients.each do |client| %>
+			  <% crt_inv = client.services.where("paid IS NOT TRUE").where("invoice_id IS NULL").length >= 1  %>
+			  <tr <%= 'class=client_tr' if crt_inv %>>
+				<td><%= client.name %></td>
+				<td><%= client.street_address %></td>
+				<td><%= client.email %></td>
+				<td><%= client.phone %></td>
+				<td><%= client.dob %></td>
+				<td><%= Client::CARRIERS.select{ |carrier, email| email == client.sms_gateway }[0][0] if client.sms_gateway %></td>
+				<td><%= link_to 'Make Estimate', new_estimate_path(:client_id => client.id) %></td>
+							<td><a class="create-services" id="<%= client.id %>" name="<%= client.name %>">Charge Services</a></td>
+				<td <%= 'class=client_td' if crt_inv %>><%= link_to_if(crt_inv,'Create Invoice', new_invoice_path(:client_id => client.id) ) %></td>
+				<td><%= link_to 'Details', client %></td>
+				<td><%= link_to 'Edit', edit_client_path(client) %></td>
+				<td><%= link_to 'Delete', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			  </tr>
+			<% end %>
+		  </tbody>
+		</table>
+	</div>
 </div>
 
 <%= link_to 'New Client', new_client_path %> |
@@ -73,3 +74,13 @@
 		.ui-dialog-titlebar{ background-color: #68b468;}
   </style>
 
+<script>
+    $( "#clients_search" ).keyup(function() {
+        search = $('#search').val();
+        $.get( "/clients?search="+search, function( data ) {
+            data_html_obj = $($.parseHTML( data ) );
+            div = data_html_obj.find('#clients');
+            $('#clients').html(div);
+        });
+    });
+</script>
