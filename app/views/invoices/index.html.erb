@@ -30,11 +30,11 @@
           <% @invoices.each do |invoice| %>
             <tr>
               <td>
-              <%# if !invoice.client.name.present? || invoice.client.name.empty? %>
-                  <%#= link_to invoice.client.id, invoice.client %>
-                <%# else %>
-                  <%#= link_to invoice.client.name, invoice.client %>
-              <%# end %> </td>
+              <% if !invoice.client.name.present? || invoice.client.name.empty? %>
+                  <%= link_to invoice.client.id, invoice.client %>
+                <% else %>
+                  <%= link_to invoice.client.name, invoice.client %>
+              <% end %> </td>
               <td><%= invoice.id %></td>
               <td><%= invoice.maturity %></td>
               <td><%= invoice.description %></td>
