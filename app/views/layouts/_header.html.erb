@@ -82,7 +82,7 @@
             $('a').filter(function(index) { return $(this).text() === "Estimates"; }).css("background-color","#fff");
         else if (window.location.pathname.indexOf("/schedule") >= 0)
             $('a').filter(function(index) { return $(this).text() === "Schedule"; }).css("background-color","#fff");
-        else
+        else if (window.location.pathname.indexOf("/clients") >= 0)
             $('a').filter(function(index) { return $(this).text() === "Clients"; }).css("background-color","#fff");
     };
 </script>
