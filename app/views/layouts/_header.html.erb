@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="background-color: #eee">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -46,11 +46,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <%# if current_user %>
-          <li><%= link_to(t('clients'), clients_path) %></li>
-          <li><%= link_to(t('services'), services_path) %></li>
-          <li><%= link_to(t('invoices'), invoices_path) %></li>
-          <li><%= link_to(t('estimates'), estimates_path) %></li>
-          <li><%= link_to('Schedule', schedule_path) %></li>
+
+          <li><%= link_to(t('clients'), clients_path, class: "tab", onclick:"changeTab('clients')", style:"margin-left:5px;") %></li>
+          <li><%= link_to(t('services'), services_path, class: "tab", onclick:"changeTab('services')") %></li>
+          <li><%= link_to(t('invoices'), invoices_path, class: "tab", onclick:"changeTab('invoices')") %></li>
+          <li><%= link_to(t('estimates'), estimates_path, class: "tab", onclick:"changeTab('estimates')") %></li>
+          <li><%= link_to('Schedule', schedule_path, class: "tab", onclick:"changeTab('schedule')") %></li>
           <%# end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -64,6 +65,34 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+  <script>
+    var changeTab=function(page) {
+      location.reload();
+    };
+        window.onload=function() {
+        console.log(window.location.href);
+        console.log(window.location.pathname);
+        if (window.location.pathname.indexOf("/services") >= 0)
+            $('a').filter(function(index) { return $(this).text() === "Services"; }).css("background-color","#fff");
+        else if (window.location.pathname.indexOf("/invoices") >= 0)
+            $('a').filter(function(index) { return $(this).text() === "Invoices"; }).css("background-color","#fff");
+        else if (window.location.pathname.indexOf("/estimates") >= 0)
+            $('a').filter(function(index) { return $(this).text() === "Estimates"; }).css("background-color","#fff");
+        else if (window.location.pathname.indexOf("/schedule") >= 0)
+            $('a').filter(function(index) { return $(this).text() === "Schedule"; }).css("background-color","#fff");
+        else
+            $('a').filter(function(index) { return $(this).text() === "Clients"; }).css("background-color","#fff");
+    };
+</script>
+
+<style>
+  .tab:hover {
+    outline-style: inset;
+    outline: #ccc solid 3px;
+  }
+</style>
 
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
@@ -181,13 +210,13 @@
 
   } );
   </script>
+
 </head>
 <body>
 
 <div id="dialog-form" title="Add new services" style="display: none;">
   <form>
     <fieldset>
-      <!--<label for="name">Client ID</label> -->
       <input type="hidden" name="id" id="id" value="" class="text ui-widget-content ui-corner-all">
       <label for="name">Name</label>
       <input type="text" name="name" id="name" value="" disabled class="text ui-widget-content ui-corner-all">
@@ -235,7 +264,6 @@
     <b id="dplabel2" style='display:none;'>Date 2</b> <input style ='float:right;margin-right:100px;display:none;' type="text" id="datepicker2" name="service[date2]">
   </p>
   <p style='font-family: Arial,Helvetica,sans-serif;'>
-    <!--<b>Date 3</b> <input style ='float: right;margin: 10px 100px 10px 0px;' type="text" id="datepicker3"> -->
     <b id="dplabel3" style='display:none;'>Date 3</b> <input style ='float:right;margin-right:100px;display:none;' type="text" id="datepicker3" name="service[date3]">
   </p>
   <p style='font-family: Arial,Helvetica,sans-serif;'>
@@ -248,7 +276,6 @@
     <b id="dplabel6" style='display:none;'>Date 6</b> <input style ='float:right;margin-right:100px;display:none;' type="text" id="datepicker6" name="service[date6]">
   </p>
 
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
       <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
     </fieldset>
   </form>
