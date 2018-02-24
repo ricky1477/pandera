@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get 'dashboard' => 'expenses#index'
     get 'schedule', :to => redirect('schedule.erb.html')
     get 'googlea87d8b3af5e98ec8.html', :to => redirect('googlea87d8b3af5e98ec8.html')
-    get 'favicon.ico', :to => redirect('http://pandera.ml/images/pandera_app/favicon-32x32.png')
+    #get 'favicon.ico', :to => redirect('http://pandera.ml/images/pandera_app/favicon-32x32.png')
     get 'apple-touch-icon.png', :to => redirect('http://pandera.ml/images/pandera_app/apple-touch-icon.png')
     get 'apple-touch-icon-76x76.png', :to => redirect('http://pandera.ml/images/pandera_app/apple-touch-icon-76x76.png')
     get 'apple-touch-icon-120x120-precomposed.png', :to => redirect('http://pandera.ml/images/pandera_app/apple-touch-icon-120x120-precomposed.png')
