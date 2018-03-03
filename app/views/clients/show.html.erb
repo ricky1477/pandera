@@ -28,9 +28,30 @@
   <%= @client.email %>
 </p>
 
+<p style="width: 200px;">
+  <strong>Email2:</strong>
+  <%= @client.email2 %>
+</p>
+
+
 <p>
   <strong>Phone:</strong>
   <%= @client.phone %>
+</p>
+
+<p>
+  <strong>Carrier:</strong>
+  <%= Client::CARRIERS.select{ |carrier, email| email == @client.sms_gateway }[0][0] if @client.sms_gateway %>
+</p>
+
+<p>
+  <strong>Phone2:</strong>
+  <%= @client.phone2 %>
+</p>
+
+<p>
+  <strong>Carrier2:</strong>
+  <%= Client::CARRIERS.select{ |carrier, email| email == @client.sms_gateway }[0][0] if @client.sms_gateway2 %>
 </p>
 
 <p>
@@ -49,10 +70,9 @@
 </p>
 
 <p>
-  <strong>Carrier:</strong>
-  <%= Client::CARRIERS.select{ |carrier, email| email == @client.sms_gateway }[0][0] if @client.sms_gateway %>
+  <strong>Prospect:</strong>
+  <%= @client.prospect %>
 </p>
-
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
