@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :schedules
   resources :expenses
   resources :estimates
   resources :charges

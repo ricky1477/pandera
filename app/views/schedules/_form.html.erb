@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<%= form_for(@schedule) do |f| %>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </div>
+
+  <table class='table table-striped table-bordered table-hover table-condensed table-responsive'>
+    <thead>
+      <tr>
+        <th>Delete?</th>
+        <th>Client</th>
+      </tr>
+    </thead>
+    <tbody class='fields'>
+      <%= f.fields_for :client_schedules do |builder| %>
+        <%= render 'client_schedule', f: builder %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-success" %>
+    <%= link_to_add_row('Add Client', f, :client_schedules, class: 'btn btn-primary') %>
+  </div>
+<% end %>
+
+<script>
+$(function() {
+  $("#schedule_date").datepicker();
+});
+</script>
