@@ -1,0 +1,17 @@
+<p>
+  <strong>Date:</strong>
+  <%= @schedule.date.strftime("%A, %m/%d/%Y") %>
+</p>
+<br/>
+<p>
+  <h4><strong>Clients</strong></h4>
+  <% @schedule.client_schedules.each do |cs| %>
+    <b><%= cs.client.name %></b> </br>
+    <%= cs.client.street_address %> </br>
+    <%= cs.client.city %> </br>
+    </br>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>
