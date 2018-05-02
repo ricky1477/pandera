@@ -5,12 +5,21 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.includes(:services).search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    @clients = Client.includes(:services).where('prospect = ? OR prospect IS ?', false, nil).search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     #@clients = Client.search(params[:search]).order("created_at DESC").paginate(:per_page => 15, :page => params[:page])
     respond_to do |format|
       format.html
       format.csv { send_data Client.all.to_csv }
 			#format.xls # { send_data @products.to_csv(col_sep: "\t") }
+    end
+  end
+
+  # GET /prospects
+  # GET /prospects.json
+  def prospects
+    @prospects = Client.includes(:services).where(prospect: true).search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    respond_to do |format|
+      format.html
     end
   end
 
@@ -115,7 +124,7 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:id, :name, :street_address, :city, :state, :zipcode, :email, :phone, :dob, :sms_gateway, :notes, :credit)
+      params.require(:client).permit(:id, :name, :street_address, :city, :state, :zipcode, :email, :email2, :phone, :phone2, :dob, :sms_gateway, :sms_gateway2, :notes, :credit, :prospect)
     end
 
     def sort_column

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :schedules
   resources :expenses
   resources :estimates
   resources :charges
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     post 'invoices/payment_reminder'
     post 'create_services' => 'clients#create_services'
     get 'home' => 'home#home'
+    get 'prospects' => 'clients#prospects'
     get 'dashboard' => 'expenses#index'
     get 'schedule', :to => redirect('schedule.erb.html')
     get 'googlea87d8b3af5e98ec8.html', :to => redirect('googlea87d8b3af5e98ec8.html')

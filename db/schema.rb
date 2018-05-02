@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525224317) do
+ActiveRecord::Schema.define(version: 20180322005343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 20170525224317) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "client_schedules", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "schedule_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "clients", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -49,6 +56,10 @@ ActiveRecord::Schema.define(version: 20170525224317) do
     t.text     "notes"
     t.decimal  "credit"
     t.string   "state"
+    t.string   "email2"
+    t.string   "phone2"
+    t.string   "sms_gateway2"
+    t.boolean  "prospect"
   end
 
   create_table "estimates", force: :cascade do |t|
@@ -78,6 +89,12 @@ ActiveRecord::Schema.define(version: 20170525224317) do
     t.datetime "updated_at",     null: false
     t.boolean  "paid"
     t.string   "check_number"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "services", force: :cascade do |t|
