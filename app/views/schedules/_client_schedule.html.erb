@@ -3,5 +3,5 @@
     <%= f.hidden_field :_destroy, as: :hidden %>
     <%= link_to 'Delete', '#', class: 'remove_record' %>
   </td>
-  <td><%= f.text_field :client_id  %></td>
+  <td><%= f.text_field :client_id, data: {autocomplete_source: Client.order(:name).map { |t| { :label => t.name, :value => t.id } } }, class: 'client_schedule_input'  %></td>
 </tr>

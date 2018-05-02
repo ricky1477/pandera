@@ -28,6 +28,20 @@
 
 <script>
 $(function() {
-  $("#schedule_date").datepicker();
+  $("#schedule_date").datepicker({ dateFormat: 'dd/mm/yy' });
 });
+
+ $( function() {
+    $(".client_schedule_input").autocomplete({
+      source: $(".client_schedule_input").data('autocomplete-source')
+    });
+  } );
+
+// Runs function every second
+var myVar = setInterval(test, 1000);
+function test() {
+    $(".client_schedule_input").autocomplete({
+      source: $(".client_schedule_input").data('autocomplete-source')
+    });
+}
 </script>

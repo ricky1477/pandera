@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:index, :new, :create, :edit, :update, :destroy]
 
   # GET /schedules
   # GET /schedules.json
@@ -16,7 +17,6 @@ class SchedulesController < ApplicationController
   def new
     @schedule = Schedule.new
     @schedule.client_schedules.build
-    #5.times { @schedule.client_schedules.build }
   end
 
   # GET /schedules/1/edit
@@ -26,6 +26,8 @@ class SchedulesController < ApplicationController
   # POST /schedules
   # POST /schedules.json
   def create
+        Rails.logger.info '--new-shcedule--'
+
     @schedule = Schedule.new(schedule_params)
 
     respond_to do |format|

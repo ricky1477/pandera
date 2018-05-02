@@ -13,7 +13,7 @@
       <tbody>
         <% @schedules.each do |schedule| %>
           <tr>
-            <td><%= schedule.date %></td>
+            <td><%= schedule.date.strftime("%A, %m/%d/%Y") %></td>
             <td><%= link_to 'Details', schedule %></td>
             <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
             <td><%= link_to 'Delete', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>

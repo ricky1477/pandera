@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
@@ -31,5 +32,7 @@ $(document).on('turbolinks:load', function() {
     $('.fields').append($(this).data('fields').replace(regexp, time));
     return event.preventDefault();
   });
+
+
 
 });
