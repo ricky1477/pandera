@@ -1,0 +1,29 @@
+<h1>Schedules</h1>
+
+<div id="schedules">
+  <div class="table-responsive">
+    <table id="schedules_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @schedules.each do |schedule| %>
+          <tr>
+            <td><%= schedule.date.strftime("%A, %m/%d/%Y") %></td>
+            <td><%= link_to 'Details', schedule %></td>
+            <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
+            <td><%= link_to 'Delete', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'New Schedule', new_schedule_path %>
