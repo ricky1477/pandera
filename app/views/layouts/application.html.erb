@@ -6,19 +6,10 @@
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyBidFVvV0VcvEvoKjMUkmx6VziJaxKZhL4" type="text/javascript"></script>
     <script>
     var greenPin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker_green.png");
-    /*var blackPin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker_black.png");
-    var purplePin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker_purple.png");
-    var redPin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png");
-    var greyPin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker_grey.png");
-    var orangePin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker_orange.png");
-    var whitePin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker_white.png");
-    var yellowPin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker_yellow.png");
-    var lightBluePin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/ms/micons/ltblue-dot.png");
-    var lightGreenPin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/ms/micons/green-dot.png");
-    var pinkPin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/ms/micons/pink-dot.png"); */
     </script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag :defaults, "nested_form" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
