@@ -3,5 +3,7 @@
     <%= f.hidden_field :_destroy, as: :hidden %>
     <%= link_to 'Delete', '#', class: 'remove_record' %>
   </td>
-  <td><%= f.text_field :client_id, data: {autocomplete_source: Client.order(:name).map { |t| { :label => t.name, :value => t.id } } }, class: 'client_schedule_input'  %></td>
+  <td>
+    <%= f.text_field :client_street_address, data: {autocomplete_source: Client.order(:name).map { |c| { :label => c.name+' | '+c.street_address, :value => c.street_address, :id => c.id} } }, class: 'client_schedule_input', style: 'width: 50%;'  %>
+  </td>
 </tr>
