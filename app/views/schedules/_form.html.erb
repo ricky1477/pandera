@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
 <%= form_for(@schedule) do |f| %>
   <div class="field">
     <%= f.label :date %><br>
@@ -27,6 +26,7 @@
 <% end %>
 
 <script>
+
 $(function() {
   $("#schedule_date").datepicker({ dateFormat: 'dd/mm/yy' });
 });

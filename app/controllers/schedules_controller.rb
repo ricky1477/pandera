@@ -26,8 +26,6 @@ class SchedulesController < ApplicationController
   # POST /schedules
   # POST /schedules.json
   def create
-        Rails.logger.info '--new-shcedule--'
-
     @schedule = Schedule.new(schedule_params)
 
     respond_to do |format|
@@ -73,6 +71,6 @@ class SchedulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
-      params.require(:schedule).permit(:date, client_schedules_attributes: [:id, :client_id, :_destroy])
+      params.require(:schedule).permit(:date, client_schedules_attributes: [:id, :client_id, :client_street_address, :_destroy])
     end
 end
