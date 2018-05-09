@@ -73,11 +73,124 @@ class EstimatePdf < Prawn::Document
     text_box "SERVICE          AMOUNT $          SERVICE          AMOUNT $", style: :bold,
      :at => [70,480], :height => 100, :width => 500, :style => :bold, :size => 15
     stroke_axis
-    stroke_circle [10, 450], 8
+
+    stroke_color "000000"
+    stroke_circle [10, 455], 8
     fill_color "DCDCDF"
     stroke_color "FFFFFF"
     fill_and_stroke_rectangle [20, 465], 150, 30
-    fill_and_stroke_rectangle [175, 465], 80, 30
+    fill_and_stroke_rectangle [175, 465], 85, 30
+    stroke_color "000000"
+    stroke_circle [270, 455], 8
+    fill_color "DCDCDF"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [285, 465], 110, 30
+    fill_and_stroke_rectangle [400, 465], 85, 30
+
+    stroke_color "000000"
+    stroke_circle [10, 430], 8
+    fill_color "f2f2f2"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [20, 440], 150, 30
+    fill_and_stroke_rectangle [175, 440], 85, 30
+    stroke_color "000000"
+    stroke_circle [270, 430], 8
+    fill_color "f2f2f2"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [285, 440], 110, 30
+    fill_and_stroke_rectangle [400, 440], 85, 30
+
+    stroke_color "000000"
+    stroke_circle [10, 405], 8
+    fill_color "DCDCDF"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [20, 415], 150, 30
+    fill_and_stroke_rectangle [175, 415], 85, 30
+    stroke_color "000000"
+    stroke_circle [270, 405], 8
+    fill_color "DCDCDF"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [285, 415], 110, 30
+    fill_and_stroke_rectangle [400, 415], 85, 30
+
+    stroke_color "000000"
+    stroke_circle [10, 380], 8
+    fill_color "f2f2f2"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [20, 390], 150, 30
+    fill_and_stroke_rectangle [175, 390], 85, 30
+    stroke_color "000000"
+    stroke_circle [270, 380], 8
+    fill_color "f2f2f2"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [285, 390], 110, 30
+    fill_and_stroke_rectangle [400, 390], 85, 30
+
+    stroke_color "000000"
+    stroke_circle [10, 355], 8
+    fill_color "DCDCDF"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [20, 365], 150, 30
+    fill_and_stroke_rectangle [175, 365], 85, 30
+    stroke_color "000000"
+    stroke_circle [270, 355], 8
+    fill_color "DCDCDF"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [285, 365], 110, 30
+    fill_and_stroke_rectangle [400, 365], 85, 30
+
+    stroke_color "000000"
+    stroke_circle [10, 330], 8
+    fill_color "f2f2f2"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [20, 345], 150, 30
+    fill_and_stroke_rectangle [175, 345], 85, 30
+    stroke_color "000000"
+    stroke_circle [270, 330], 8
+    fill_color "f2f2f2"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [285, 345], 110, 30
+    fill_and_stroke_rectangle [400, 345], 85, 30
+
+    stroke_color "000000"
+    stroke_circle [10, 305], 8
+    fill_color "DCDCDF"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [20, 320], 150, 30
+    fill_and_stroke_rectangle [175, 320], 85, 30
+    stroke_color "000000"
+    stroke_circle [270, 305], 8
+    fill_color "DCDCDF"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [285, 320], 110, 30
+    fill_and_stroke_rectangle [400, 320], 85, 30
+
+    stroke_color "000000"
+    stroke_circle [10, 280], 8
+    fill_color "f2f2f2"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [20, 295], 150, 30
+    fill_and_stroke_rectangle [175, 295], 85, 30
+    stroke_color "000000"
+    stroke_circle [270, 280], 8
+    fill_color "f2f2f2"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [285, 295], 110, 30
+    fill_and_stroke_rectangle [400, 295], 85, 30
+
+    stroke_color "000000"
+    stroke_circle [10, 255], 8
+    fill_color "DCDCDF"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [20, 270], 150, 30
+    fill_and_stroke_rectangle [175, 270], 85, 30
+    stroke_color "000000"
+    stroke_circle [270, 255], 8
+    fill_color "DCDCDF"
+    stroke_color "FFFFFF"
+    fill_and_stroke_rectangle [285, 270], 110, 30
+    fill_and_stroke_rectangle [400, 270], 85, 30
+
 
 #bounding_box([100, 300], :width => 300, :height => 200) do
 # stroke_bounds
