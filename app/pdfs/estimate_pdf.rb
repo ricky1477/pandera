@@ -55,8 +55,10 @@ class EstimatePdf < Prawn::Document
     fill_color "000000"
     text_box e.client.city,
      :at => [55,540]
-    text_box e.client.state,
-     :at => [270,540]
+    unless e.client.state.empty?
+      text_box e.client.state,
+       :at => [270,540]
+    end
     text_box e.client.zipcode,
      :at => [430,540]
     fill_color "1e7b1e"
