@@ -22,8 +22,10 @@ class EstimatePdf < Prawn::Document
 
 	def title
 		sa = ShippingAddress.where("is_default IS TRUE").first
-    text_box sa.name, style: :bold,
-     :at => [150,720], :height => 100, :width => 600, :style => :bold, :size => 30
+    #228b22
+    fill_color "1e7b1e"
+    text_box sa.name,
+     :at => [150,720], :height => 100, :width => 800, :style => :bold, :size => 30
     text_box "Proudly contributing for a nicer community",
      :at => [180,680], :height => 100, :width => 500, :style => :bold, :size => 10
     text_box "AGREEMENT FORM",
@@ -64,133 +66,157 @@ class EstimatePdf < Prawn::Document
     text_box "SERVICE          AMOUNT $          SERVICE               AMOUNT $", style: :bold,
      :at => [70,480], :height => 100, :width => 500, :style => :bold, :size => 15
 
-    stroke_color "000000"
+    stroke_color "1e7b1e"
     stroke_circle [10, 455], 8
-    fill_color "DCDCDF"
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [20, 465], 150, 30
-    fill_and_stroke_rectangle [175, 465], 87, 30
-    stroke_color "000000"
-    stroke_circle [270, 455], 8
-    fill_color "DCDCDF"
+    fill_and_stroke_rectangle [20, 465], 150, 20
+    fill_and_stroke_rectangle [175, 465], 87, 20
+    stroke_color "1e7b1e"
+    stroke_circle [275, 455], 8
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [285, 465], 150, 30
-    fill_and_stroke_rectangle [420, 465], 87, 30
+    fill_and_stroke_rectangle [285, 465], 150, 20
+    fill_and_stroke_rectangle [420, 465], 87, 20
 
-    stroke_color "000000"
+    stroke_color "1e7b1e"
     stroke_circle [10, 430], 8
     fill_color "f2f2f2"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [20, 440], 150, 30
-    fill_and_stroke_rectangle [175, 440], 87, 30
-    stroke_color "000000"
-    stroke_circle [270, 430], 8
+    fill_and_stroke_rectangle [20, 440], 150, 20
+    fill_and_stroke_rectangle [175, 440], 87, 20
+    stroke_color "1e7b1e"
+    stroke_circle [275, 430], 8
     fill_color "f2f2f2"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [285, 440], 150, 30
-    fill_and_stroke_rectangle [420, 440], 87, 30
+    fill_and_stroke_rectangle [285, 440], 150, 20
+    fill_and_stroke_rectangle [420, 440], 87, 20
 
-    stroke_color "000000"
+    stroke_color "1e7b1e"
     stroke_circle [10, 405], 8
-    fill_color "DCDCDF"
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [20, 415], 150, 30
-    fill_and_stroke_rectangle [175, 415], 87, 30
-    stroke_color "000000"
-    stroke_circle [270, 405], 8
-    fill_color "DCDCDF"
+    fill_and_stroke_rectangle [20, 415], 150, 20
+    fill_and_stroke_rectangle [175, 415], 87, 20
+    stroke_color "1e7b1e"
+    stroke_circle [275, 405], 8
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [285, 415], 150, 30
-    fill_and_stroke_rectangle [420, 415], 87, 30
+    fill_and_stroke_rectangle [285, 415], 150, 20
+    fill_and_stroke_rectangle [420, 415], 87, 20
 
-    stroke_color "000000"
+    stroke_color "1e7b1e"
     stroke_circle [10, 380], 8
     fill_color "f2f2f2"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [20, 390], 150, 30
-    fill_and_stroke_rectangle [175, 390], 87, 30
-    stroke_color "000000"
-    stroke_circle [270, 380], 8
+    fill_and_stroke_rectangle [20, 390], 150, 20
+    fill_and_stroke_rectangle [175, 390], 87, 20
+    stroke_color "1e7b1e"
+    stroke_circle [275, 380], 8
     fill_color "f2f2f2"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [285, 390], 150, 30
-    fill_and_stroke_rectangle [420, 390], 87, 30
+    fill_and_stroke_rectangle [285, 390], 150, 20
+    fill_and_stroke_rectangle [420, 390], 87, 20
 
-    stroke_color "000000"
+    stroke_color "1e7b1e"
     stroke_circle [10, 355], 8
-    fill_color "DCDCDF"
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [20, 365], 150, 30
-    fill_and_stroke_rectangle [175, 365], 87, 30
-    stroke_color "000000"
-    stroke_circle [270, 355], 8
-    fill_color "DCDCDF"
+    fill_and_stroke_rectangle [20, 365], 150, 20
+    fill_and_stroke_rectangle [175, 365], 87, 20
+    stroke_color "1e7b1e"
+    stroke_circle [275, 355], 8
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [285, 365], 150, 30
-    fill_and_stroke_rectangle [420, 365], 87, 30
+    fill_and_stroke_rectangle [285, 365], 150, 20
+    fill_and_stroke_rectangle [420, 365], 87, 20
 
-    stroke_color "000000"
+    stroke_color "1e7b1e"
     stroke_circle [10, 330], 8
     fill_color "f2f2f2"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [20, 340], 150, 30
-    fill_and_stroke_rectangle [175, 340], 87, 30
-    stroke_color "000000"
-    stroke_circle [270, 330], 8
+    fill_and_stroke_rectangle [20, 340], 150, 20
+    fill_and_stroke_rectangle [175, 340], 87, 20
+    stroke_color "1e7b1e"
+    stroke_circle [275, 330], 8
     fill_color "f2f2f2"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [285, 340], 150, 30
-    fill_and_stroke_rectangle [420, 340], 87, 30
+    fill_and_stroke_rectangle [285, 340], 150, 20
+    fill_and_stroke_rectangle [420, 340], 87, 20
 
-    stroke_color "000000"
+    stroke_color "1e7b1e"
     stroke_circle [10, 305], 8
-    fill_color "DCDCDF"
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [20, 315], 150, 30
-    fill_and_stroke_rectangle [175, 315], 87, 30
-    stroke_color "000000"
-    stroke_circle [270, 305], 8
-    fill_color "DCDCDF"
+    fill_and_stroke_rectangle [20, 315], 150, 20
+    fill_and_stroke_rectangle [175, 315], 87, 20
+    stroke_color "1e7b1e"
+    stroke_circle [275, 305], 8
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [285, 315], 150, 30
-    fill_and_stroke_rectangle [420, 315], 87, 30
+    fill_and_stroke_rectangle [285, 315], 150, 20
+    fill_and_stroke_rectangle [420, 315], 87, 20
 
-    stroke_color "000000"
+    stroke_color "1e7b1e"
     stroke_circle [10, 280], 8
     fill_color "f2f2f2"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [20, 290], 150, 30
-    fill_and_stroke_rectangle [175, 290], 87, 30
-    stroke_color "000000"
-    stroke_circle [270, 280], 8
+    fill_and_stroke_rectangle [20, 290], 150, 20
+    fill_and_stroke_rectangle [175, 290], 87, 20
+    stroke_color "1e7b1e"
+    stroke_circle [275, 280], 8
     fill_color "f2f2f2"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [285, 290], 150, 30
-    fill_and_stroke_rectangle [420, 290], 87, 30
+    fill_and_stroke_rectangle [285, 290], 150, 20
+    fill_and_stroke_rectangle [420, 290], 87, 20
 
-    stroke_color "000000"
+    stroke_color "1e7b1e"
     stroke_circle [10, 255], 8
-    fill_color "DCDCDF"
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [20, 265], 150, 30
-    fill_and_stroke_rectangle [175, 265], 87, 30
-    stroke_color "000000"
-    stroke_circle [270, 255], 8
-    fill_color "DCDCDF"
+    fill_and_stroke_rectangle [20, 265], 150, 20
+    fill_and_stroke_rectangle [175, 265], 87, 20
+    stroke_color "1e7b1e"
+    stroke_circle [275, 255], 8
+    fill_color "adebad"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [285, 265], 150, 30
-    fill_and_stroke_rectangle [420, 265], 87, 30
+    fill_and_stroke_rectangle [285, 265], 150, 20
+    fill_and_stroke_rectangle [420, 265], 87, 20
 
+    # Total Box
+    stroke_color "1e7b1e"
+    fill_color "1e7b1e"
+    text_box "TOTAL",
+     :at => [340,238], :height => 100, :width => 500, :style => :bold, :size => 15
+    fill_color "adebad"
+    fill_color "ffffff"
+    stroke_color "1e7b1e"
+    fill_and_stroke_rectangle [420, 244], 87, 22
 	end
 
   def important_info
-    fill_color "cccccc"
+    fill_color "1e7b1e"
     stroke_color "FFFFFF"
-    fill_and_stroke_rectangle [2, 230], 505, 100
+    fill_and_stroke_rectangle [2, 220], 505, 87
+    fill_color "FFFFFF"
+    text_box 'Important Information:',
+     :at => [5,215], :size => 10
+    text_box 'Monthly service bills are due on the 1st of each month.  A late fee of $10.00 will be applied for payments after the due date.',
+     :at => [5,200], :size => 9
+    text_box 'Full payment is required.  When the account is late for two consecutive months, service will be interrupted.',
+     :at => [5,190], :size => 9
+    text_box 'For returned checks a fee of $25 will be applied.',
+     :at => [5,180], :size => 9
+    text_box 'Monthly service can be cancelled anytime by the customer within 15 days written notice, otherwise, a cancel fee of $100.00',
+     :at => [5,170], :size => 9
+    text_box 'will be applied.',
+     :at => [5,160], :size => 9
+    text_box 'By signing this agreement the customer agrees with all the payments, fees and cancellation conditions.',
+     :at => [5,150], :size => 9
   end
 
   def signatures
-    fill_color "000000"
+    fill_color "1e7b1e"
     text_box '_________________________                   _________________________',
      :at => [50,112]
     text_box 'Manager',
@@ -210,31 +236,19 @@ class EstimatePdf < Prawn::Document
 
 	def footer
     sa = ShippingAddress.where("is_default IS TRUE").first
-    #text_box "Please make checks payable to: \n #{sa.name}",
-		#	:at => [0,35], :height => 100, :width => 250, :size => 12
-
-    fill_color "cccccc"
+    fill_color "1e7b1e"
     stroke_color "FFFFFF"
     fill_and_stroke_rectangle [2, 50], 505, 50
-    ########stroke_axis
-=begin
-    balance = @invoice.total
-    balance += @invoice.client.credit if @invoice.client.credit
-    balance = 0 if @invoice.paid == true
-		sa = ShippingAddress.where("is_default IS TRUE").first
-		text_box "Please make checks payable to: \n #{sa.name}",
-			:at => [0,35], :height => 100, :width => 250, :size => 12
-		text_box "Subtotal $#{@invoice.total}",
-			:at => [390,100], :height => 100, :width => 150, :style => :bold, :size => 12
-		text_box "Sales Tax (0.0%)",
-			:at => [390,80], :height => 100, :width => 150, :style => :bold, :size => 12
-		text_box "Total: $#{@invoice.total}",
-			:at => [390,60], :height => 100, :width => 150, :style => :bold, :size => 12
-		text_box "Payments/Credits $#{@invoice.client.credit}",
-			:at => [390,40], :height => 100, :width => 190, :style => :bold, :size => 12
-		text_box "Balance Due: $#{balance}",
-			:at => [390,20], :height => 100, :width => 150, :style => :bold, :size => 12
-=end
+    fill_color "FFFFFF"
+    text_box sa.street,
+     :at => [10,45] , :size => 15
+    text_box sa.phone,
+     :at => [390,45] , :size => 17
+    text_box sa.city + ', ' + sa.state + ' ' + sa.zipcode,
+     :at => [10,20] , :size => 15
+    email_length = sa.email.length
+    text_box sa.email,
+     :at => [390-((email_length-15)*5.3),20] , :size => 13
 	end
 
 end
