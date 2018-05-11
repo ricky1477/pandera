@@ -22,10 +22,10 @@ class EstimatePdf < Prawn::Document
 
 	def title
 		sa = ShippingAddress.where("is_default IS TRUE").first
-    #228b22
     fill_color "1e7b1e"
+    title_length = sa.name.length
     text_box sa.name,
-     :at => [150,720], :height => 100, :width => 800, :style => :bold, :size => 30
+     :at => [150-((title_length-15)*7),720], :height => 100, :width => 800, :style => :bold, :size => 30
     text_box "Proudly contributing for a nicer community",
      :at => [180,680], :height => 100, :width => 500, :style => :bold, :size => 10
     text_box "AGREEMENT FORM",
@@ -34,30 +34,38 @@ class EstimatePdf < Prawn::Document
 
 	def user_info
     e = @estimate
+    fill_color "000000"
     text_box e.client.name,
      :at => [60,600]
     unless e.client.phone.empty?
       text_box e.client.phone[0..2] + '    ' + e.client.phone[3..5]+ '    ' + e.client.phone[6..e.client.phone.length-1],
       :at => [403,600]
     end
+    fill_color "1e7b1e"
     text_box 'Name: ____________________________________________ Phone: (       )_____-______',
      :at => [20,600]
+    fill_color "000000"
     text_box e.client.street_address,
      :at => [75,570]
     text_box Date.today.strftime("%d/%m/%Y"),
      :at => [410,570]
+    fill_color "1e7b1e"
     text_box 'Address: _____________________________________________ Date: _______________',
      :at => [20,570]
+    fill_color "000000"
     text_box e.client.city,
      :at => [55,540]
     text_box e.client.state,
      :at => [270,540]
     text_box e.client.zipcode,
      :at => [430,540]
+    fill_color "1e7b1e"
     text_box 'City: __________________________ State: _____________________ Zip: ____________',
      :at => [20,540]
+    fill_color "000000"
     text_box e.client.email,
      :at => [70,510]
+    fill_color "1e7b1e"
     text_box 'Email: ___________________________________________________________________',
      :at => [20,510]
 	end
@@ -183,6 +191,62 @@ class EstimatePdf < Prawn::Document
     fill_and_stroke_rectangle [285, 265], 150, 20
     fill_and_stroke_rectangle [420, 265], 87, 20
 
+    # Service text
+    fill_color "1e7b1e"
+    text_box "Lawn mowing (weekly)", style: :bold,
+     :at => [23,460], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Spring clean-up", style: :bold,
+     :at => [290,460], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Mulching", style: :bold,
+     :at => [23,435], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Falls clean-up", style: :bold,
+     :at => [290,435], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Core aeration", style: :bold,
+     :at => [23,410], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Detaching", style: :bold,
+     :at => [290,410], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Seeding", style: :bold,
+     :at => [23,385], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Tree removal", style: :bold,
+     :at => [290,385], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Fertilizing", style: :bold,
+     :at => [23,360], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Stump removal", style: :bold,
+     :at => [290,360], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Planting", style: :bold,
+     :at => [23,335], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Pruning", style: :bold,
+     :at => [290,335], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Bush trimming", style: :bold,
+     :at => [23,310], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Snow removal", style: :bold,
+     :at => [290,310], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Gutter cleaning", style: :bold,
+     :at => [23,285], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Power wash", style: :bold,
+     :at => [290,285], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Hauling", style: :bold,
+     :at => [23,260], :height => 100, :width => 500, :style => :bold, :size => 13
+
+    text_box "Other", style: :bold,
+     :at => [290,260], :height => 100, :width => 500, :style => :bold, :size => 13
+
     # Total Box
     stroke_color "1e7b1e"
     fill_color "1e7b1e"
@@ -191,7 +255,7 @@ class EstimatePdf < Prawn::Document
     fill_color "adebad"
     fill_color "ffffff"
     stroke_color "1e7b1e"
-    fill_and_stroke_rectangle [420, 244], 87, 22
+    fill_and_stroke_rectangle [420, 244], 86, 22
 	end
 
   def important_info
