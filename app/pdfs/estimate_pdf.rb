@@ -35,8 +35,10 @@ class EstimatePdf < Prawn::Document
 	def user_info
     e = @estimate
     fill_color "000000"
-    text_box e.client.name,
-     :at => [60,600]
+    unless e.client.name.nil? || e.client.name.empty?
+      text_box e.client.name,
+       :at => [60,600]
+    end
     unless e.client.phone.nil? || e.client.phone.empty?
       text_box e.client.phone[0..2] + '    ' + e.client.phone[3..5]+ '    ' + e.client.phone[6..e.client.phone.length-1],
       :at => [403,600]
