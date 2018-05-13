@@ -16,6 +16,17 @@ class EstimatesController < ApplicationController
   # GET /estimates/1
   # GET /estimates/1.json
   def show
+    @estimate = Estimate.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = EstimatePdf.new(@estimate, view_context)
+        send_data pdf.render, filename:
+        "estimate_#{@estimate.created_at.strftime("%d/%m/%Y")}.pdf",
+        type: "application/pdf",
+        disposition: "inline"
+      end
+    end
   end
 
   # GET /estimates/new
