@@ -37,7 +37,7 @@ class EstimatePdf < Prawn::Document
     fill_color "000000"
     text_box e.client.name,
      :at => [60,600]
-    unless e.client.phone.empty?
+    unless e.client.phone.nil? || e.client.phone.empty?
       text_box e.client.phone[0..2] + '    ' + e.client.phone[3..5]+ '    ' + e.client.phone[6..e.client.phone.length-1],
       :at => [403,600]
     end
@@ -45,28 +45,36 @@ class EstimatePdf < Prawn::Document
     text_box 'Name: ____________________________________________ Phone: (       )_____-______',
      :at => [20,600]
     fill_color "000000"
-    text_box e.client.street_address,
-     :at => [75,570]
+    unless e.client.street_address.nil? || e.client.street_address.empty?
+      text_box e.client.street_address,
+       :at => [75,570]
+    end
     text_box Date.today.strftime("%d/%m/%Y"),
      :at => [410,570]
     fill_color "1e7b1e"
-    text_box 'Address: _____________________________________________ Date: _______________',
-     :at => [20,570]
+      text_box 'Address: _____________________________________________ Date: _______________',
+       :at => [20,570]
     fill_color "000000"
-    text_box e.client.city,
-     :at => [55,540]
-    unless e.client.state.empty?
+    unless e.client.city.nil? || e.client.city.empty?
+      text_box e.client.city,
+       :at => [55,540]
+    end
+    unless e.client.state.nil? || e.client.state.empty?
       text_box e.client.state,
        :at => [270,540]
     end
-    text_box e.client.zipcode,
-     :at => [430,540]
+    unless e.client.zipcode.nil? || e.client.zipcode.empty?
+      text_box e.client.zipcode,
+       :at => [430,540]
+    end
     fill_color "1e7b1e"
     text_box 'City: __________________________ State: _____________________ Zip: ____________',
      :at => [20,540]
     fill_color "000000"
-    text_box e.client.email,
-     :at => [70,510]
+    unless e.client.email.nil? || e.client.email.empty?
+      text_box e.client.email,
+       :at => [70,510]
+    end
     fill_color "1e7b1e"
     text_box 'Email: ___________________________________________________________________',
      :at => [20,510]
