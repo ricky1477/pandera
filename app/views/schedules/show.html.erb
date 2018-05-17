@@ -6,12 +6,28 @@
 <p>
   <h4><strong>Clients</strong></h4>
   <% @schedule.client_schedules.each do |cs| %>
+    <%
+        location = Geocoder.search(cs.client.street_address)
+        if location && location[0]
+          lat = location[0].latitude
+          lng = location[0].longitude
+        end
+    %>
     <b><%= cs.client.name %></b> </br>
     <%= cs.client.street_address %> </br>
     <%= cs.client.city %> </br>
+    <%= link_to 'Directions', "http://maps.apple.com/?q=#{lat},#{lng}"%></br>
     </br>
   <% end %>
 </p>
 
 <%= link_to 'Edit', edit_schedule_path(@schedule) %> |
 <%= link_to 'Back', schedules_path %>
+
+
+
+<style>
+a {
+    color: #68b468;
+}
+</style>
