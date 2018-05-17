@@ -1,7 +1,9 @@
+<script type="text/javascript" src="https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script>
 <%
     # Center of map
     lat = '39.00877'
     lng = '-77.0528637'
+    clients = Client.all
 %>
 
 <div id="map_wrapper">
@@ -10,8 +12,11 @@
 
    <script type="text/javascript">
     $(function loadScript(){
+      // Add a marker clusterer to manage the markers.
+      //var markerCluster = new MarkerClusterer(map, markers,
+     //{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
      var locations = [
-       <% Client.all.each do |client| %>
+       <% clients.each_with_index do |client, index| %>
          <%
              location = Geocoder.search(client.street_address)
              if location && location[0]
@@ -19,8 +24,12 @@
                longitude = location[0].longitude
              end
          %>
-        ['<%= client.name + ' | ' + client.street_address%>',<%=latitude%>,<%=longitude%>],
-       <% end %>
+         <% if index == clients.size - 1 %>
+          ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>]
+         <% else %>
+          ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>],
+         <% end %>
+        <% end %>
      ];
 
      console.log(locations)
@@ -28,8 +37,9 @@
      var map = new google.maps.Map(document.getElementById('map'), {
    zoom: 9,
    center: new google.maps.LatLng(<%= lat %>,<%= lng %>),
-   mapTypeId: google.maps.MapTypeId.SATELLITE
+   mapTypeId: google.maps.MapTypeId.ROADMAP
  });
+ //var mc = new MarkerClusterer(map);
 
      var infowindow = new google.maps.InfoWindow();
 

@@ -16,18 +16,10 @@
     <b><%= cs.client.name %></b> </br>
     <%= cs.client.street_address %> </br>
     <%= cs.client.city %> </br>
-    <%= link_to 'Directions', "http://maps.apple.com/?q=#{lat},#{lng}"%></br>
+    <%= link_to 'Directions', "http://maps.apple.com/?q=#{lat},#{lng}", style: 'color: #68b468;'%></br>
     </br>
   <% end %>
 </p>
 
 <%= link_to 'Edit', edit_schedule_path(@schedule) %> |
 <%= link_to 'Back', schedules_path %>
-
-
-
-<style>
-a {
-    color: #68b468;
-}
-</style>
