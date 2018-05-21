@@ -7,7 +7,7 @@ Hello <%= ShippingAddress.where(is_default: true).first.name %>!
   <%= 'Name: ' + client.name %>
   <%= 'Address: ' + client.street_address %>
   <%= 'Phone: ' + client.curated_phone %>
-  <%= 'Email: ' + client.email %>
+  <%= 'Email: ' + client.email %></br>
 <% end %>
 
 <% services = Service.where(created_at: (Time.now - 24.hours)..Time.now) %>
@@ -19,7 +19,7 @@ Hello <%= ShippingAddress.where(is_default: true).first.name %>!
   <%= 'Description: ' + service.description %>
   <%= 'Notes: ' + service.notes %>
   <%= 'Price: ' + service.price.to_s %>
-  <%= 'Invoice: ' + service.invoice.id.to_s %>
+  <%= 'Invoice: ' + service.invoice.id.to_s %></br>
 <% end %>
 
 <% invoices = Invoice.where(created_at: (Time.now - 24.hours)..Time.now) %>
@@ -29,7 +29,7 @@ Hello <%= ShippingAddress.where(is_default: true).first.name %>!
   <%= 'Client: ' + invoice.client.name %>
   <%= 'Description: ' + invoice.description %>
   <%= 'Total: ' + invoice.total.to_s %>
-  <%= 'Paid: ' + (invoice.paid ? 'Yes' : 'No') %>
+  <%= 'Paid: ' + (invoice.paid ? 'Yes' : 'No') %></br>
 <% end %>
 
 <% estimates = Estimate.where(created_at: (Time.now - 24.hours)..Time.now) %>
@@ -38,7 +38,7 @@ Hello <%= ShippingAddress.where(is_default: true).first.name %>!
 <% estimates.each do |estimate| %>
   <%= 'Description: ' + estimate.description %>
   <%= 'Price: ' + estimate.price.to_s %>
-  <%= 'Notes: ' + estimate.notes %>
+  <%= 'Notes: ' + estimate.notes %></br>
 <% end %>
 
 Thanks,
