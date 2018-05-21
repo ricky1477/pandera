@@ -1,0 +1,27 @@
+/* line 1, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/invoices.scss */
+#invoices_search {
+  float: right;
+}
+
+/* line 4, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/invoices.scss */
+.rick_button {
+  padding: 5px;
+  background-color: #dcdcdc;
+  border: 1px solid #666;
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 11, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/invoices.scss */
+.rick_button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* line 15, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/invoices.scss */
+.rick_button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: #dcdcdc;
+  color: #000;
+  text-decoration: none;
+}

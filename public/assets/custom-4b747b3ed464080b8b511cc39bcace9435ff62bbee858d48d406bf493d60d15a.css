@@ -1,0 +1,100 @@
+/* line 1, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+.navbar-default .navbar-nav > li > a {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #68b468;
+}
+
+/* line 6, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+#clients_table th, #invoices_table th, #services_table th, #shipping_addresses_table th, #estimates_table th, #expenses_table th, #prospects_table th, #schedules_table th {
+  padding-top: 5px;
+  padding-bottom: 4px;
+  background-color: #68b468;
+  border: 1px solid #000033;
+}
+
+/* line 12, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+.jumbotron {
+  background: url("http://pandera.ml/images/pandera_app/panderaBackground.jpg") no-repeat scroll;
+  color: #696969;
+  color: black;
+  margin-top: -20px;
+  padding: 88px 60px;
+}
+@media screen and (max-width: 768px) {
+  /* line 12, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+  .jumbotron {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 320px) {
+  /* line 12, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+  .jumbotron {
+    padding: 84px 60px;
+  }
+}
+
+/* line 25, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+.intro {
+  width: 460px;
+  padding: 130px 0px 0px 0px;
+  line-height: 20px;
+}
+@media screen and (max-width: 568px) {
+  /* line 25, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+  .intro {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 380px) {
+  /* line 25, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+  .intro {
+    width: 100%;
+    padding: 125px 0px 0px 0px;
+  }
+}
+
+/* line 35, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+#dynamic_select {
+  float: left;
+}
+@media screen and (max-width: 768px) {
+  /* line 35, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+  #dynamic_select {
+    float: center;
+  }
+}
+
+/* line 40, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+.form-control {
+  width: 30% !important;
+  /*    @media screen and (max-width: 450px) { width: 39% !important }
+      @media screen and (max-width: 400px) { width: 42% !important }
+      @media screen and (max-width: 375px) { width: 45% !important }
+      @media screen and (max-width: 350px) { width: 48% !important }
+      @media screen and (max-width: 325px) { width: 51% !important } */
+}
+@media screen and (max-width: 990px) {
+  /* line 40, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+  .form-control {
+    width: 35% !important;
+  }
+}
+@media screen and (max-width: 650px) {
+  /* line 40, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+  .form-control {
+    width: 45% !important;
+  }
+}
+@media screen and (max-width: 550px) {
+  /* line 40, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+  .form-control {
+    width: 55% !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  /* line 40, /Users/ricardokreyhsig/side_projects/pandera/app/assets/stylesheets/custom.css.scss */
+  .form-control {
+    width: 60% !important;
+  }
+}
