@@ -1,0 +1,82 @@
+<script type="text/javascript" src="https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script>
+<%
+    # Center of map - Center of DMV area according to Google
+    lat = '38.889931'
+    lng = ' -77.009003'
+    clients = Client.all
+%>
+
+<div id="map_wrapper">
+  <div id="map"></div>
+</div>
+
+<script>
+  function initialize() {
+    var center = new google.maps.LatLng(<%=lat%>, <%=lng%>);
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: center,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var data = [
+      <% clients.each_with_index do |client, index| %>
+        <%
+            location = Geocoder.search(client.street_address)
+            if location && location[0]
+              latitude = location[0].latitude
+              longitude = location[0].longitude
+            end
+        %>
+        <% if index == clients.size - 1 %>
+         ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>]
+        <% else %>
+         ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>],
+        <% end %>
+       <% end %>
+    ];
+
+    console.log(data)
+    var infowindow = new google.maps.InfoWindow();
+
+    var markers = [];
+    for (var i = 0; i < data.length-1; i++) {
+      var latLng = new google.maps.LatLng(data[i][1],
+          data[i][2]);
+      var marker = new google.maps.Marker({
+        position: latLng
+      });
+      markers.push(marker);
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(data[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+    var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://googlemaps.github.io/js-marker-clusterer/images/m'});
+    /*
+    https://googlemaps.github.io/js-marker-clusterer/images/m1.png
+    https://googlemaps.github.io/js-marker-clusterer/images/m2.png
+    https://googlemaps.github.io/js-marker-clusterer/images/m3.png
+    https://googlemaps.github.io/js-marker-clusterer/images/m4.png
+    https://googlemaps.github.io/js-marker-clusterer/images/m5.png
+    ...
+    */
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<style>
+  #map_wrapper {
+    height: 600px;
+    margin: 20px 0px 0px 0px;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+</style>
