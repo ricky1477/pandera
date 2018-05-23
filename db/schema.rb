@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508040151) do
+ActiveRecord::Schema.define(version: 20180523234132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20180508040151) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.date     "dob"
     t.string   "city"
     t.string   "zipcode"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20180508040151) do
     t.string   "phone2"
     t.string   "sms_gateway2"
     t.boolean  "prospect"
+    t.decimal  "lat",            precision: 10, scale: 6
+    t.decimal  "lng",            precision: 10, scale: 6
   end
 
   create_table "estimates", force: :cascade do |t|
