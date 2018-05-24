@@ -7,11 +7,8 @@
   <h4><strong>Clients</strong></h4>
   <% @schedule.client_schedules.each do |cs| %>
     <%
-        location = Geocoder.search(cs.client.street_address)
-        if location && location[0]
-          lat = location[0].latitude
-          lng = location[0].longitude
-        end
+        lat = cs.client.lat
+        lng = cs.client.lng
     %>
     <b><%= cs.client.name %></b> </br>
     <%= cs.client.street_address %> </br>

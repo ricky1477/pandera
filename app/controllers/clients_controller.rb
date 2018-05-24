@@ -41,6 +41,11 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(client_params)
+    location = Geocoder.search(@client.street_address)
+    if location && location[0]
+      @client.lat = location[0].latitude
+      @client.lng = location[0].longitude
+    end
 
     respond_to do |format|
       if @client.save
@@ -68,6 +73,12 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
+    location = Geocoder.search(@client.street_address)
+    if location && location[0]
+      @client.lat = location[0].latitude
+      @client.lng = location[0].longitude
+    end
+
     respond_to do |format|
       if @client.update(client_params)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
@@ -124,7 +135,7 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:id, :name, :street_address, :city, :state, :zipcode, :email, :email2, :phone, :phone2, :dob, :sms_gateway, :sms_gateway2, :notes, :credit, :prospect)
+      params.require(:client).permit(:id, :name, :street_address, :city, :state, :zipcode, :email, :email2, :phone, :phone2, :dob, :sms_gateway, :sms_gateway2, :notes, :credit, :prospect, :lat, :lng)
     end
 
     def sort_column

@@ -23,11 +23,8 @@
     var data = [
       <% clients.each_with_index do |client, index| %>
         <%
-            location = Geocoder.search(client.street_address)
-            if location && location[0]
-              latitude = location[0].latitude
-              longitude = location[0].longitude
-            end
+            latitude = client.lat
+            longitude = client.lng
         %>
         <% if index == clients.size - 1 %>
          ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>]

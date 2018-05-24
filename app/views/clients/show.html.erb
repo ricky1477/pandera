@@ -74,16 +74,15 @@
   <%= @client.prospect %>
 </p>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<p>
+  <strong>Latitude:</strong>
+  <%= @client.lat %>
+</p>
 
-<%
-    location = Geocoder.search(@client.street_address)
-    if location && location[0]
-      lat = location[0].latitude
-      lng = location[0].longitude
-    end
-%>
+<p>
+  <strong>Longitude:</strong>
+  <%= @client.lng %>
+</p>
 
 <div id="map_wrapper">
   <div id="map"></div>
@@ -92,12 +91,12 @@
    <script type="text/javascript">
     $(function loadScript(){
      var locations = [
-         ['<%= link_to 'Directions', "http://maps.apple.com/?q=#{lat},#{lng}"%>', <%= lat %> , <%= lng %>]
+         ['<%= link_to 'Directions', "http://maps.apple.com/?q=#{@client.lat},#{@client.lng}"%>', <%= @client.lat %> , <%= @client.lng %>]
      ];
 
      var map = new google.maps.Map(document.getElementById('map'), {
    zoom: 20,
-   center: new google.maps.LatLng(<%= lat %>,<%= lng %>),
+   center: new google.maps.LatLng(<%= @client.lat %>,<%= @client.lng %>),
    mapTypeId: google.maps.MapTypeId.SATELLITE
  });
 
@@ -126,7 +125,7 @@
    <style>
    #map_wrapper {
      height: 355px;
-     margin: -300px 0px 0 210px;
+     margin: -360px 0px 0 210px;
    }
 
    #map {
@@ -139,3 +138,43 @@
        }
    }
    </style>
+
+   <h3>Services: </h3>
+   <div id="services">
+       <div class="table-responsive">
+           <table id="services_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
+             <thead>
+               <tr>
+                 <th>Client</th>
+                 <th>Date</th>
+                 <th>Description</th>
+                 <th>Price</th>
+                 <th>Maturity</th>
+                 <th>Invoice</th>
+                 <th>Paid</th>
+                 <th colspan="3"></th>
+               </tr>
+             </thead>
+
+             <tbody>
+               <% @client.services.each do |service| %>
+                 <tr>
+                   <td><%= link_to service.client.name, service.client %></td>
+                   <td><%= service.date %></td>
+                   <td><%= service.description %></td>
+                   <td><%= service.price %></td>
+                   <td><%= service.maturity %></td>
+                   <td><%= service.invoice.id if service.invoice %></td>
+                   <td><%= service.paid ? 'Yes' : 'No' %></td>
+                   <td><%= link_to 'Details', service %></td>
+                   <td><%= link_to 'Edit', edit_service_path(service) %></td>
+                   <td><%= link_to 'Delete', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                 </tr>
+               <% end %>
+             </tbody>
+           </table>
+       </div>
+   </div>
+
+   <%= link_to 'Edit', edit_client_path(@client) %> |
+   <%= link_to 'Back', clients_path %>
