@@ -27,7 +27,9 @@
             longitude = client.lng
         %>
         <% if index == clients.size - 1 %>
+         ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>],
          ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>]
+         /* Add last one twice due to API bug */
         <% else %>
          ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>],
         <% end %>
