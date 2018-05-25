@@ -1,0 +1,54 @@
+<div id="map_wrapper">
+  <div id="map"></div>
+</div>
+
+   <script type="text/javascript">
+    $(function loadScript(){
+     var locations = [
+         ['<%= link_to 'Directions', "http://maps.apple.com/?q=38.889931,-77.009003"%>', 38.889931 , -77.009003]
+     ];
+
+     var map = new google.maps.Map(document.getElementById('map'), {
+   zoom: 20,
+   center: new google.maps.LatLng(38.889931,-77.009003),
+   mapTypeId: google.maps.MapTypeId.SATELLITE
+ });
+
+     var infowindow = new google.maps.InfoWindow();
+
+     var marker, i;
+
+     for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+           map: map,
+           icon: greenPin
+         });
+
+       google.maps.event.addListener(marker, 'click', (function(marker, i) {
+         return function() {
+           infowindow.setContent(locations[i][0]);
+           infowindow.open(map, marker);
+         }
+       })(marker, i));
+     }
+   })
+
+   </script>
+
+   <style>
+   #map_wrapper {
+     height: 355px;
+     margin: -360px 0px 0 210px;
+   }
+
+   #map {
+       width: 100%;
+       height: 100%;
+   }
+   @media (max-width: 550px) {
+       #map_wrapper {
+         margin: 0px 0px 0px 0px;
+       }
+   }
+   </style>
