@@ -32,7 +32,4 @@ $(document).on('turbolinks:load', function() {
     $('.fields').append($(this).data('fields').replace(regexp, time));
     return event.preventDefault();
   });
-
-
-
 });
