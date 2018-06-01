@@ -4,6 +4,7 @@
   <title><%= 'Development | '  if Rails.env.development? %>Pandera - <%= ShippingAddress.where(is_default: true).first.name if ShippingAddress.where(is_default: true).first %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyBidFVvV0VcvEvoKjMUkmx6VziJaxKZhL4" type="text/javascript"></script>
+    <script type="text/javascript" src="https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script>
     <script>
     var greenPin = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker_green.png");
     </script>
