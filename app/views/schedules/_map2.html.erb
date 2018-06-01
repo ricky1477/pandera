@@ -1,54 +1,71 @@
+<%
+    # Center of map - Center of DMV area according to Google
+    lat = '38.889931'
+    lng = ' -77.009003'
+    clients = Client.all
+%>
+
 <div id="map_wrapper">
   <div id="map"></div>
 </div>
 
    <script type="text/javascript">
     $(function loadScript(){
-     var locations = [
-         ['<%= link_to 'Directions', "http://maps.apple.com/?q=38.889931,-77.009003"%>', 38.889931 , -77.009003]
+     var data = [
+       <% clients.each_with_index do |client, index| %>
+         <%
+             latitude = client.lat
+             longitude = client.lng
+         %>
+         <% if index == clients.size - 1 %>
+          ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>],
+          ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>]
+          /* Add last one twice due to API bug */
+         <% else %>
+          ['<%= client.name + ' | ' + client.street_address%>',<%=latitude if latitude%>,<%=longitude if longitude%>],
+         <% end %>
+        <% end %>
      ];
+     console.log(data)
+
 
      var map = new google.maps.Map(document.getElementById('map'), {
-   zoom: 20,
-   center: new google.maps.LatLng(38.889931,-77.009003),
-   mapTypeId: google.maps.MapTypeId.SATELLITE
- });
+       zoom: 8,
+       center: new google.maps.LatLng(<%=lat%>, <%=lng%>),
+       mapTypeId: google.maps.MapTypeId.ROADMAP
+     });
 
      var infowindow = new google.maps.InfoWindow();
 
-     var marker, i;
-
-     for (i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-           map: map,
-           icon: greenPin
-         });
+     var markers = [];
+     for (var i = 0; i < data.length-1; i++) {
+       var latLng = new google.maps.LatLng(data[i][1],
+           data[i][2]);
+       var marker = new google.maps.Marker({
+         position: latLng
+       });
+       markers.push(marker);
 
        google.maps.event.addListener(marker, 'click', (function(marker, i) {
          return function() {
-           infowindow.setContent(locations[i][0]);
+           infowindow.setContent(data[i][0]);
            infowindow.open(map, marker);
          }
        })(marker, i));
      }
+     var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://googlemaps.github.io/js-marker-clusterer/images/m'});
    })
 
    </script>
 
    <style>
-   #map_wrapper {
-     height: 355px;
-     margin: -360px 0px 0 210px;
-   }
+     #map_wrapper {
+       height: 600px;
+       margin: 20px 0px 0px 0px;
+     }
 
-   #map {
+     #map {
        width: 100%;
        height: 100%;
-   }
-   @media (max-width: 550px) {
-       #map_wrapper {
-         margin: 0px 0px 0px 0px;
-       }
-   }
+     }
    </style>
