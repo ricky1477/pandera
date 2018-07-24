@@ -18,7 +18,7 @@
           <tr>
             <td><%= estimate.description %></td>
             <td><%= estimate.price %></td>
-            <td><%= estimate.client_id %></td>
+            <td><%= link_to estimate.client.name, estimate.client %></td>
             <td><%= estimate.notes %></td>
             <td><%= link_to 'Details', estimate %></td>
             <td><%= link_to 'Agreement Form', estimate_path(estimate.id, :format => :pdf) %></td>
