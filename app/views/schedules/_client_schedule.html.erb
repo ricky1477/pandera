@@ -7,10 +7,10 @@
     <%= f.text_field :client_street_address, data: {autocomplete_source: Client.order(:name).map { |c| { :label => c.name+' | '+c.street_address, :value => c.street_address, :id => c.id} } }, class: 'client_schedule_input', style: 'width: 90%;'  %>
   </td>
   <td>
-    <%= f.text_field :time, style: 'width: 90%;', id: 'timepicker' %></td>
+    <%= f.select(:time, Service::TIME, {include_blank: true }, style: 'width: 90%;') %></td>
   </td>
   <td>
-    <%= f.select(:type, Service::DESCRIPTION, {include_blank: true }, style: 'width: 90%;') %></td>
+    <%= f.select(:service_type, Service::DESCRIPTION, {include_blank: true }, style: 'width: 90%;') %></td>
   </td>
   <td>
     <%= f.text_field :notes, style: 'width: 90%;' %></td>
