@@ -1,7 +1,7 @@
 <!-- /public is root folder of Rails project -->
 <link rel="stylesheet" href="/jquery-ui.css">
-<script src="/jquery.timepicker.min.js"></script>
-<link rel="stylesheet" href="/jquery.timepicker.min.css">
+<!--<script src="/jquery.timepicker.min.js"></script>
+<link rel="stylesheet" href="/jquery.timepicker.min.css">-->
 
 <%= form_for(@schedule) do |f| %>
   <div class="field">
@@ -40,9 +40,9 @@ $(function() {
   $("#schedule_date").datepicker({ dateFormat: 'dd/mm/yy' });
 });
 
-$(function() {
-  $("#timepicker").timepicker();
-});
+/*$(function() {
+  $(".timepicker").timepicker();
+});*/
 
  $( function() {
     $(".client_schedule_input").autocomplete({
@@ -56,5 +56,6 @@ function test() {
     $(".client_schedule_input").autocomplete({
       source: $(".client_schedule_input").data('autocomplete-source')
     });
+    //$(".timepicker").timepicker();
 }
 </script>
