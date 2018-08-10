@@ -13,7 +13,7 @@
     <b><%= cs.client.name %></b> </br>
     <%= cs.client.street_address %> </br>
     <%= cs.client.city %> </br>
-    <%= cs.time.strftime("%l:%M%p") %> </br>
+    <%= cs.time %> </br>
     <%= cs.service_type %> </br>
     <%= cs.notes %> </br>
     <%= link_to 'Directions', "http://maps.apple.com/?q=#{lat},#{lng}", style: 'color: #68b468;'%></br>
