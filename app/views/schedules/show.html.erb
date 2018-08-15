@@ -16,6 +16,7 @@
     <%= cs.time %> </br>
     <%= cs.service_type %> </br>
     <%= cs.notes %> </br>
+    <%= cs.done ? 'Completed' : 'Not complete' %> </br>
     <%= link_to 'Directions', "http://maps.apple.com/?q=#{lat},#{lng}", style: 'color: #68b468;'%></br>
     </br>
   <% end %>
