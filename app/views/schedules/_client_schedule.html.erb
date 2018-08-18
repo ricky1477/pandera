@@ -16,6 +16,7 @@
     <%= f.text_field :notes, style: 'width: 90%;' %></td>
   </td>
   <td>
-    <%= f.check_box :done, style: 'width: 90%;' %></td>
+    <%= f.check_box :done, style: 'width: 90%;', disabled: f.object.done %></td>
+    <%#= f.object.id %>
   </td>
 </tr>
