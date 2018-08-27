@@ -60,4 +60,16 @@ function test() {
     });
     //$(".timepicker").timepicker();
 }
+$(document).ready(function(){ /*code here*/
+   // Get Last service price on modal
+   $('.client_schedule_service_type').change(function() {
+     service = $("#service_description").val();
+     $.getJSON("last_service_price?id="+id.value+"&description="+service, function(data){
+       //$('#service_price').val(data);
+       //alert('');
+     });
+   });
+ });
+});
+
 </script>
