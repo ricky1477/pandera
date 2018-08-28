@@ -232,20 +232,7 @@
       <input value="<%= %>" type="hidden" name="service[client_id]" id="service_client_id">
   </span>
 	<label for="name">Description</label>
-		<select name="service[description]" id="service_description"><option value=""></option>
-			<option value="Aeration and Seeding">Aeration and Seeding</option>
-			<option value="Bi-weekly Cutting">Bi-weekly Cutting</option>
-			<option value="Clean Up">Clean Up</option>
-			<option value="Fall Clean-Up">Fall Clean-Up</option>
-			<option value="Fertilizer">Fertilizer</option>
-			<option value="Gutter Cleaning">Gutter Cleaning</option>
-			<option value="Mulching">Mulching</option>
-			<option value="Other">Other</option>
-		  <option value="Power Washing">Power Washing</option>
-			<option value="Snow Removal">Snow Removal</option>
-			<option value="Tree Cutting">Tree Cutting</option>
-			<option value="Trimming Bushes and Shrubs">Trimming Bushes and Shrubs</option>
-			<option value="Weekly Cutting">Weekly Cutting</option></select>
+  <%= select_tag('description', options_from_collection_for_select(ServiceType.all, 'description', 'description'), prompt: "") %>
 	</br>
   <span class="field">
     <label for="service_notes">Notes</label>

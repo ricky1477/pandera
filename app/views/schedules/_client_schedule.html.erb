@@ -10,7 +10,7 @@
     <%= f.select(:time, Service::TIME, {include_blank: true }, style: 'width: 90%;', onmousedown: "if(this.options.length>7){this.size=7;}",  onchange:'this.size=0;', onblur:"this.size=0;") %></td>
   </td>
   <td>
-    <%= f.select(:service_type, Service::DESCRIPTION, {include_blank: true }, style: 'width: 90%;', class: 'client_schedule_service_type') %></td>
+    <%= f.select(:service_type, ServiceType.all.pluck(:description), {include_blank: true }, style: 'width: 90%;', class: 'client_schedule_service_type') %></td>
   </td>
   <td>
     <%= f.text_field :notes, style: 'width: 90%;' %></td>
