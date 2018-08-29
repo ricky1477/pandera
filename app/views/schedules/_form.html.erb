@@ -1,4 +1,8 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- /public is root folder of Rails project -->
+<link rel="stylesheet" href="/jquery-ui.css">
+<!--<script src="/jquery.timepicker.min.js"></script>
+<link rel="stylesheet" href="/jquery.timepicker.min.css">-->
+
 <%= form_for(@schedule) do |f| %>
   <div class="field">
     <%= f.label :date %><br>
@@ -10,6 +14,11 @@
       <tr>
         <th>Delete?</th>
         <th>Client</th>
+        <th>Time</th>
+        <th>Service Type</th>
+        <th>Observation</th>
+        <th>Done?</th>
+        <th>Price</th>
       </tr>
     </thead>
     <tbody class='fields'>
@@ -33,6 +42,10 @@ $(function() {
   $("#schedule_date").datepicker({ dateFormat: 'dd/mm/yy' });
 });
 
+/*$(function() {
+  $(".timepicker").timepicker();
+});*/
+
  $( function() {
     $(".client_schedule_input").autocomplete({
       source: $(".client_schedule_input").data('autocomplete-source')
@@ -45,5 +58,18 @@ function test() {
     $(".client_schedule_input").autocomplete({
       source: $(".client_schedule_input").data('autocomplete-source')
     });
+    //$(".timepicker").timepicker();
 }
+/*$(document).ready(function(){
+   // Get Last service price on modal
+   $('.client_schedule_service_type').change(function() {
+     service = $("#service_description").val();
+     $.getJSON("last_service_price?id="+id.value+"&description="+service, function(data){
+       //$('#service_price').val(data);
+       //alert('');
+     });
+   });
+ });
+});*/
+
 </script>
