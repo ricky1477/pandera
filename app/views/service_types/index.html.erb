@@ -1,0 +1,29 @@
+<h1 style="font-family: verdana, arial, helvetica, sans-serif;" class="page_title">Service Types</h1>
+
+<div id="service_types">
+  <div class="table-responsive">
+    <table id="service_types_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @service_types.each do |service_type| %>
+          <tr>
+            <td><%= service_type.description %></td>
+            <td><%= link_to 'Details', service_type %></td>
+            <td><%= link_to 'Edit', edit_service_type_path(service_type) %></td>
+            <td><%= link_to 'Delete', service_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'New Service type', new_service_type_path %>

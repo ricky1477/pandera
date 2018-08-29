@@ -1,3 +1,4 @@
+
 <h2 style="margin-right:auto; margin-left:auto; margin-bottom: 25px; text-align : center;">Edit <%= resource_name.to_s.humanize %></h2>
 
 <div style="margin-right:auto; margin-left:auto;text-align : center;">
@@ -10,7 +11,6 @@
       <%= f.email_field :email, autofocus: true, class: "form-control", style: "margin: 0 auto;width:20%;" %>
     </div>
   </div>
-
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -49,4 +49,7 @@
 <p>Unhappy? <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-warning" %></p> -->
 
 <%= link_to "Back", :back %>
+<hr/>
+
+<%= link_to 'Edit Service Types', service_types_path %>
 </div>
