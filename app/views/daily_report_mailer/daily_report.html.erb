@@ -1,0 +1,55 @@
+Hello <%= ShippingAddress.where(is_default: true).first.name %>! <br/><br/>
+
+<% clients = Client.where(created_at: (Time.now - 24.hours)..Time.now) %>
+<%= "#{pluralize(clients.length, 'client')} created." %> <br/><br/>
+
+<% clients.each do |client| %>
+  <%= 'Name: ' %>
+  <%= link_to client.name, (root_url(:protocol => 'http').chomp('/')+client_path(client)) %><br/>
+  <%= 'Address: ' + client.street_address %><br/>
+  <%= 'Phone: ' + client.curated_phone %><br/>
+  <%= 'Email: ' + client.email + "\n" %><br/>
+  <%#= link_to client.name, (root_url(:protocol => 'http').chomp('/')+client_path(client)) %><br/>
+<% end %>
+
+<% services = Service.where(created_at: (Time.now - 24.hours)..Time.now) %>
+<%= "#{pluralize(services.length, 'service')} created." %><br/><br/>
+
+<% services.each do |service| %>
+  <%= 'Service ID: ' %>
+  <%= link_to service.id, (root_url(:protocol => 'http').chomp('/')+service_path(service)) %><br/>
+  <%= 'Client: ' + service.client.name %><br/>
+  <%= 'Date: ' + service.date.to_s %><br/>
+  <%= 'Description: ' + service.description %><br/>
+  <%= 'Notes: ' + service.notes %><br/>
+  <%= 'Price: ' + service.price.to_s %><br/>
+  <%= 'Invoice: ' + service.invoice.id.to_s + "\n" if service.invoice %><br/>
+<% end %>
+
+<% invoices = Invoice.where(created_at: (Time.now - 24.hours)..Time.now) %>
+<%= "#{pluralize(invoices.length, 'invoice')} created." %><br/><br/>
+
+<% invoices.each do |invoice| %>
+  <%= 'Invoice ID: ' %>
+  <%= link_to invoice.id, (root_url(:protocol => 'http').chomp('/')+invoice_path(invoice)) %><br/>
+  <%= 'Client: ' + invoice.client.name %><br/>
+  <%= 'Description: ' + invoice.description %><br/>
+  <%= 'Total: ' + invoice.total.to_s %><br/>
+  <%= 'Paid: ' + (invoice.paid ? 'Yes' : 'No') + "\n" %><br/>
+<% end %>
+
+<% estimates = Estimate.where(created_at: (Time.now - 24.hours)..Time.now) %>
+<%= "#{pluralize(estimates.length, 'estimate')} created." %><br/><br/>
+
+<% estimates.each do |estimate| %>
+  <%= 'Estimate ID: ' %>
+  <%= link_to estimate.id, (root_url(:protocol => 'http').chomp('/')+estimate_path(estimate)) %><br/>
+  <%= 'Description: ' + estimate.description %><br/>
+  <%= 'Price: ' + estimate.price.to_s %><br/>
+  <%= 'Notes: ' + estimate.notes + "\n" %><br/>
+<% end %>
+
+Thanks, <br/><br/>
+
+Pandera Development Team
+<%#= heroku run rake daily_report -a pandera %>

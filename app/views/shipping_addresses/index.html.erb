@@ -27,9 +27,9 @@
             <td><%= shipping_address.phone %></td>
             <td><%= shipping_address.email %></td>
             <td><%= shipping_address.is_default ? 'Yes' : 'No'  %></td>
-            <td><%= link_to 'Show', shipping_address %></td>
+            <td><%= link_to 'Details', shipping_address %></td>
             <td><%= link_to 'Edit', edit_shipping_address_path(shipping_address) %></td>
-            <td><%= link_to 'Destroy', shipping_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Delete', shipping_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
