@@ -232,7 +232,7 @@
       <input value="<%= %>" type="hidden" name="service[client_id]" id="service_client_id">
   </span>
 	<label for="name">Description</label>
-  <%= select_tag('description', options_from_collection_for_select(ServiceType.all, 'description', 'description'), prompt: "") %>
+  <%= select_tag('service_description', options_from_collection_for_select(ServiceType.all, 'description', 'description'), prompt: "") %>
 	</br>
   <span class="field">
     <label for="service_notes">Notes</label>
