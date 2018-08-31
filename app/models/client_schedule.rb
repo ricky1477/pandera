@@ -4,6 +4,7 @@ class ClientSchedule < ActiveRecord::Base
     belongs_to :service
     before_create :set_client_id
     after_save :create_new_services
+    validates_presence_of :price, :if => :done?
 
     def create_new_services
       if self.done && self.done_changed?
