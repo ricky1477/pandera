@@ -23,17 +23,8 @@
     </div>
 <% end %>
 
-<%= Rails.logger.info '-------APPLCIATION------' %>
-<%= Rails.logger.info flash.count %>
-<%= Rails.logger.info flash %>
-
-
 <div class="container">
     <% flash.each do |name, msg| %>
-    <%= name %>
-    <%= msg %>
-    <%= Rails.logger.info '-------Test------' %>
-
 
       <% if msg.is_a?(String) %>
         <div class="alert alert-<%= name == 'notice' ? "success" : "danger" %> alert-dismissable">

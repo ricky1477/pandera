@@ -4,12 +4,12 @@ class ClientSchedule < ActiveRecord::Base
     belongs_to :service
     before_create :set_client_id
     after_save :create_new_services
-    validates_presence_of :price, :if => :done?
+    validates_presence_of :price, :if => :done?, :message => "should be present to be marked as done."
 
     def create_new_services
       if self.done && self.done_changed?
         s = Service.create(date: self.schedule.date, client_id: self.client_id, notes: self.notes, description: self.service_type)
-        ## TODO Add service price
+        # TODO Add service price
         self.update_columns(service_id: s.id) # Doesn't call callback
       end
     end

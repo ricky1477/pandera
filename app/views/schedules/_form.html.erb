@@ -4,6 +4,18 @@
 <link rel="stylesheet" href="/jquery.timepicker.min.css">-->
 
 <%= form_for(@schedule) do |f| %>
+<% if @schedule.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+    <ul>
+    <% @schedule.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
   <div class="field">
     <%= f.label :date %><br>
     <%= f.text_field :date %>
