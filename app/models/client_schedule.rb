@@ -20,5 +20,4 @@ class ClientSchedule < ActiveRecord::Base
       self.client_street_address = client_address
     end
 
-
 end

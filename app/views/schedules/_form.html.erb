@@ -47,6 +47,7 @@
 <% end %>
 
 <%= render 'map2' %>
+<br/>
 
 <script>
 
@@ -72,16 +73,28 @@ function test() {
     });
     //$(".timepicker").timepicker();
 }
-/*$(document).ready(function(){
-   // Get Last service price on modal
-   $('.client_schedule_service_type').change(function() {
-     service = $("#service_description").val();
-     $.getJSON("last_service_price?id="+id.value+"&description="+service, function(data){
-       //$('#service_price').val(data);
-       //alert('');
-     });
-   });
- });
-});*/
+
+$('.client_schedule_service_type').change(function() {
+  // Need service text and client_id
+  service = this.value;
+  console.log(service);
+  $( "td" ).css( "background", "" );
+  $(this).css( "background", "#f99" );
+  $(this).closest("td").css( "background", "#f90" );
+  $(this).closest("td").prev().css( "background", "yellow" );
+  $(this).closest("td").prev().prev().css( "background", "blue" );
+  $(this).closest("td").prev().prev().find('input').css( "background", "green");
+  name_address = $(this).closest("td").prev().prev().find('input').val();
+  console.log(name_address);
+  // TODO parse name_address to get client_id and then get /last_service_price
+
+
+  id = 0;
+  /*
+  $.getJSON("last_service_price?id="+id.value+"&description="+service, function(data){
+    $('#service_price').val(data);
+    console.log(data)
+  });*/
+});
 
 </script>
