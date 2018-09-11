@@ -127,6 +127,21 @@ class ClientsController < ApplicationController
     end
   end
 
+  def last_service_price_by_name_address
+    client_name = params[:name_address][0..params[:name_address].index(' | ')-1]
+    client_address = params[:name_address][params[:name_address].index(' | ')+3..params[:name_address].length-1]
+    @client = Client.find_by_name_and_street_address(client_name, client_address)
+    description = params[:description]
+    last_price = @client.services.where(description: description).last.price if @client.services.where(description: description).last
+    Rails.logger.info '----------'
+    Rails.logger.info @client.inspect
+    Rails.logger.info description
+    Rails.logger.info last_price
+    respond_to do |format|
+      format.json { render :json => last_price }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client

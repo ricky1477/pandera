@@ -87,14 +87,22 @@ $('.client_schedule_service_type').change(function() {
   name_address = $(this).closest("td").prev().prev().find('input').val();
   console.log(name_address);
   // TODO parse name_address to get client_id and then get /last_service_price
-
-
   id = 0;
-  /*
-  $.getJSON("last_service_price?id="+id.value+"&description="+service, function(data){
-    $('#service_price').val(data);
+  url = "/last_service_price_by_name_address?name_address="+name_address+"&description="+service;
+  console.log(url);
+  console.log(encodeURIComponent(url));
+  console.log("/last_service_price_by_name_address?name_address="+encodeURIComponent(name_address)+"&description="+encodeURIComponent(service));
+  encoded_url = "/last_service_price_by_name_address?name_address="+encodeURIComponent(name_address)+"&description="+encodeURIComponent(service)
+
+  //http://0.0.0.0:1111/last_service_price?id=13&description=Mulching
+  //http://0.0.0.0:1111/last_service_price_by_name_address?name_address=Test 404 (Not Found)
+
+  $.getJSON(encoded_url, function(data){
+  //$.getJSON("/last_service_price_by_name_address?name_address="+name_address+"&description="+service, function(data){
+    //$('#service_price').val(data);
     console.log(data)
-  });*/
+    // TODO take this price and populate price textbox.
+  });
 });
 
 </script>
