@@ -55,10 +55,6 @@ $(function() {
   $("#schedule_date").datepicker({ dateFormat: 'dd/mm/yy' });
 });
 
-/*$(function() {
-  $(".timepicker").timepicker();
-});*/
-
  $( function() {
     $(".client_schedule_input").autocomplete({
       source: $(".client_schedule_input").data('autocomplete-source')
@@ -71,37 +67,29 @@ function test() {
     $(".client_schedule_input").autocomplete({
       source: $(".client_schedule_input").data('autocomplete-source')
     });
-    //$(".timepicker").timepicker();
 }
 
 $('.client_schedule_service_type').change(function() {
   // Need service text and client_id
   service = this.value;
   console.log(service);
-  $( "td" ).css( "background", "" );
+  /*$( "td" ).css( "background", "" );
   $(this).css( "background", "#f99" );
   $(this).closest("td").css( "background", "#f90" );
   $(this).closest("td").prev().css( "background", "yellow" );
   $(this).closest("td").prev().prev().css( "background", "blue" );
-  $(this).closest("td").prev().prev().find('input').css( "background", "green");
+  $(this).closest("td").prev().prev().find('input').css( "background", "green");*/
+  temp = $(this)
   name_address = $(this).closest("td").prev().prev().find('input').val();
   console.log(name_address);
-  // TODO parse name_address to get client_id and then get /last_service_price
   id = 0;
-  url = "/last_service_price_by_name_address?name_address="+name_address+"&description="+service;
-  console.log(url);
-  console.log(encodeURIComponent(url));
-  console.log("/last_service_price_by_name_address?name_address="+encodeURIComponent(name_address)+"&description="+encodeURIComponent(service));
-  encoded_url = "/last_service_price_by_name_address?name_address="+encodeURIComponent(name_address)+"&description="+encodeURIComponent(service)
-
-  //http://0.0.0.0:1111/last_service_price?id=13&description=Mulching
-  //http://0.0.0.0:1111/last_service_price_by_name_address?name_address=Test 404 (Not Found)
-
+  url = "/last_service_prices_by_name_address?name_address="+name_address+"&description="+service;
+  encoded_url = "/last_service_prices_by_name_address?name_address="+encodeURIComponent(name_address)+"&description="+encodeURIComponent(service)
   $.getJSON(encoded_url, function(data){
-  //$.getJSON("/last_service_price_by_name_address?name_address="+name_address+"&description="+service, function(data){
-    //$('#service_price').val(data);
     console.log(data)
-    // TODO take this price and populate price textbox.
+    temp.css( "background", "#000" );
+    temp.closest("td").next().next().next().find('input').val('Test')
+    // TODO take this price and populate price textbox. Also, have tooltip somewhere that displays UNIQ others
   });
 });
 
