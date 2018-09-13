@@ -73,12 +73,6 @@ $('.client_schedule_service_type').change(function() {
   // Need service text and client_id
   service = this.value;
   console.log(service);
-  /*$( "td" ).css( "background", "" );
-  $(this).css( "background", "#f99" );
-  $(this).closest("td").css( "background", "#f90" );
-  $(this).closest("td").prev().css( "background", "yellow" );
-  $(this).closest("td").prev().prev().css( "background", "blue" );
-  $(this).closest("td").prev().prev().find('input').css( "background", "green");*/
   temp = $(this)
   name_address = $(this).closest("td").prev().prev().find('input').val();
   console.log(name_address);
@@ -87,9 +81,12 @@ $('.client_schedule_service_type').change(function() {
   encoded_url = "/last_service_prices_by_name_address?name_address="+encodeURIComponent(name_address)+"&description="+encodeURIComponent(service)
   $.getJSON(encoded_url, function(data){
     console.log(data)
-    temp.css( "background", "#000" );
-    temp.closest("td").next().next().next().find('input').val('Test')
-    // TODO take this price and populate price textbox. Also, have tooltip somewhere that displays UNIQ others
+    if (data && data.length > 0) {
+      price = data[0]
+      temp.closest("td").next().next().next().find('input').val(price);
+    } else {
+      temp.closest("td").next().next().next().find('input').val('');
+    }
   });
 });
 
