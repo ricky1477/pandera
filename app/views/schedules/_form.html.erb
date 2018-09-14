@@ -84,6 +84,9 @@ $('.client_schedule_service_type').change(function() {
     if (data && data.length > 0) {
       price = data[0]
       temp.closest("td").next().next().next().find('input').val(price);
+      if (data.length > 1) {
+        alert("Past prices used: \n"+ data.join("\n"));
+      }
     } else {
       temp.closest("td").next().next().next().find('input').val('');
     }
