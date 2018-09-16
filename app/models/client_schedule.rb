@@ -17,7 +17,7 @@ class ClientSchedule < ActiveRecord::Base
       client_name = self.client_street_address[0..self.client_street_address.index(' | ')-1]
       client_address = self.client_street_address[self.client_street_address.index(' | ')+3..self.client_street_address.length-1]
       self.client_id = Client.find_by_name(client_name).id
-      self.client_street_address = client_address
+      #self.client_street_address = client_address
     end
 
 end
