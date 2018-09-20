@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 
 <!--<h1 style="font-size: 36px;font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= t('clients') %></h1> -->
-<h1 style="font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= t('clients') %></h1>
+<h3 style="font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= t('clients') %></h3>
 <%= form_tag clients_path, :method => 'get', :id => "clients_search", :style => "margin: -36px 0 0 0;" do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
@@ -49,10 +49,12 @@
 	</div>
 </div>
 
+<span style="font-size: 14px;">
 <%= link_to 'New Client', new_client_path %> |
 <%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
+</span>
 <!--<p style="text-align: right;margin-top:-19px;"> -->
-<span>
+<span style="font-size: 14px;">
   Download:
   <%= link_to "CSV", clients_path(format: "csv") %>
   <!--| <%#= link_to "Excel", clients_path(format: "xls") %> -->

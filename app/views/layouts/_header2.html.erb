@@ -5,7 +5,7 @@
   <div class="collapse navbar-collapse" id="navbarToggler">
     <b> <%= link_to image_tag("https://pandera.ml/images/pandera_app/pandera_logo.png", :alt => "Pandera Logo"), root_path %> </b>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item clients active"><%= link_to(t('clients'), clients_path, class: "nav-link") %></li>
+      <li class="nav-item clients"><%= link_to(t('clients'), clients_path, class: "nav-link") %></li>
       <li class="nav-item prospects"><%= link_to(t('prospects'), prospects_path, class: "nav-link") %></li>
       <li class="nav-item invoices"><%= link_to(t('invoices'), invoices_path, class: "nav-link") %></li>
       <li class="nav-item estimates"><%= link_to(t('estimates'), estimates_path, class: "nav-link") %></li>
@@ -52,6 +52,7 @@
 					$('#service_price').val(data);
 				});
 			});
+
       if (window.location.pathname.indexOf("/services") >= 0) {
         //$('a').filter(function(index) { return $(this).text() === "Services"; }).css("background-color","#fff");
       }
@@ -92,6 +93,14 @@
       }
       else if (window.location.pathname.indexOf("/admins/edit") >= 0) {
         $( '.settings' ).addClass( "active" );
+        $( '.clients' ).removeClass( "active" );
+        $( '.prospects' ).removeClass( "active" );
+        $( '.schedule' ).removeClass( "active" );
+        $( '.estimates' ).removeClass( "active" );
+        $( '.invoices' ).removeClass( "active" );
+      }
+      else if (window.location.pathname.indexOf("/") >= 0) {
+        $( '.settings' ).removeClass( "active" );
         $( '.clients' ).removeClass( "active" );
         $( '.prospects' ).removeClass( "active" );
         $( '.schedule' ).removeClass( "active" );

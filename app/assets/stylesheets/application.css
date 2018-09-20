@@ -14,8 +14,8 @@
  *= require_self
  */
 	.page_title{
-		font-size: 36px;
-	    margin-bottom: 15px;
+		font-size: 30px;
+	  margin-bottom: 15px;
 	}
 
 @media only screen and (max-width: 525px) {
@@ -71,5 +71,6 @@
     margin-left: -1px;
 }
 
-
-
+.jumbotron {
+    padding: 110px 60px !important;
+}
