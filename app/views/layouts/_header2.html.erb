@@ -45,6 +45,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
     $(document).ready(function(){ /*code here*/
+
       // Get Last service price on modal
 			$('#service_description').change(function() {
 				service = $("#service_description").val();
@@ -224,24 +225,24 @@
     <fieldset>
       <input type="hidden" name="id" id="id" value="" class="text ui-widget-content ui-corner-all">
       <label for="name">Name</label>
-      <input type="text" name="name" id="name" value="" disabled class="text ui-widget-content ui-corner-all">
+      <input type="text" name="name" id="name" value="" disabled class="text ui-widget-content ui-corner-all" style="width: 69%">
 
 	<span class="field">
       <input value="<%= %>" type="hidden" name="service[client_id]" id="service_client_id">
   </span>
 	<label for="name">Description</label>
-  <%= select_tag('service_description', options_from_collection_for_select(ServiceType.all, 'description', 'description'), prompt: "") %>
+  <%= select_tag('service_description', options_from_collection_for_select(ServiceType.all, 'description', 'description'), prompt: '', class: 'custom-select',style: "width: 69%") %>
 	</br>
   <span class="field">
     <label for="service_notes">Notes</label>
-      <textarea name="service[notes]" id="service_notes"></textarea>
+      <textarea name="service[notes]" id="service_notes" style="width: 69%"></textarea>
   </span>
   <span class="field">
     <label for="service_price">Price</label>
-    <input type="text" name="service[price]" id="service_price">
+    <input type="text" name="service[price]" id="service_price" style="width: 69%">
   </span>
 	<label for="name">Quantity</label>
-  <select name="service[quantity]" id="service_quantity"><option value="1">1</option>
+  <select name="service[quantity]" id="service_quantity" class="custom-select" style="width: 69%"><option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>

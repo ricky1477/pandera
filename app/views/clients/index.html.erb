@@ -16,7 +16,7 @@
 		<table id="clients_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
 		  <thead>
 			<tr>
-			  <th>Name</th>
+			  <th style="font-size=13px; !important">Name</th>
 			  <th>Address</th>
 			  <th>Email</th>
 			  <th>Phone</th>
@@ -49,12 +49,12 @@
 	</div>
 </div>
 
-<span style="font-size: 14px;">
-<%= link_to 'New Client', new_client_path %> |
-<%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
+<span class="page_footer">
+  <%= link_to 'New Client', new_client_path %> |
+  <%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
 </span>
 <!--<p style="text-align: right;margin-top:-19px;"> -->
-<span style="font-size: 14px;">
+<span class="page_footer">
   Download:
   <%= link_to "CSV", clients_path(format: "csv") %>
   <!--| <%#= link_to "Excel", clients_path(format: "xls") %> -->

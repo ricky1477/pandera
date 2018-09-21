@@ -140,18 +140,18 @@
    </style>
 
    <h3>Services: </h3>
-   <div id="services">
-       <div class="table-responsive">
+   <div id="services" class="card">
+       <div class="table-responsive card-body">
            <table id="services_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
              <thead>
                <tr>
-                 <th>Client</th>
-                 <th>Date</th>
-                 <th>Description</th>
-                 <th>Price</th>
-                 <th>Maturity</th>
-                 <th>Invoice</th>
-                 <th>Paid</th>
+                 <th style="width: 35%;">Client</th>
+                 <th style="width: 15%;">Date</th>
+                 <th style="width: 15%;">Description</th>
+                 <th style="width: 5%;">Price</th>
+                 <th style="width: 15%;">Maturity</th>
+                 <th style="width: 10%;">Invoice</th>
+                 <th style="width: 5%;">Paid</th>
                  <th colspan="3"></th>
                </tr>
              </thead>
@@ -176,5 +176,7 @@
        </div>
    </div>
 
-   <%= link_to 'Edit', edit_client_path(@client) %> |
-   <%= link_to 'Back', clients_path %>
+   <span class="page_footer">
+     <%= link_to 'Edit', edit_client_path(@client) %> |
+     <%= link_to 'Back', clients_path %>
+   </span> </br></br></br>
