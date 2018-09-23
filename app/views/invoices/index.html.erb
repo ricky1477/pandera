@@ -10,18 +10,18 @@
   </p>
 <% end %>
 
-<div id="invoices">
-    <div class="table-responsive">
+<div id="invoices" class="card">
+    <div class="table-responsive card-body">
       <table id="invoices_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
           <tr>
-            <th>Client</th>
-            <th>Invoice ID</th>
-            <th>Maturity</th>
-            <th>Description</th>
-            <th>Total</th>
-            <th>Paid</th>
-            <th>Check Number</th>
+            <th style="width: 15%;">Client</th>
+            <th style="width: 15%;">Invoice ID</th>
+            <th style="width: 15%;">Maturity</th>
+            <th style="width: 15%;">Description</th>
+            <th style="width: 15%;">Total</th>
+            <th style="width: 10%;">Paid</th>
+            <th style="width: 15%;">Check Number</th>
             <th colspan="5">Actions</th>
           </tr>
         </thead>
@@ -52,27 +52,32 @@
       </table>
     </div>
 </div>
-<% company_receivables = Invoice.where("paid IS NOT TRUE").pluck(:total) %>
-<b>Receivables:
-<% if company_receivables.length<=0 %>
-  <%= '$0' %>
-<% else %>
- <%= '$' %><%= company_receivables.inject(0){|sum,x| sum + x } %></b>
-<% end %>
-<br>
-<b>Services without invoice: <%= Service.where("paid IS NOT TRUE").where(invoice_id: nil).count %>
-<br>
-<%= will_paginate @invoices %>
-<br/>
 
-<%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
-<%= link_to 'Print all invoices', show_all_path(:format => :pdf) %> |
-<!--<p style="text-align: right;margin-top:-23px;"> -->
-<span>
+<span  class="page_footer">
+  <%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
+  <%= link_to 'Print all invoices', show_all_path(:format => :pdf) %> |
+</span>
+<span  class="page_footer">
   Download:
   <%= link_to "CSV", invoices_path(format: "csv") %>
 </span>
-<br/>
+<br/><br/>
+
+<span class="page_footer">
+  <% company_receivables = Invoice.where("paid IS NOT TRUE").pluck(:total) %>
+  <b>Receivables:
+  <% if company_receivables.length<=0 %>
+    <%= '$0' %>
+  <% else %>
+   <%= '$' %><%= company_receivables.inject(0){|sum,x| sum + x } %></b>
+  <% end %>
+  <br>
+  <b>Services without invoice: <%= Service.where("paid IS NOT TRUE").where(invoice_id: nil).count %>
+  <br>
+  <%= will_paginate @invoices %>
+  <br/>
+</span>
+
 <br/>
 <br/>
 
