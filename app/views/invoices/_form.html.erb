@@ -20,7 +20,9 @@
   </span>
   <div class="field">
     <%= f.label :maturity %><br>
-    <%= f.date_select :maturity, class: "form-control", style: "width: 25%" %>
+    <%#= f.date_select :maturity, class: "form-control", style: "width: 25%" %>
+    <%= f.date_select :maturity, {:order => [:month, :day, :year], :start_year => Time.now.year - 80}, {:class => "custom-select mini", style: "width: 10%"} %>
+
   </div>
   <div class="field">
     <%= f.label :description %><br>
@@ -35,6 +37,6 @@
     <%= f.text_field :check_number, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="actions">
-    <%= f.submit class: "btn btn-success" %>
+    <%= f.submit class: "btn btn-outline-success my-2 my-sm-0" %>
   </div>
 <% end %>
