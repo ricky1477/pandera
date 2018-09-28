@@ -2,38 +2,44 @@
   <h3><strong>Schedule for </strong><%= @schedule.date.strftime("%A, %m/%d/%Y") %></h3>
 </p>
 
-<table class='table table-striped table-bordered table-hover table-condensed table-responsive'>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Time</th>
-      <th>Service Type</th>
-      <th>Observation</th>
-      <th>Done?</th>
-      <th>Directions</th>
-    </tr>
-  </thead>
-  <tbody class='fields'>
-    <% @schedule.client_schedules.each do |cs| %>
-     <tr>
-       <%
-           lat = cs.client.lat
-           lng = cs.client.lng
-       %>
-       <td><b><%= link_to cs.client.name, cs.client %></b></td>
-       <td><%= cs.client.street_address %>
-       <%= cs.client.city %> </td>
-       <td><%= cs.time %></td>
-       <td><%= cs.service_type %></td>
-       <td><%= cs.notes %> </td>
-       <td><%= cs.done ? 'Yes' : 'No' %></td>
-       <td><%= link_to 'Click Here', "http://maps.apple.com/?q=#{lat},#{lng}", style: 'color: #68b468;'%></br></td>
-     </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="schedules" class="card">
+  <div class="table-responsive card-body">
+   <table id="schedules_table" class='card-body table table-striped table-bordered table-hover table-condensed table-responsive'>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Name</th>
+        <th style="width: 30%;">Address</th>
+        <th style="width: 5%;">Time</th>
+        <th style="width: 20%;">Service Type</th>
+        <th style="width: 15%;">Observation</th>
+        <th style="width: 5%;">Done?</th>
+        <th style="width: 20%;">Directions</th>
+      </tr>
+    </thead>
+    <tbody class='fields'>
+      <% @schedule.client_schedules.each do |cs| %>
+       <tr>
+         <%
+             lat = cs.client.lat
+             lng = cs.client.lng
+         %>
+         <td><b><%= link_to cs.client.name, cs.client %></b></td>
+         <td><%= cs.client.street_address %>
+         <%= cs.client.city %> </td>
+         <td><%= cs.time %></td>
+         <td><%= cs.service_type %></td>
+         <td><%= cs.notes %> </td>
+         <td><%= cs.done ? 'Yes' : 'No' %></td>
+         <td><%= link_to 'Click Here', "http://maps.apple.com/?q=#{lat},#{lng}", style: 'color: #68b468;'%></br></td>
+       </tr>
+      <% end %>
+    </tbody>
+   </table>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
-<%= link_to 'Back', schedules_path %>
-</br></br></br>
+<span class="page_footer">
+  <%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+  <%= link_to 'Back', schedules_path %>
+  </br></br></br>
+</span>
