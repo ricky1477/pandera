@@ -1,7 +1,7 @@
-<h1><%= t('listing_shipping_addresses') %></h1>
+<h3 style="font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= 'Shipping Addresses' %></h3>
 
-<div class="table-responsive">
-  <table id="shipping_addresses_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
+<div class="table-responsive card">
+  <table id="shipping_addresses_table" class="card-body table table-striped table-bordered table-hover table-condensed table-responsive">
       <thead>
         <tr>
           <th>Name</th>
@@ -38,4 +38,6 @@
 
 <br>
 
-<%= link_to 'New Shipping address', new_shipping_address_path %>
+<span class="page_footer">
+  <%= link_to 'New Shipping address', new_shipping_address_path %>
+</span>

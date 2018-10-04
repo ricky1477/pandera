@@ -38,7 +38,7 @@
   <%= @shipping_address.is_default ? 'Yes' : 'No'  %>
 </p>
 
-
-
-<%= link_to 'Edit', edit_shipping_address_path(@shipping_address) %> |
-<%= link_to 'Back', shipping_addresses_path %>
+<span class="page_footer">
+  <%= link_to 'Edit', edit_shipping_address_path(@shipping_address) %> |
+  <%= link_to 'Back', shipping_addresses_path %>
+</span>
