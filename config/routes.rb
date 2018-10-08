@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'invoices_show_all' => 'invoices#show_all', as: 'show_all'
     get 'create_monthly_invoices' => 'clients#create_monthly_invoices'
     get 'last_service_price' => 'clients#last_service_price'
+    get 'last_service_prices_by_name_address' => 'clients#last_service_prices_by_name_address'
     resources :clients
     resources :services
     post 'invoices/payment_reminder'

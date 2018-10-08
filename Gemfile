@@ -65,6 +65,8 @@ group :development, :test do
     # RSpec
     gem 'rspec-rails'
     gem 'factory_girl_rails'
+    gem "better_errors"
+    gem "binding_of_caller"
 end
 
 group :test do
@@ -85,4 +87,3 @@ end
 group :production do
   gem 'rails_12factor', group: :production
 end
-

@@ -13,5 +13,7 @@
   <%= @estimate.notes %>
 </p>
 
-<%= link_to 'Edit', edit_estimate_path(@estimate) %> |
-<%= link_to 'Back', estimates_path %>
+<span class="page_footer">
+  <%= link_to 'Edit', edit_estimate_path(@estimate) %> |
+  <%= link_to 'Back', estimates_path %>
+</span>

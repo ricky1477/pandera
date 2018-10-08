@@ -1,15 +1,25 @@
     <h2> <p class="intro"><%= t('intro') %> </p></h2>
 
-    <select id="dynamic_select">
+    <!--<select id="dynamic_select">
       <option value="" selected><%= t('pick_language') %></option>
       <option value="en"><%= t('english') %></option>
       <option value="pt"><%= t('portuguese') %></option>
-    </select>
+    </select>-->
+
+    <div class="dropdown" style='margin-left: 60px;' id="dynamic_select">
+      <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= t('pick_language') %>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href=".?locale=en"><%= t('english') %></a>
+        <a class="dropdown-item" href=".?locale=pt"><%= t('portuguese') %></a>
+      </div>
+    </div>
 
 
 
 <script>
-    $(function(){
+    /*$(function(){
       // bind change event to select
       $('#dynamic_select').on('change', function () {
           var locale = $(this).val(); // get selected value
@@ -19,5 +29,5 @@
           }
           return false;
       });
-    });
+    });*/
 </script>

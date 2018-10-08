@@ -6,7 +6,7 @@ class Invoice < ActiveRecord::Base
       before_destroy :unlink_services_to_invoice
       belongs_to :client
       validates :client_id, presence: true
-      has_many :services
+      has_many :services, dependent: :destroy
 
       def compute_invoice_num
           self.invoice_number = (Invoice.all.length <= 0) ? ((1).to_s + Time.now.year.to_s ).to_i : ( (Invoice.last.id + 1).to_s + Time.now.year.to_s ).to_i

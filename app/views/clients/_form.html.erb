@@ -44,8 +44,8 @@
     <%= f.text_field :phone, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :sms_gateway, 'Carrier' %><br>
-    <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), class: 'sms_gateway form-control', style: "width: 25%" %>
+  <%= f.label :sms_gateway, 'Carrier' %><br>
+  <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), {}, {class: 'sms_gateway custom-select', style: "width: 30%"} %>
   </div>
   <div class="field">
     <%= f.label :phone2 %><br>
@@ -53,7 +53,7 @@
   </div>
   <div class="field">
     <%= f.label :sms_gateway2, 'Carrier2' %><br>
-    <%= f.select :sms_gateway2, options_for_select(Client::CARRIERS, @client.sms_gateway), class: 'sms_gateway form-control', style: "width: 25%" %>
+    <%= f.select :sms_gateway2, options_for_select(Client::CARRIERS, @client.sms_gateway2), {}, {class: 'sms_gateway2 custom-select', style: "width: 30%"} %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
@@ -65,13 +65,13 @@
   </div>
   <div class="field">
     <%= f.label :dob, "Date of Birth" %><br>
-    <%= f.date_select(:dob, :order => [:month, :day, :year], :start_year => Time.now.year - 80) %>
+    <%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => Time.now.year - 80}, {:class => "custom-select mini", style: "width: 10%"} %>
   </div>
   <div class="field">
     <%= f.label :prospect, "Prospect?" %><br>
     <%= f.check_box(:prospect) %>
   </div>
   <div class="actions">
-    <%= f.submit class: "btn btn-success" %>
+    <%= f.submit class: "btn btn-outline-success my-2 my-sm-0" %>
   </div>
 <% end %>

@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 
-<h1 style="font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= t('prospects') %></h1>
+<h3 style="font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= t('prospects') %></h3>
 <!--<%#= form_tag prospects_path, :method => 'get', :id => "prospects_search", :style => "margin: -36px 0 0 0;" do %>
   <%#= hidden_field_tag :direction, params[:direction] %>
   <%#= hidden_field_tag :sort, params[:sort] %>
@@ -10,17 +10,17 @@
   </p>
 <%# end %>-->
 
-<div id="prospects">
-	<div class="table-responsive">
+<div id="prospects" class="card">
+	<div class="table-responsive card-body">
 		<table id="prospects_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
 		  <thead>
 			<tr>
-			  <th>Name</th>
-			  <th>Address</th>
-			  <th>Email</th>
-			  <th>Phone</th>
-			  <th>DOB</th>
-			  <th style="padding-right:20px;">Carrier</th>
+			  <th style="width: 15%;">Name</th>
+			  <th style="width: 25%;">Address</th>
+			  <th style="width: 15%;">Email</th>
+			  <th style="width: 15%;">Phone</th>
+			  <th style="width: 10%;">DOB</th>
+			  <th style="padding-right:20px;width: 15%;">Carrier</th>
 			  <th colspan="7"></th>
 			</tr>
 		  </thead>
@@ -48,7 +48,9 @@
 	</div>
 </div>
 
-<%= link_to 'New Client', new_client_path %> <!-- |
+<span  class="page_footer">
+	<%= link_to 'New Client', new_client_path %>
+</span> <!-- |
 <%#= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
 <span>
   Download:

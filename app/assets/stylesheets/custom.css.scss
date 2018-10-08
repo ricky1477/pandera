@@ -8,17 +8,18 @@
   padding-bottom:4px;
   background-color: #68b468;
   border:1px solid #000033;
+  font-size: 13px;
 }
 .jumbotron {
     background: url('https://pandera.ml/images/pandera_app/panderaBackground.jpg') no-repeat scroll;
     color: #696969;
     color: black;
     margin-top: -20px;
+    padding: 105px 60px !important;
 
     @media screen and (max-width: 768px) {
      text-align: center;
     }
-    padding: 88px 60px;
     @media screen and (max-width: 320px) { padding: 84px 60px; }
 }
 

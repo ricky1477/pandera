@@ -127,6 +127,19 @@ class ClientsController < ApplicationController
     end
   end
 
+  def last_service_prices_by_name_address
+    client_name = params[:name_address][0..params[:name_address].index(' | ')-1]
+    client_address = params[:name_address][params[:name_address].index(' | ')+3..params[:name_address].length-1]
+    @client = Client.find_by_name_and_street_address(client_name, client_address)
+    description = params[:description]
+    last_prices = @client.services.where(description: description).order('created_at DESC').map(&:price).uniq if @client.services.where(description: description).last
+    respond_to do |format|
+      format.json { render :json => last_prices }
+      # For testing convenience: in console => app.get("/last_service_prices_by_name_address?name_address=Rick%20%7C%204017%20peppertree%20ln&description=Bi-weekly%20Cutting")
+      format.html { render :html => last_prices }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client

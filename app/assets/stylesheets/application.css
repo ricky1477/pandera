@@ -13,10 +13,15 @@
  *= require_tree .
  *= require_self
  */
-	.page_title{
-		font-size: 36px;
-	    margin-bottom: 15px;
-	}
+
+.page_title{
+	font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.page_footer {
+	font-size: 14px;
+}
 
 @media only screen and (max-width: 525px) {
 	.page_title{
@@ -28,6 +33,12 @@
 	    margin-bottom: 15px;
 	}
 
+	.page_footer {
+		font-size: 10px;
+	}
+	.custom-select {
+		width: 50% !important;
+	}
 
 }
 @media only screen and (max-width: 450px) {
@@ -37,6 +48,7 @@
 	}
 
 }
+
 .pagination>li.active>a {
   /*background: #68b468;
   color: #fff; */
@@ -63,12 +75,29 @@
     color: #68b468;
     background-color: #fff;
     border: 1px solid #ddd;
-        border-top-color: rgb(221, 221, 221);
-        border-right-color: rgb(221, 221, 221);
-        border-bottom-color: rgb(221, 221, 221);
-        border-left-color: rgb(221, 221, 221);
+    border-top-color: rgb(221, 221, 221);
+    border-right-color: rgb(221, 221, 221);
+    border-bottom-color: rgb(221, 221, 221);
+    border-left-color: rgb(221, 221, 221);
     margin-left: -1px;
 }
 
+.jumbotron {
+    padding: 110px 60px !important;
+}
 
+.card-body {
+    padding: 0.75rem !important;
+}
 
+.custom-select:focus {
+    border-color: #68b468 !important;
+    outline: 0;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.075), 0 0 5px rgba(104,180,104,.5) !important;
+}
+.checkbox label, .radio label, label {
+    font-size: 12px !important;
+}
+.custom-file-control, .form-control {
+    font-size: 11px !important;
+}

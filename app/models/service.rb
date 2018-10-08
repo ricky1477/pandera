@@ -1,6 +1,6 @@
 class Service < ActiveRecord::Base
       belongs_to :client
-      belongs_to :invoice
+      belongs_to :invoice, dependent: :destroy
       validates :price, presence: true
       validates :client_id, presence: true
       before_destroy :check_invoice_association
