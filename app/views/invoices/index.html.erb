@@ -1,4 +1,4 @@
-<h1 class="page_title_invoices"><%= t('invoices') %></h1>
+<h3 style="font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= t('invoices') %></h3>
 
 <%= form_tag invoices_path, :method => 'get', :id => "invoices_search", :style => "margin: -37px 0 0 0;" do %>
   <%= hidden_field_tag :direction, params[:direction] %>
