@@ -9,14 +9,14 @@
       <li class="nav-item prospects"><%= link_to(t('prospects'), prospects_path, class: "nav-link") %></li>
       <li class="nav-item invoices"><%= link_to(t('invoices'), invoices_path, class: "nav-link") %></li>
       <li class="nav-item estimates"><%= link_to(t('estimates'), estimates_path, class: "nav-link") %></li>
-      <li class="nav-item schedules"><%= link_to('Schedules', schedules_path, class: "nav-link") %></li>
+      <li class="nav-item schedules"><%= link_to(t('schedules'), schedules_path, class: "nav-link") %></li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
       <% if current_admin %>
-        <span class="nav-item settings"><%= link_to('Settings', edit_admin_registration_path, class: "nav-link") %></span>
-        <span><%= link_to('Logout', destroy_admin_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0") %></span>
+        <span class="nav-item settings"><%= link_to(t('settings'), edit_admin_registration_path, class: "nav-link") %></span>
+        <span><%= link_to(t('logout'), destroy_admin_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0") %></span>
       <% else %>
-        <span><%= link_to('Login', new_admin_session_path, class: "btn btn-outline-success my-2 my-sm-0") %></span>
+        <span><%= link_to(t('login'), new_admin_session_path, class: "btn btn-outline-success my-2 my-sm-0") %></span>
       <% end %>
     </div>
   </div>
