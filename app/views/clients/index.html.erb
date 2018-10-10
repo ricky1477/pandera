@@ -7,7 +7,7 @@
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
   <p>
-    <b>Search:  </b><%= text_field_tag :search, params[:search], style: "display: initial" %>
+    <b><%= t('search') %>:  </b><%= text_field_tag :search, params[:search], style: "display: initial" %>
   </p>
 <% end %>
 
@@ -39,9 +39,9 @@
 				<td><%= link_to 'Make Estimate', new_estimate_path(:client_id => client.id) %></td>
 							<td><a class="create-services" id="<%= client.id %>" name="<%= client.name %>">Charge Services</a></td>
 				<td <%= 'class=client_td' if crt_inv %>><%= link_to_if(crt_inv,'Create Invoice', new_invoice_path(:client_id => client.id) ) %></td>
-				<td><%= link_to 'Details', client %></td>
-				<td><%= link_to 'Edit', edit_client_path(client) %></td>
-				<td><%= link_to 'Delete', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<td><%= link_to t('details'), client %></td>
+				<td><%= link_to t('edit'), edit_client_path(client) %></td>
+				<td><%= link_to t('delete'), client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			  </tr>
 			<% end %>
 		  </tbody>
@@ -50,8 +50,8 @@
 </div>
 
 <span class="page_footer">
-  <%= link_to 'New Client', new_client_path %> |
-  <%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
+  <%= link_to t('new_client'), new_client_path %> |
+  <%= link_to t('create_all_monthly_invoices'), create_monthly_invoices_path %> |
 </span>
 <!--<p style="text-align: right;margin-top:-19px;"> -->
 <span class="page_footer">
@@ -61,7 +61,7 @@
 </span>
 
 <br/>
-<%= will_paginate @clients %> </br>
+<%= will_paginate @clients, :previous_label => t('previous'), :next_label => t('next') %> </br>
 <br/>
 
   <style>
