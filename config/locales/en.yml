@@ -34,6 +34,8 @@ en:
   listing_clients: 'Listing Clients'
   new_client: 'New Client'
   create_all_monthly_invoices: 'Create all monthly invoices'
+  editing_client: 'Editing Client'
+
   services: 'Services'
   invoices: 'Invoices'
   estimates: 'Estimates'

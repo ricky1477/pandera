@@ -13,6 +13,8 @@ pt:
   listing_clients: 'Listagem de Clientes'
   new_client: 'Criar Cliente'
   create_all_monthly_invoices: 'Criar todos invoices mensais'
+  editing_client: 'Editar Cliente'
+
   services: 'Serviços'
   invoices: 'Faturas'
   estimates: 'Estimativas'
