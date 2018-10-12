@@ -50,7 +50,7 @@
   <!--| <%#= link_to "Excel", clients_path(format: "xls") %> -->
 </p>
 
-<%= will_paginate @services %> </br>
+<%= will_paginate @services, :previous_label => t('previous'), :next_label => t('next'), inner_window: 1, outer_window: 0 %> </br>
 <br/>
 <script>
     $( "#services_search" ).keyup(function() {

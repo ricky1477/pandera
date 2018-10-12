@@ -74,7 +74,7 @@
   <br>
   <b>Services without invoice: <%= Service.where("paid IS NOT TRUE").where(invoice_id: nil).count %>
   <br>
-  <%= will_paginate @invoices %>
+  <%= will_paginate @invoices, :previous_label => t('previous'), :next_label => t('next'), inner_window: 1, outer_window: 0 %>
   <br/>
 </span>
 

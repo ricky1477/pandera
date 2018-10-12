@@ -1,86 +1,86 @@
 <p style="width: 200px;">
-  <strong>Name:</strong>
+  <strong><%= t('name') %>:</strong>
   <%= @client.name %>
 </p>
 
 <p style="width: 200px;">
-  <strong>Address:</strong>
+  <strong><%= t('address') %>:</strong>
   <%= @client.street_address %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong><%= t('city') %>:</strong>
   <%= @client.city %>
 </p>
 
 <p>
-  <strong>State:</strong>
+  <strong><%= t('state') %>:</strong>
   <%= @client.state %>
 </p>
 
 <p>
-  <strong>Zipcode:</strong>
+  <strong><%= t('zipcode') %>:</strong>
   <%= @client.zipcode %>
 </p>
 
 <p style="width: 200px;">
-  <strong>Email:</strong>
+  <strong><%= t('email') %>:</strong>
   <%= @client.email %>
 </p>
 
 <p style="width: 200px;">
-  <strong>Email2:</strong>
+  <strong><%= t('email2') %>:</strong>
   <%= @client.email2 %>
 </p>
 
 
 <p>
-  <strong>Phone:</strong>
+  <strong><%= t('phone') %>:</strong>
   <%= @client.phone %>
 </p>
 
 <p>
-  <strong>Carrier:</strong>
+  <strong><%= t('carrier') %>:</strong>
   <%= Client::CARRIERS.select{ |carrier, email| email == @client.sms_gateway }[0][0] if @client.sms_gateway %>
 </p>
 
 <p>
-  <strong>Phone2:</strong>
+  <strong><%= t('phone2') %>:</strong>
   <%= @client.phone2 %>
 </p>
 
 <p>
-  <strong>Carrier2:</strong>
+  <strong><%= t('carrier2') %>:</strong>
   <%= Client::CARRIERS.select{ |carrier, email| email == @client.sms_gateway }[0][0] if @client.sms_gateway2 %>
 </p>
 
 <p>
-  <strong>Dob:</strong>
+  <strong><%= t('dob') %>:</strong>
   <%= @client.dob %>
 </p>
 
 <p style="width: 200px;">
-  <strong>Notes:</strong>
+  <strong><%= t('notes') %>:</strong>
   <%= @client.notes %>
 </p>
 
 <p>
-  <strong>Credit:</strong>
+  <strong><%= t('credit') %>:</strong>
   <%= @client.credit %>
 </p>
 
 <p>
-  <strong>Prospect:</strong>
+  <strong><%= t('prospect') %>:</strong>
   <%= @client.prospect %>
 </p>
 
 <p>
-  <strong>Latitude:</strong>
+  <strong><%= t('latitude') %>:</strong>
   <%= @client.lat %>
 </p>
 
 <p>
-  <strong>Longitude:</strong>
+  <strong><%= t('longitude') %>:</strong>
   <%= @client.lng %>
 </p>
 
@@ -139,19 +139,19 @@
    }
    </style>
    <br/>
-   <h1>Services </h1>
+   <h1><%= t('services') %> </h1>
    <div id="services" class="card">
        <div class="table-responsive card-body">
            <table id="services_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
              <thead>
                <tr>
-                 <th style="width: 35%;">Client</th>
-                 <th style="width: 15%;">Date</th>
-                 <th style="width: 15%;">Description</th>
-                 <th style="width: 5%;">Price</th>
-                 <th style="width: 15%;">Maturity</th>
-                 <th style="width: 10%;">Invoice</th>
-                 <th style="width: 5%;">Paid</th>
+                 <th style="width: 35%;"><%= t('client') %></th>
+                 <th style="width: 15%;"><%= t('date') %></th>
+                 <th style="width: 15%;"><%= t('description') %></th>
+                 <th style="width: 5%;"><%= t('price') %></th>
+                 <th style="width: 15%;"><%= t('maturity') %></th>
+                 <th style="width: 10%;"><%= t('invoice') %></th>
+                 <th style="width: 5%;"><%= t('paid') %></th>
                  <th colspan="3"></th>
                </tr>
              </thead>
@@ -165,10 +165,10 @@
                    <td><%= service.price %></td>
                    <td><%= service.maturity %></td>
                    <td><%= link_to service.invoice.id, invoice_path(service.invoice.id, :format => :pdf) if service.invoice %></td>
-                   <td><%= service.paid ? 'Yes' : 'No' %></td>
-                   <td><%= link_to 'Details', service %></td>
-                   <td><%= link_to 'Edit', edit_service_path(service) %></td>
-                   <td><%= link_to 'Delete', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                   <td><%= service.paid ? t('yes') : t('no') %></td>
+                   <td><%= link_to t('details'), service %></td>
+                   <td><%= link_to t('edit'), edit_service_path(service) %></td>
+                   <td><%= link_to t('delete'), service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                  </tr>
                <% end %>
              </tbody>
@@ -177,6 +177,6 @@
    </div>
 
    <span class="page_footer">
-     <%= link_to 'Edit', edit_client_path(@client) %> |
-     <%= link_to 'Back', clients_path %>
+     <%= link_to t('edit'), edit_client_path(@client) %> |
+     <%= link_to t('back'), clients_path %>
    </span> </br></br></br>
