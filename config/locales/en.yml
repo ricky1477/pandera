@@ -52,6 +52,13 @@ en:
   zipcode: 'Zipcode'
   notes: 'Notes'
   credit: 'Credit'
+  description: 'Description'
+  price: 'Price'
+  maturity: 'Maturity'
+  invoice: 'Invoice'
+  paid: 'Paid?'
+  yes: 'Yes'
+  no: 'No'
 
   services: 'Services'
   invoices: 'Invoices'

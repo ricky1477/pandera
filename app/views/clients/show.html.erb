@@ -165,7 +165,7 @@
                    <td><%= service.price %></td>
                    <td><%= service.maturity %></td>
                    <td><%= link_to service.invoice.id, invoice_path(service.invoice.id, :format => :pdf) if service.invoice %></td>
-                   <td><%= service.paid ? t('yes') : t('no') %></td>
+                   <td><%= service.paid? ? t('yes') : t('no') %></td>
                    <td><%= link_to t('details'), service %></td>
                    <td><%= link_to t('edit'), edit_service_path(service) %></td>
                    <td><%= link_to t('delete'), service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
