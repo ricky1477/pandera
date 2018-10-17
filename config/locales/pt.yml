@@ -22,6 +22,7 @@ pt:
   phone2: 'Telefone 2'
   dob: 'Nascimento'
   carrier: 'Transmissor'
+  carrier2: 'Transmissor 2'
   make_estimate: 'Criar Estimativa'
   charge_services: 'Cobrar Serviços'
   create_invoice: 'Criar Fatura'
@@ -38,7 +39,7 @@ pt:
   paid: 'Pago?'
   yes: 'Sim'
   no: 'Não'
-  
+
   services: 'Serviços'
   invoices: 'Faturas'
   estimates: 'Estimativas'

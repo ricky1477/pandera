@@ -32,43 +32,45 @@
     <%= f.text_field :zipcode, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label t('email') %><br>
     <%= f.text_field :email, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :email2 %><br>
+    <%= f.label t('email2') %><br>
     <%= f.text_field :email2, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label t('phone') %><br>
     <%= f.text_field :phone, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-  <%= f.label :sms_gateway, 'Carrier' %><br>
+  <%= f.label t('carrier') %><br>
   <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), {}, {class: 'sms_gateway custom-select', style: "width: 30%"} %>
   </div>
   <div class="field">
-    <%= f.label :phone2 %><br>
+    <%= f.label t('phone2') %><br>
     <%= f.text_field :phone2, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :sms_gateway2, 'Carrier2' %><br>
+    <%= f.label t('carrier2') %><br>
     <%= f.select :sms_gateway2, options_for_select(Client::CARRIERS, @client.sms_gateway2), {}, {class: 'sms_gateway2 custom-select', style: "width: 30%"} %>
   </div>
   <div class="field">
-    <%= f.label :notes %><br>
+    <%= f.label t('notes') %><br>
     <%= f.text_area :notes, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :credit %><br>
+    <%= f.label t('credit') %><br>
     <%= f.text_field :credit, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :dob, "Date of Birth" %><br>
-    <%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => Time.now.year - 80}, {:class => "custom-select mini", style: "width: 10%"} %>
+    <%#= f.label 'test' %><br>
+    <%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => Time.now.year - 80}, {:class => "custom-select", style: "width: 10%"} %>
+    <%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => Time.now.year - 80} %>
+
   </div>
   <div class="field">
-    <%= f.label :prospect, "Prospect?" %><br>
+    <%= f.label t('prospect')+'?' %><br>
     <%= f.check_box(:prospect) %>
   </div>
   <div class="actions">

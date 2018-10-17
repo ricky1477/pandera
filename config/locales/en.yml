@@ -43,6 +43,7 @@ en:
   phone2: 'Phone 2'
   dob: 'Date of Birth'
   carrier: 'Carrier'
+  carrier2: 'Carrier 2'
   make_estimate: 'Make Estimate'
   charge_services: 'Charge Services'
   create_invoice: 'Create Invoice'
