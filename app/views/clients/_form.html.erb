@@ -64,10 +64,9 @@
     <%= f.text_field :credit, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%#= f.label 'test' %><br>
-    <%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => Time.now.year - 80}, {:class => "custom-select", style: "width: 10%"} %>
-    <%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => Time.now.year - 80} %>
-
+    <%#= f.label 'test' TODO fix month dropdown render AND send emails with rigth link page one %>
+    <%= f.label t('dob') %><br>
+    <%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => Time.now.year - 80, use_month_numbers: true}, {:class => "custom-select", style: "width: 10%"} %>
   </div>
   <div class="field">
     <%= f.label t('prospect')+'?' %><br>
