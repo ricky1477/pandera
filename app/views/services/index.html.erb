@@ -8,42 +8,41 @@
   </p>
 <% end %>
 
-<div id="services">
-    <div class="table-responsive">
-        <table id="services_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
-          <thead>
-            <tr>
-              <th><%= t('client') %></th>
-              <th>Date</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Maturity</th>
-              <th>Invoice</th>
-              <th>Paid</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @services.each do |service| %>
-              <tr>
-                <td><%= link_to service.client.name, service.client %></td>
-                <td><%= service.date %></td>
-                <td><%= service.description %></td>
-                <td><%= service.price %></td>
-                <td><%= service.maturity %></td>
-                <td><%= service.invoice.id if service.invoice %></td>
-                <td><%= service.paid ? 'Yes' : 'No' %></td>
-                <td><%= link_to 'Details', service %></td>
-                <td><%= link_to 'Edit', edit_service_path(service) %></td>
-                <td><%= link_to 'Delete', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-    </div>
+<div id="clients" class="card">
+	<div class="table-responsive card-body">
+    <table id="services_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
+      <thead>
+        <tr>
+          <th><%= t('client') %></th>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Maturity</th>
+          <th>Invoice</th>
+          <th>Paid</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @services.each do |service| %>
+          <tr>
+            <td><%= link_to service.client.name, service.client %></td>
+            <td><%= service.date %></td>
+            <td><%= service.description %></td>
+            <td><%= service.price %></td>
+            <td><%= service.maturity %></td>
+            <td><%= service.invoice.id if service.invoice %></td>
+            <td><%= service.paid ? 'Yes' : 'No' %></td>
+            <td><%= link_to 'Details', service %></td>
+            <td><%= link_to 'Edit', edit_service_path(service) %></td>
+            <td><%= link_to 'Delete', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-<br/>
+<br/><br/>
 <p style="text-align: right;margin-top:-23px;">
   Download:
   <%= link_to "CSV", services_path(format: "csv") %>
