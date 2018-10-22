@@ -20,11 +20,11 @@
   </span>
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.date_select :date, {:order => [:month, :day, :year], :start_year => Time.now.year - 80, use_month_numbers: true}, {:class => "custom-select", style: "width: 10%"} %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.select(:description, Service::DESCRIPTION, {include_blank: true }, id: 'service_description_two' ) %></td>
+    <%= f.select :description, options_for_select(Service::DESCRIPTION, @service.description), {}, {class: 'description custom-select', style: "width: 30%"} %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
@@ -44,7 +44,7 @@
     <% end %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('save'), class: "btn btn-outline-success my-2 my-sm-0" %>
   </div>
 <% end %>
 
