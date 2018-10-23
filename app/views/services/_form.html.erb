@@ -19,19 +19,19 @@
     <% end %>
   </span>
   <div class="field">
-    <%= f.label :date %><br>
+    <%= f.label t('date') %><br>
     <%= f.date_select :date, {:order => [:month, :day, :year], :start_year => Time.now.year - 80, use_month_numbers: true}, {:class => "custom-select", style: "width: 10%"} %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label t('description') %><br>
     <%= f.select :description, options_for_select(Service::DESCRIPTION, @service.description), {}, {class: 'description custom-select', style: "width: 30%"} %>
   </div>
   <div class="field">
-    <%= f.label :notes %><br>
+    <%= f.label t('notes') %><br>
     <%= f.text_area :notes %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label t('price') %><br>
     <%= f.text_field :price, id: 'service_price_two' %>
     <% past_list = Service.where(client_id: params[:client_id]).pluck(:price, :description) %>
     <% if past_list.length>=1 %>

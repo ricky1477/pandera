@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @service %> |
-<%= link_to 'Back', services_path %>
+<span class="page_footer">
+  <%= link_to t('details'), @service %> |
+  <%= link_to t('back'), services_path %>
+</span>

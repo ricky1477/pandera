@@ -1,10 +1,10 @@
 <p>
-  <strong>Client:</strong>
+  <strong><%= t('client')%>:</strong>
   <%= link_to Client.find(@service.client_id).name, Client.find(@service.client_id) %>
 </p>
 
 <p>
-  <strong>Date:</strong>
+  <strong><%= t('date')%>:</strong>
   <%= @service.date %>
 </p>
 
@@ -38,4 +38,6 @@
     <%= @service.paid ?  'Yes' : 'No' %>
 </p>
 
-<%= link_to 'Edit', edit_service_path(@service) %>
+<span class="page_footer">
+  <%= link_to t('edit'), edit_service_path(@service) %>
+</span>
