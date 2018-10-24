@@ -9,32 +9,32 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= t('description')%>:</strong>
   <%= @service.description %>
 </p>
 
 <p>
-  <strong>Notes:</strong>
+  <strong><%= t('notes')%>:</strong>
   <%= @service.notes %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong><%= t('price')%>:</strong>
   <%= @service.price %>
 </p>
 
 <p>
-  <strong>Maturity:</strong>
+  <strong><%= t('maturity')%>:</strong>
   <%= @service.maturity %>
 </p>
 
 <p>
-  <strong>Invoice:</strong>
+  <strong><%= t('invoice')%>:</strong>
   <%= @service.invoice.id if @service.invoice %>
 </p>
 
 <p>
-  <strong>Paid:</strong>
+  <strong><%= t('paid')%>:</strong>
     <%= @service.paid ?  'Yes' : 'No' %>
 </p>
 

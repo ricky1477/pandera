@@ -43,12 +43,11 @@
   </div>
 </div>
 <br/><br/>
-<p style="text-align: right;margin-top:-23px;">
+<p style="text-align: right;margin-top:-25px;margin-bottom:-25px;">
   <%= t('download') %>:
   <%= link_to "CSV", services_path(format: "csv") %>
-  <!--| <%#= link_to "Excel", clients_path(format: "xls") %> -->
+  <!--| <%#= link_to "Excel", clients_path(format: "xls") %> --></span>
 </p>
-
 <%= will_paginate @services, :previous_label => t('previous'), :next_label => t('next'), inner_window: 1, outer_window: 0 %> </br>
 <br/>
 <script>

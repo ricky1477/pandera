@@ -15,12 +15,12 @@
 		<table id="prospects_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
 		  <thead>
 			<tr>
-			  <th style="width: 15%;">Name</th>
-			  <th style="width: 25%;">Address</th>
-			  <th style="width: 15%;">Email</th>
-			  <th style="width: 15%;">Phone</th>
-			  <th style="width: 10%;">DOB</th>
-			  <th style="padding-right:20px;width: 15%;">Carrier</th>
+			  <th style="width: 15%;"><%= t('name')%></th>
+			  <th style="width: 25%;"><%= t('adress')%></th>
+			  <th style="width: 15%;"><%= t('email')%></th>
+			  <th style="width: 15%;"><%= t('phone')%></th>
+			  <th style="width: 10%;"><%= t('dob')%></th>
+			  <th style="padding-right:20px;width: 15%;"><%= t('carrier')%></th>
 			  <th colspan="7"></th>
 			</tr>
 		  </thead>
@@ -36,11 +36,11 @@
 				<td><%= prospect.dob %></td>
 				<td><%= Client::CARRIERS.select{ |carrier, email| email == prospect.sms_gateway }[0][0] if prospect.sms_gateway %></td>
 				<td><%= link_to 'Make Estimate', new_estimate_path(:client_id => prospect.id) %></td>
-							<td><a class="create-services" id="<%= prospect.id %>" name="<%= prospect.name %>">Charge Services</a></td>
+							<td><a class="create-services" id="<%= prospect.id %>" name="<%= prospect.name %>"><%= t('charge_services') %></a></td>
 				<td <%= 'class=client_td' if crt_inv %>><%= link_to_if(crt_inv,'Create Invoice', new_invoice_path(:client_id => prospect.id) ) %></td>
-				<td><%= link_to 'Details', prospect %></td>
-				<td><%= link_to 'Edit', edit_client_path(prospect) %></td>
-				<td><%= link_to 'Delete', prospect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<td><%= link_to t('details'), prospect %></td>
+				<td><%= link_to t('edit'), edit_client_path(prospect) %></td>
+				<td><%= link_to t('delete'), prospect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 			  </tr>
 			<% end %>
 		  </tbody>
@@ -49,14 +49,8 @@
 </div>
 
 <span  class="page_footer">
-	<%= link_to 'New Client', new_client_path %>
-</span> <!-- |
-<%#= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
-<span>
-  Download:
-  <%#= link_to "CSV", clients_path(format: "csv") %>
+	<%= link_to t('new_client'), new_client_path %>
 </span>
--->
 
 <br/>
 <%= will_paginate @prospects %> </br>
