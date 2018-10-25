@@ -60,6 +60,9 @@ en:
   paid: 'Paid?'
   yes: 'Yes'
   no: 'No'
+  #date:
+  #  month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+  #  abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
 
   services: 'Services'
   invoices: 'Invoices'
@@ -82,3 +85,7 @@ en:
   date: 'Date'
   save: 'Save'
   download: 'Download'
+  overdue: 'Overdue'
+  search: 'Search'
+  check_number: 'Check Number'
+  actions: 'Actions'

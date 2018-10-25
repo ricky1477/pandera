@@ -62,3 +62,7 @@ pt:
   date: 'Data'
   save: 'Salvar'
   download: 'Baixar'
+  overdue: 'Atrasado'
+  search: 'Pesquisa'
+  check_number: 'Número do cheque'
+  actions: 'Ações'
