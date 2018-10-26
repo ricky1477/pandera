@@ -37,8 +37,10 @@ pt:
   maturity: 'Vencimento'
   invoice: 'Fatura'
   paid: 'Pago?'
+  pay: 'Pagar'
   yes: 'Sim'
   no: 'Não'
+  send_reminder: 'Mandar lembrete'
 
   services: 'Serviços'
   invoices: 'Faturas'

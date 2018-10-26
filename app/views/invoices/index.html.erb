@@ -39,13 +39,13 @@
               <td><%= invoice.maturity %></td>
               <td><%= invoice.description %></td>
               <td><%= invoice.total %></td>
-              <td><%= invoice.paid ? 'Yes' : 'No' %></td>
+              <td><%= invoice.paid ? t('yes') : t('no') %></td>
               <td><%= invoice.check_number %></td>
-              <td><%= button_to 'Send Reminder', invoices_payment_reminder_path(id: invoice.id), style: 'white-space: normal;', class: 'rick_button', method: :post, data: { confirm: 'Send an email?' } %> </td>
-              <td style="padding-top: 15px;"><%= link_to 'Pay', new_charge_path(invoice_id: invoice.id), target: :_blank , class: 'rick_button' %> </td>
-              <td><%= link_to 'Details', invoice_path(invoice.id, :format => :pdf) %></td>
-              <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-              <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= button_to t('send_reminder'), invoices_payment_reminder_path(id: invoice.id), style: 'white-space: normal;', class: 'rick_button', method: :post, data: { confirm: 'Send an email?' } %> </td>
+              <td style="padding-top: 15px;"><%= link_to t('pay'), new_charge_path(invoice_id: invoice.id), target: :_blank , class: 'rick_button' %> </td>
+              <td><%= link_to t('details'), invoice_path(invoice.id, :format => :pdf) %></td>
+              <td><%= link_to t('edit'), edit_invoice_path(invoice) %></td>
+              <td><%= link_to t('delete'), invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>

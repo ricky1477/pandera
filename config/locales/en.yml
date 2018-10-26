@@ -58,8 +58,11 @@ en:
   maturity: 'Maturity'
   invoice: 'Invoice'
   paid: 'Paid?'
+  pay: 'Pay'
   yes: 'Yes'
   no: 'No'
+  send_reminder: 'Send Reminder'
+
   #date:
   #  month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
   #  abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
