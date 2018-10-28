@@ -41,6 +41,8 @@ pt:
   yes: 'Sim'
   no: 'Não'
   send_reminder: 'Mandar lembrete'
+  create_all_monthly_invoices: 'Criar faturas mensais'
+  print_all_invoices: 'Imprimir faturas'
 
   services: 'Serviços'
   invoices: 'Faturas'

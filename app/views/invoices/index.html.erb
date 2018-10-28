@@ -54,11 +54,11 @@
 </div>
 
 <span  class="page_footer">
-  <%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
-  <%= link_to 'Print all invoices', show_all_path(:format => :pdf) %> |
+  <%= link_to t('create_all_monthly_invoices'), create_monthly_invoices_path %> |
+  <%= link_to t('print_all_invoices'), show_all_path(:format => :pdf) %> |
 </span>
 <span  class="page_footer">
-  Download:
+  <%= t('download') %>:
   <%= link_to "CSV", invoices_path(format: "csv") %>
 </span>
 <br/><br/>

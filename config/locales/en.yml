@@ -62,6 +62,8 @@ en:
   yes: 'Yes'
   no: 'No'
   send_reminder: 'Send Reminder'
+  create_all_monthly_invoices: 'Create all monthly invoices'
+  print_all_invoices: 'Print all invoices'
 
   #date:
   #  month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
