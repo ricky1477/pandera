@@ -19,24 +19,24 @@
     <% end %>
   </span>
   <div class="field">
-    <%= f.label :maturity %><br>
+    <%= f.label t('maturity') %><br>
     <%#= f.date_select :maturity, class: "form-control", style: "width: 25%" %>
-    <%= f.date_select :maturity, {:order => [:month, :day, :year], :start_year => Time.now.year - 80}, {:class => "custom-select mini", style: "width: 10%"} %>
+    <%= f.date_select :maturity, {:order => [:month, :day, :year], :start_year => Time.now.year - 80, use_month_numbers: true}, {:class => "custom-select mini", style: "width: 10%"} %>
 
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label t('description') %><br>
     <%= f.text_area :description, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :paid %><br>
+    <%= f.label t('paid') %><br>
     <%= f.check_box :paid, :class => "checkbox" %>
   </div>
   <div class="field">
-    <%= f.label :check_number %><br>
+    <%= f.label t('check_number') %><br>
     <%= f.text_field :check_number, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="actions">
-    <%= f.submit class: "btn btn-outline-success my-2 my-sm-0" %>
+    <%= f.submit t('save'), class: "btn btn-outline-success my-2 my-sm-0" %>
   </div>
 <% end %>

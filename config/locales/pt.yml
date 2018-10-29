@@ -43,6 +43,8 @@ pt:
   send_reminder: 'Mandar lembrete'
   create_all_monthly_invoices: 'Criar faturas mensais'
   print_all_invoices: 'Imprimir faturas'
+  receivables: 'A receber'
+  services_without_invoice: 'Serviços sem fatura'
 
   services: 'Serviços'
   invoices: 'Faturas'

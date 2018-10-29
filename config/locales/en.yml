@@ -64,6 +64,8 @@ en:
   send_reminder: 'Send Reminder'
   create_all_monthly_invoices: 'Create all monthly invoices'
   print_all_invoices: 'Print all invoices'
+  receivables: 'Receivables'
+  services_without_invoice: 'Services without invoice'
 
   #date:
   #  month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
