@@ -22,3 +22,6 @@
 #Client.create(name: 'Joana Kezia', street_address: '2307 Greenery ln T-3-2')
 #Client.create(name: 'Kaio Kreyhsig', street_address: '2307 Greenery ln T-3-2', prospect: true)
 #Estimate.create(description: 'Weekly Cutting', price: 10.0, client_id: 2, notes: 'Test notes')
+#Invoice.create(client_id: 2, description: 'Test Invoice #1')
+Schedule.create(date: '2018-11-07')
+#ClientSchedule.create(client_id: 2, client_street_address: '2307 Greenery ln T-3-2', service_type: 'Weekly Cutting')
