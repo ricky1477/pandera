@@ -5,6 +5,7 @@ pt:
   logout: 'Sair'
   login: 'Entrar'
   signin: 'Entrar'
+  signup: 'Inscrever'
   dashboard: 'Painel de Instrumentos'
   pick_language: 'Escolha o idioma'
   english: 'Inglês'

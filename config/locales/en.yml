@@ -26,6 +26,7 @@ en:
   logout: 'Log Out'
   login: 'Log In'
   signin: 'Sign In'
+  signup: 'Sign Up'
   dashboard: 'Dashboard'
   pick_language: 'Pick language'
   english: 'English'
