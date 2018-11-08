@@ -53,6 +53,7 @@ pt:
   prospects: 'Prospectos'
   prospect: 'Prospecto'
   schedules: 'Escalas'
+  new_schedule: 'Nova Escala'
   settings: 'Configurações'
   listing_services: 'Listagem de Serviços'
   listing_invoices: 'Listagem de Faturas'
