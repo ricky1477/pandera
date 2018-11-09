@@ -67,6 +67,11 @@ en:
   print_all_invoices: 'Print all invoices'
   receivables: 'Receivables'
   services_without_invoice: 'Services without invoice'
+  time: 'Time'
+  service_type: 'Service Type'
+  observation: 'Observation'
+  done: 'Done'
+  directions: 'Directions'
 
   #date:
   #  month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]

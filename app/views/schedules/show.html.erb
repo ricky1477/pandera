@@ -9,11 +9,11 @@
       <tr>
         <th style="width: 15%;"><%= t('name') %></th>
         <th style="width: 30%;"><%= t('address') %></th>
-        <th style="width: 5%;">Time</th>
-        <th style="width: 20%;">Service Type</th>
-        <th style="width: 15%;">Observation</th>
-        <th style="width: 5%;">Done?</th>
-        <th style="width: 20%;">Directions</th>
+        <th style="width: 05%;"><%= t('time') %></th>
+        <th style="width: 20%;"><%= t('service_type') %></th>
+        <th style="width: 15%;"><%= t('observation') %></th>
+        <th style="width: 05%;"><%= t('done') %>?</th>
+        <th style="width: 20%;"><%= t('directions') %></th>
       </tr>
     </thead>
     <tbody class='fields'>
@@ -29,7 +29,7 @@
          <td><%= cs.time %></td>
          <td><%= cs.service_type %></td>
          <td><%= cs.notes %> </td>
-         <td><%= cs.done ? 'Yes' : 'No' %></td>
+         <td><%= cs.done ? t('yes') : t('no') %></td>
          <td><%= link_to 'Click Here', "http://maps.apple.com/?q=#{lat},#{lng}", style: 'color: #68b468;'%></br></td>
        </tr>
       <% end %>
@@ -39,7 +39,7 @@
 </div>
 
 <span class="page_footer">
-  <%= link_to 'Edit', edit_schedule_path(@schedule) %> |
-  <%= link_to 'Back', schedules_path %>
+  <%= link_to t('edit'), edit_schedule_path(@schedule) %> |
+  <%= link_to t('back'), schedules_path %>
   </br></br></br>
 </span>

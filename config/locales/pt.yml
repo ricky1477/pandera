@@ -46,6 +46,11 @@ pt:
   print_all_invoices: 'Imprimir faturas'
   receivables: 'A receber'
   services_without_invoice: 'Serviços sem fatura'
+  time: 'Horário'
+  service_type: 'Tipo de serviço'
+  observation: 'Observação'
+  done: 'Feito'
+  directions: 'Direção'
 
   services: 'Serviços'
   invoices: 'Faturas'
