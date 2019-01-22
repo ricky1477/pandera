@@ -1,0 +1,274 @@
+<nav class="navbar navbar-expand-md navbar-light style="background-color: #e3f2fd;"">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarToggler">
+    <b> <%= link_to image_tag("https://pandera.ml/images/pandera_app/pandera_logo.png", :alt => "Pandera Logo"), root_path %> </b>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item clients"><%= link_to(t('clients'), clients_path, class: "nav-link") %></li>
+      <li class="nav-item prospects"><%= link_to(t('prospects'), prospects_path, class: "nav-link") %></li>
+      <li class="nav-item invoices"><%= link_to(t('invoices'), invoices_path, class: "nav-link") %></li>
+      <li class="nav-item estimates"><%= link_to(t('estimates'), estimates_path, class: "nav-link") %></li>
+      <li class="nav-item schedules"><%= link_to(t('schedules'), schedules_path, class: "nav-link") %></li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <% if current_admin %>
+        <span class="nav-item settings" style="margin-top: 3px;"><%= link_to(t('settings'), edit_admin_registration_path, class: "nav-link") %></span>
+        <span><%= link_to(t('logout'), destroy_admin_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0") %></span>
+      <% else %>
+        <span><%= link_to(t('login'), new_admin_session_path, class: "btn btn-outline-success my-2 my-sm-0") %></span>
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .tab:hover {
+    outline-style: inset;
+    outline: #ccc solid 3px;
+  }
+  .nav-link {
+    font-size: 13px !important;
+    color: #8FBC8F !important;
+  }
+  .active {
+    background-color: #eee;
+    font-size: 14px !important;
+    box-shadow: 2px 3px #777;
+  }
+  .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    /*color: #000 !important;*/
+  }
+</style>
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(document).ready(function(){ /*code here*/
+
+      // Get Last service price on modal
+			$('#service_description').change(function() {
+				service = $("#service_description").val();
+				$.getJSON("last_service_price?id="+id.value+"&description="+service, function(data){
+					$('#service_price').val(data);
+				});
+			});
+
+      if (window.location.pathname.indexOf("/services") >= 0) {
+        //$('a').filter(function(index) { return $(this).text() === "Services"; }).css("background-color","#fff");
+      }
+      else if (window.location.pathname.indexOf("/invoices") >= 0) {
+        $( '.invoices' ).addClass( "active" );
+        $( '.prospects' ).removeClass( "active" );
+        $( '.schedule' ).removeClass( "active" );
+        $( '.estimates' ).removeClass( "active" );
+        $( '.clients' ).removeClass( "active" );
+      }
+      else if (window.location.pathname.indexOf("/estimates") >= 0) {
+        $( '.estimates' ).addClass( "active" );
+        $( '.prospects' ).removeClass( "active" );
+        $( '.schedule' ).removeClass( "active" );
+        $( '.clients' ).removeClass( "active" );
+        $( '.invoices' ).removeClass( "active" );
+      }
+      else if (window.location.pathname.indexOf("/schedule") >= 0) {
+        $( '.schedules' ).addClass( "active" );
+        $( '.prospects' ).removeClass( "active" );
+        $( '.clients' ).removeClass( "active" );
+        $( '.estimates' ).removeClass( "active" );
+        $( '.invoices' ).removeClass( "active" );
+      }
+      else if (window.location.pathname.indexOf("/prospects") >= 0) {
+        $( '.prospects' ).addClass( "active" );
+        $( '.clients' ).removeClass( "active" );
+        $( '.schedule' ).removeClass( "active" );
+        $( '.estimates' ).removeClass( "active" );
+        $( '.invoices' ).removeClass( "active" );
+      }
+      else if (window.location.pathname.indexOf("/clients") >= 0) {
+        $( '.clients' ).addClass( "active" );
+        $( '.prospects' ).removeClass( "active" );
+        $( '.schedule' ).removeClass( "active" );
+        $( '.estimates' ).removeClass( "active" );
+        $( '.invoices' ).removeClass( "active" );
+      }
+      else if (window.location.pathname.indexOf("/admins/edit") >= 0) {
+        $( '.settings' ).addClass( "active" );
+        $( '.clients' ).removeClass( "active" );
+        $( '.prospects' ).removeClass( "active" );
+        $( '.schedule' ).removeClass( "active" );
+        $( '.estimates' ).removeClass( "active" );
+        $( '.invoices' ).removeClass( "active" );
+      }
+      else if (window.location.pathname.indexOf("/") >= 0) {
+        $( '.settings' ).removeClass( "active" );
+        $( '.clients' ).removeClass( "active" );
+        $( '.prospects' ).removeClass( "active" );
+        $( '.schedule' ).removeClass( "active" );
+        $( '.estimates' ).removeClass( "active" );
+        $( '.invoices' ).removeClass( "active" );
+      }
+		});
+
+      $(function() {
+             $("#datepicker1").datepicker({dateFormat: 'dd-mm-yy'});
+             $("#datepicker2").datepicker({dateFormat: 'dd-mm-yy'});
+             $("#datepicker3").datepicker({dateFormat: 'dd-mm-yy'});
+             $("#datepicker4").datepicker({dateFormat: 'dd-mm-yy'});
+             $("#datepicker5").datepicker({dateFormat: 'dd-mm-yy'});
+             $("#datepicker6").datepicker({dateFormat: 'dd-mm-yy'});
+      });
+
+  $( document ).on('turbolinks:load', function() {
+      $('#service_quantity').on('change', function(){
+        var srv_qty = $("select#service_quantity").val();
+        if (srv_qty == 1) {
+          $('#datepicker1,#dplabel1').show();
+          $('#datepicker2,#datepicker3,#datepicker4,#dplabel2,#dplabel3,#dplabel4,#datepicker5,#dplabel5,#datepicker6,#dplabel6').hide();
+        }
+        if (srv_qty == 2) {
+          $('#datepicker1,#datepicker2,#dplabel1,#dplabel2').show();
+          $('#datepicker3,#datepicker4,#dplabel3,#dplabel4,#datepicker5,#dplabel5,#datepicker6,#dplabel6').hide();
+          }
+        if (srv_qty == 3) {
+          $('#datepicker1,#datepicker2,#datepicker3,#dplabel1,#dplabel2,#dplabel3').show();
+          $('#datepicker4,#dplabel4,#datepicker5,#dplabel5,#datepicker6,#dplabel6').hide();
+        }
+        if (srv_qty == 4) {
+          $('#datepicker1,#datepicker2,#datepicker3,#datepicker4,#dplabel1,#dplabel2,#dplabel3,#dplabel4').show();
+          $('#datepicker5,#dplabel5,#datepicker6,#dplabel6').hide();
+        }
+        if (srv_qty == 5) {
+          $('#datepicker1,#datepicker2,#datepicker3,#datepicker4,#datepicker5,#dplabel1,#dplabel2,#dplabel3,#dplabel4,#dplabel5').show();
+          $('#datepicker6,#dplabel6').hide();
+        }
+        if (srv_qty == 6) {
+          $('#datepicker1,#datepicker2,#datepicker3,#datepicker4,#datepicker5,#datepicker6,#dplabel1,#dplabel2,#dplabel3,#dplabel4,#dplabel5,#dplabel6').show();
+        }
+
+    });
+    var dialog, form,
+      emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+      name = $( "#name" ),
+      allFields = $( [] ).add( name ),
+      tips = $( ".validateTips" );
+
+    function updateTips( t ) {
+      tips
+        .text( t )
+        .addClass( "ui-state-highlight" );
+      setTimeout(function() {
+        tips.removeClass( "ui-state-highlight", 1500 );
+      }, 500 );
+    }
+
+    function addUser() {
+      var valid = true;
+      allFields.removeClass( "ui-state-error" );
+      data = {client:{id:$('#id').val()}, service:{description:$('#service_description').val(),notes:$('#service_notes').val(),price:$('#service_price').val(), quantity:$('#service_quantity').val(),date1:$('#datepicker1').val(),date2:$('#datepicker2').val(),date3:$('#datepicker3').val(),date4:$('#datepicker4').val(),date5:$('#datepicker5').val(),date6:$('#datepicker6').val()}};
+		$.ajax({
+			type: "POST",
+            async: false,
+			url: '/create_services',
+			data: data,
+            success: alert('Services were successfully added!'),
+			dataType: 'json'
+		});
+     if ( valid ) {
+        dialog.dialog( "close" );
+      }
+      dialog = $( "#dialog-form" );
+      dialog.dialog( "close" );
+      return valid;
+    }
+
+    dialog = $( "#dialog-form" ).dialog({
+      autoOpen: false,
+      height: 500,
+      width: 350,
+      modal: true,
+      buttons: {
+        "Charge services": addUser,
+        Cancel: function() {
+          dialog.dialog( "close" );
+        }
+      },
+      close: function() {
+        form[ 0 ].reset();
+        allFields.removeClass( "ui-state-error" );
+      }
+    });
+
+    form = dialog.find( "form" ).on( "submit", function( event ) {
+      event.preventDefault();
+      addUser();
+      dialog.dialog( "close" );
+    });
+
+    $(".create-services").on( "click", function() {
+			var client_id = $(this).attr("id");
+			var client_name = $(this).attr("name");
+			$('#id').val(client_id);
+			$('#name').val(client_name);
+      dialog.dialog( "open" );
+    });
+
+  } );
+
+  </script>
+
+</head>
+<body>
+
+<div id="dialog-form" title="Add new services" style="display: none;">
+  <form>
+    <fieldset>
+      <input type="hidden" name="id" id="id" value="" class="text ui-widget-content ui-corner-all">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" value="" disabled class="text ui-widget-content ui-corner-all" style="width: 69%">
+
+	<span class="field">
+      <input value="<%= %>" type="hidden" name="service[client_id]" id="service_client_id">
+  </span>
+	<label for="name">Description</label>
+  <%= select_tag('service_description', options_from_collection_for_select(ServiceType.all, 'description', 'description'), prompt: '', class: 'custom-select',style: "width: 69%") %>
+	</br>
+  <span class="field">
+    <label for="service_notes">Notes</label>
+      <textarea name="service[notes]" id="service_notes" style="width: 69%"></textarea>
+  </span>
+  <span class="field">
+    <label for="service_price">Price</label>
+    <input type="text" name="service[price]" id="service_price" style="width: 69%">
+  </span>
+	<label for="name">Quantity</label>
+  <select name="service[quantity]" id="service_quantity" class="custom-select" style="width: 69%"><option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+  </select>
+  </br> </br>
+  <p style='font-family: Arial,Helvetica,sans-serif;'>
+    <b id="dplabel1">Date 1</b> <input style ='float:right;margin-right:100px;' type="text" id="datepicker1" name="service[date1]">
+  </p>
+  <p style='font-family: Arial,Helvetica,sans-serif;'>
+    <b id="dplabel2" style='display:none;'>Date 2</b> <input style ='float:right;margin-right:100px;display:none;' type="text" id="datepicker2" name="service[date2]">
+  </p>
+  <p style='font-family: Arial,Helvetica,sans-serif;'>
+    <b id="dplabel3" style='display:none;'>Date 3</b> <input style ='float:right;margin-right:100px;display:none;' type="text" id="datepicker3" name="service[date3]">
+  </p>
+  <p style='font-family: Arial,Helvetica,sans-serif;'>
+    <b id="dplabel4" style='display:none;'>Date 4</b> <input style ='float:right;margin-right:100px;display:none;' type="text" id="datepicker4" name="service[date4]">
+  </p>
+  <p style='font-family: Arial,Helvetica,sans-serif;'>
+    <b id="dplabel5" style='display:none;'>Date 5</b> <input style ='float:right;margin-right:100px;display:none;' type="text" id="datepicker5" name="service[date5]">
+  </p>
+  <p style='font-family: Arial,Helvetica,sans-serif;'>
+    <b id="dplabel6" style='display:none;'>Date 6</b> <input style ='float:right;margin-right:100px;display:none;' type="text" id="datepicker6" name="service[date6]">
+  </p>
+
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>

@@ -1,41 +1,43 @@
 <p>
-  <strong>Client:</strong>
+  <strong><%= t('client')%>:</strong>
   <%= link_to Client.find(@service.client_id).name, Client.find(@service.client_id) %>
 </p>
 
 <p>
-  <strong>Date:</strong>
+  <strong><%= t('date')%>:</strong>
   <%= @service.date %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= t('description')%>:</strong>
   <%= @service.description %>
 </p>
 
 <p>
-  <strong>Notes:</strong>
+  <strong><%= t('notes')%>:</strong>
   <%= @service.notes %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong><%= t('price')%>:</strong>
   <%= @service.price %>
 </p>
 
 <p>
-  <strong>Maturity:</strong>
+  <strong><%= t('maturity')%>:</strong>
   <%= @service.maturity %>
 </p>
 
 <p>
-  <strong>Invoice:</strong>
+  <strong><%= t('invoice')%>:</strong>
   <%= @service.invoice.id if @service.invoice %>
 </p>
 
 <p>
-  <strong>Paid:</strong>
+  <strong><%= t('paid')%>:</strong>
     <%= @service.paid ?  'Yes' : 'No' %>
 </p>
 
-<%= link_to 'Edit', edit_service_path(@service) %>
+<span class="page_footer">
+  <%= link_to t('edit'), edit_service_path(@service) %>
+</span>

@@ -12,66 +12,67 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label t('name') %><br>
     <%= f.text_field :name, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :street_address %><br>
+    <%= f.label t('address') %><br>
     <%= f.text_field :street_address, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :city %><br>
+    <%= f.label t('city') %><br>
     <%= f.text_field :city, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :state %><br>
+    <%= f.label t('state') %><br>
     <%= f.text_field :state, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :zipcode %><br>
+    <%= f.label t('zipcode') %><br>
     <%= f.text_field :zipcode, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label t('email') %><br>
     <%= f.text_field :email, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :email2 %><br>
+    <%= f.label t('email2') %><br>
     <%= f.text_field :email2, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label t('phone') %><br>
     <%= f.text_field :phone, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :sms_gateway, 'Carrier' %><br>
-    <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), class: 'sms_gateway form-control', style: "width: 25%" %>
+  <%= f.label t('carrier') %><br>
+  <%= f.select :sms_gateway, options_for_select(Client::CARRIERS, @client.sms_gateway), {}, {class: 'sms_gateway custom-select', style: "width: 30%"} %>
   </div>
   <div class="field">
-    <%= f.label :phone2 %><br>
+    <%= f.label t('phone2') %><br>
     <%= f.text_field :phone2, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :sms_gateway2, 'Carrier2' %><br>
-    <%= f.select :sms_gateway2, options_for_select(Client::CARRIERS, @client.sms_gateway), class: 'sms_gateway form-control', style: "width: 25%" %>
+    <%= f.label t('carrier2') %><br>
+    <%= f.select :sms_gateway2, options_for_select(Client::CARRIERS, @client.sms_gateway2), {}, {class: 'sms_gateway2 custom-select', style: "width: 30%"} %>
   </div>
   <div class="field">
-    <%= f.label :notes %><br>
+    <%= f.label t('notes') %><br>
     <%= f.text_area :notes, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :credit %><br>
+    <%= f.label t('credit') %><br>
     <%= f.text_field :credit, class: "form-control", style: "width: 25%" %>
   </div>
   <div class="field">
-    <%= f.label :dob, "Date of Birth" %><br>
-    <%= f.date_select(:dob, :order => [:month, :day, :year], :start_year => Time.now.year - 80) %>
+    <%#= f.label 'test' TODO fix month dropdown render AND send emails with rigth link page one %>
+    <%= f.label t('dob') %><br>
+    <%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => Time.now.year - 80, use_month_numbers: true}, {:class => "custom-select", style: "width: 10%"} %>
   </div>
   <div class="field">
-    <%= f.label :prospect, "Prospect?" %><br>
+    <%= f.label t('prospect')+'?' %><br>
     <%= f.check_box(:prospect) %>
   </div>
   <div class="actions">
-    <%= f.submit class: "btn btn-success" %>
+    <%= f.submit t('save'), class: "btn btn-outline-success my-2 my-sm-0" %>
   </div>
 <% end %>

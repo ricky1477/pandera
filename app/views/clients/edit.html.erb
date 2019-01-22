@@ -1,6 +1,8 @@
-<h1>Editing Client</h1>
+<h1><%= t('editing_client') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+<span class="page_footer">
+  <%= link_to t('details'), @client %> |
+  <%= link_to t('back'), clients_path %>
+</span> </br></br></br>

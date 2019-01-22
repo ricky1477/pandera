@@ -1,13 +1,14 @@
-<h1><%= t('estimates') %></h1>
+<h3 style="font-family: verdana, arial, helvetica, sans-serif;" class="page_title"><%= t('estimates') %></h3>
 
-<div class="table-responsive">
-    <table id="estimates_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
+<div id="estimates" class="card">
+  <div class="table-responsive card-body">
+    <table id="estimates_table" class="card-body table table-striped table-bordered table-hover table-condensed table-responsive">
       <thead>
         <tr>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Client</th>
-          <th>Notes</th>
+          <th style="width: 20%;"><%= t('description') %></th>
+          <th style="width: 10%;"><%= t('price') %></th>
+          <th style="width: 20%;"><%= t('client') %></th>
+          <th style="width: 25%;"><%= t('notes') %></th>
           <th colspan="4"></th>
         </tr>
       </thead>
@@ -27,14 +28,17 @@
         <% end %>
       </tbody>
     </table>
+	</div>
 </div>
 
-<br>
-<p style="text-align: right;margin-top:-23px;">
-  Download:
-  <%= link_to "CSV", estimates_path(format: "csv") %>
-  <!--| <%#= link_to "Excel", clients_path(format: "xls") %> -->
-</p>
+<br><br><br>
+
+<span class="page_footer">
+  <p style="text-align: right;margin-top:-23px;">
+    <%= t('download') %>:
+    <%= link_to "CSV", estimates_path(format: "csv") %>
+  </p>
+</span>
 
 
 <br><br>

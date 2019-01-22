@@ -20,7 +20,7 @@
   </span>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.select(:description, Service::DESCRIPTION, {include_blank: true}) %></td>
+    <%= f.select :description, Service::DESCRIPTION, {include_blank: true}, {class: 'description custom-select', style: "width: 30%" } %></td>
   </div>
   <div class="field">
     <%= f.label :price %><br>
@@ -31,6 +31,6 @@
     <%= f.text_area :notes %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-outline-success my-2 my-sm-0" %>
   </div>
 <% end %>

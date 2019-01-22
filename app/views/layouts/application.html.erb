@@ -10,12 +10,17 @@
     </script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="/bootstrap-material-design.min.css">
+
+  <%#= TODO Push master code to garden-care and other branches and tag next version %>
+
   <%#= javascript_include_tag :defaults, "nested_form" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= render "layouts/header"%>
+<%= render "layouts/header2"%>
 
 <% if current_page?('/') %>
     <div class="jumbotron">
@@ -25,6 +30,7 @@
 
 <div class="container">
     <% flash.each do |name, msg| %>
+
       <% if msg.is_a?(String) %>
         <div class="alert alert-<%= name == 'notice' ? "success" : "danger" %> alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
