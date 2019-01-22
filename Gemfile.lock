@@ -356,6 +356,7 @@ DEPENDENCIES
   rails (= 4.2.8)
   rails-i18n
   rails_12factor
+  rails_serve_static_assets
   rspec-rails
   rubocop
   sass-rails (~> 5.0)

@@ -87,4 +87,5 @@ end
 
 group :production do
   gem 'rails_12factor', group: :production
+  gem 'rails_serve_static_assets'
 end
