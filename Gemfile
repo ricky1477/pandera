@@ -56,27 +56,27 @@ gem 'prawn'
 gem 'prawn-table'
 
 group :development, :test do
-    # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-    gem 'byebug'
-    gem 'rubocop'
-    # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-    gem 'spring'
-    gem 'spring-commands-rspec'
-    gem 'spring-commands-cucumber'
-    # RSpec
-    gem 'rspec-rails'
-    gem 'factory_girl_rails'
-    gem "better_errors"
-    gem "binding_of_caller"
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'byebug'
+  gem 'rubocop'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'spring-commands-cucumber'
+  # RSpec
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+
 end
 
 group :test do
-    gem 'capybara'
-    gem 'cucumber-rails', require: false
-    gem 'database_cleaner'
-    gem 'poltergeist', '~> 1.11'
-    gem 'selenium-webdriver', '~> 2.48', '>= 2.48.1'
-    gem 'shoulda-matchers', require: false
+  gem 'capybara'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'poltergeist', '~> 1.11'
+  gem 'selenium-webdriver', '~> 2.48', '>= 2.48.1'
+  gem 'shoulda-matchers', require: false
 end
 
 group :development do
