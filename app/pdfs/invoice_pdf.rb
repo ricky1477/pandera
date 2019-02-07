@@ -67,8 +67,9 @@ class InvoicePdf < Prawn::Document
     balance = @invoice.total
     balance += @invoice.client.credit if @invoice.client.credit
     balance = 0 if @invoice.paid == true
-		sa = ShippingAddress.where("is_default IS TRUE").first
-		text_box "Please make checks payable to: \n #{sa.name}",
+    sa = ShippingAddress.where("is_default IS TRUE").first
+    sa_name = @invoice.payable_to ? @invoice.payable_to : sa.name
+		text_box "Please make checks payable to: \n #{sa_name}",
 			:at => [0,35], :height => 100, :width => 250, :size => 12
 		text_box "Subtotal $#{@invoice.total}",
 			:at => [390,100], :height => 100, :width => 150, :style => :bold, :size => 12
