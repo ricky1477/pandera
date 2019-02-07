@@ -87,9 +87,10 @@ div#two {
           <p><b> <%= sa.name %> </b></br>
           <%= sa.email %></br>
           <%= sa.phone %></br>
+          <% sa_name = invoice.payable_to ? invoice.payable_to : sa.name %>
           -------------------------------- </br>
           Please make checks payable to: </br>
-          <%= sa.name %> </br>
+          <%= sa_name %> </br>
           </p>
         </div>
 
