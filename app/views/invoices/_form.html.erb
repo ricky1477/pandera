@@ -36,6 +36,10 @@
     <%= f.label t('check_number') %><br>
     <%= f.text_field :check_number, class: "form-control", style: "width: 25%" %>
   </div>
+  <div class="field">
+      <%= f.label t('payable_to') %><br>
+      <%= f.select :payable_to, options_for_select(ShippingAddress.all.map(&:name), @invoice.payable_to), {}, {class: 'sms_gateway custom-select', style: "width: 30%"} %>
+  </div>
   <div class="actions">
     <%= f.submit t('save'), class: "btn btn-outline-success my-2 my-sm-0" %>
   </div>
