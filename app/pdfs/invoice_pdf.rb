@@ -15,7 +15,7 @@ class InvoicePdf < Prawn::Document
 		else
 			@invoices.each_with_index do |invoice, i|
 				@invoice = invoice
-    		logo
+    		#logo
 				title
 				bill_to
 				services
