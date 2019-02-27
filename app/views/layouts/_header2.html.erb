@@ -161,6 +161,12 @@
       }, 500 );
     }
 
+    function success( data ) {
+      console.log(data);
+      alert('Services were successfully added!')
+      //location.reload();
+    }
+
     function addUser() {
       var valid = true;
       allFields.removeClass( "ui-state-error" );
@@ -170,7 +176,7 @@
             async: false,
 			url: '/create_services',
 			data: data,
-            success: alert('Services were successfully added!'),
+      success: success(data),
 			dataType: 'json'
 		});
      if ( valid ) {
