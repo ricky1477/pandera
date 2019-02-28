@@ -162,10 +162,11 @@
     }
 
     function success( data ) {
-      console.log(data);
-      alert('Services were successfully added!')
-      //location.reload();
-      // This will need to give feedback why not work?
+      if (data.service.price){
+        alert('Services were successfully added!')
+      } else {
+        alert('Please add a price');
+      }
     }
 
     function addUser() {
