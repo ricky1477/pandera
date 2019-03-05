@@ -45,10 +45,10 @@ class InvoicePdf < Prawn::Document
 	end
 
 	def bill_to
-		text 'Bill To', style: :bold
-		text @invoice.client.name
-		text @invoice.client.street_address
-		text @invoice.client.city + ' ' + @invoice.client.zipcode
+    text 'Bill To', style: :bold
+    text @invoice.client.name
+    text @invoice.client.street_address
+    text "#{@invoice.client.city} #{@invoice.client.zipcode}"
 	end
 
 	def services
