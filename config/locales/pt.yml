@@ -80,3 +80,5 @@ pt:
   check_number: 'Número do cheque'
   actions: 'Ações'
   payable_to: 'Pagável a'
+  letter: 'Carta'
+

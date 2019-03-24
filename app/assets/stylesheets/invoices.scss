@@ -18,3 +18,12 @@
     color:#000;
     text-decoration: none;
 }
+
+.page_title {
+    @media (max-width: 440px) {
+      padding-bottom: 40px;
+      font-size: 24px !important;
+      text-align: center;
+      font-weight: bold;
+    }
+}

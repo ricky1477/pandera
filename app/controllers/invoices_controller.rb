@@ -33,6 +33,20 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def letter
+    @invoice = Invoice.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoiceLetterPdf.new(@invoice, view_context)
+        send_data pdf.render, filename:
+        "invoice_#{@invoice.created_at.strftime("%d/%m/%Y")}.pdf",
+        type: "application/pdf",
+        disposition: "inline"
+      end
+    end
+  end
+
   def show_all
     @invoices = Invoice.where("paid IS NOT TRUE")
 		respond_to do |format|

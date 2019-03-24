@@ -22,7 +22,7 @@
             <th style="width: 15%;"><%= t('total') %></th>
             <th style="width: 10%;"><%= t('paid') %></th>
             <th style="width: 15%;"><%= t('check_number') %></th>
-            <th colspan="5"><%= t('actions') %></th>
+            <th colspan="6" style="text-align: center;"><%= t('actions') %></th>
           </tr>
         </thead>
 
@@ -44,6 +44,7 @@
               <td><%= button_to t('send_reminder'), invoices_payment_reminder_path(id: invoice.id), style: 'white-space: normal;', class: 'rick_button', method: :post, data: { confirm: 'Send an email?' } %> </td>
               <td style="padding-top: 15px;"><%= link_to t('pay'), new_charge_path(invoice_id: invoice.id), target: :_blank , class: 'rick_button' %> </td>
               <td><%= link_to t('details'), invoice_path(invoice.id, :format => :pdf) %></td>
+              <td><%= link_to t('letter'), invoice_letter_path(invoice.id, :format => :pdf) %></td>
               <td><%= link_to t('edit'), edit_invoice_path(invoice) %></td>
               <td><%= link_to t('delete'), invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
