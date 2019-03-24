@@ -6,7 +6,7 @@ class InvoicesController < ApplicationController
   # GET /invoices.json
   def index
     #@invoices = Invoice.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 15, :page => params[:page])
-    @invoices = Invoice.includes(:client).search(params[:search]).order("created_at DESC").paginate(:per_page => 15, :page => params[:page])
+    @invoices = Invoice.includes(:client).search(params[:search]).order("created_at DESC").paginate(:per_page => 10, :page => params[:page])
     if params[:overdue]
       @invoices = @invoices.where('? > maturity', Date.today).where('paid IS NOT TRUE')
     end
@@ -29,6 +29,20 @@ class InvoicesController < ApplicationController
         "invoice_#{@invoice.created_at.strftime("%d/%m/%Y")}.pdf",
         type: "application/pdf",
 				disposition: "inline"
+      end
+    end
+  end
+
+  def letter
+    @invoice = Invoice.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoiceLetterPdf.new(@invoice, view_context)
+        send_data pdf.render, filename:
+        "invoice_#{@invoice.created_at.strftime("%d/%m/%Y")}.pdf",
+        type: "application/pdf",
+        disposition: "inline"
       end
     end
   end
@@ -118,7 +132,7 @@ class InvoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:client_id, :invoice_number, :maturity, :date_of_service, :description, :price, :total, :paid, :check_number)
+      params.require(:invoice).permit(:client_id, :invoice_number, :maturity, :date_of_service, :description, :price, :total, :paid, :check_number, :payable_to)
     end
 
     def sort_column

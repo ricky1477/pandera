@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :clients
     resources :services
     post 'invoices/payment_reminder'
+    get 'invoice_letter/:id' => 'invoices#letter', as: 'invoice_letter'
     post 'create_services' => 'clients#create_services'
     get 'home' => 'home#home'
     get 'prospects' => 'clients#prospects'

@@ -4,9 +4,9 @@
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
   <p>
-    <%= label_tag :overdue %>
+    <%= label_tag t('overdue') %>
     <%= check_box_tag :overdue,'yes', params[:overdue] %>
-    <b>Search:  </b><%= text_field_tag :search, params[:search], style: "display: initial" %>
+    <b><%= t('search') %>:  </b><%= text_field_tag :search, params[:search], style: "display: initial" %>
   </p>
 <% end %>
 
@@ -15,14 +15,14 @@
       <table id="invoices_table" class="table table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
           <tr>
-            <th style="width: 15%;">Client</th>
-            <th style="width: 15%;">Invoice ID</th>
-            <th style="width: 15%;">Maturity</th>
-            <th style="width: 15%;">Description</th>
-            <th style="width: 15%;">Total</th>
-            <th style="width: 10%;">Paid</th>
-            <th style="width: 15%;">Check Number</th>
-            <th colspan="5">Actions</th>
+            <th style="width: 15%;"><%= t('client') %></th>
+            <th style="width: 15%;"><%= t('invoice') %> ID</th>
+            <th style="width: 15%;"><%= t('maturity') %></th>
+            <th style="width: 15%;"><%= t('description') %></th>
+            <th style="width: 15%;"><%= t('total') %></th>
+            <th style="width: 10%;"><%= t('paid') %></th>
+            <th style="width: 15%;"><%= t('check_number') %></th>
+            <th colspan="6" style="text-align: center;"><%= t('actions') %></th>
           </tr>
         </thead>
 
@@ -39,13 +39,14 @@
               <td><%= invoice.maturity %></td>
               <td><%= invoice.description %></td>
               <td><%= invoice.total %></td>
-              <td><%= invoice.paid ? 'Yes' : 'No' %></td>
+              <td><%= invoice.paid ? t('yes') : t('no') %></td>
               <td><%= invoice.check_number %></td>
-              <td><%= button_to 'Send Reminder', invoices_payment_reminder_path(id: invoice.id), style: 'white-space: normal;', class: 'rick_button', method: :post, data: { confirm: 'Send an email?' } %> </td>
-              <td style="padding-top: 15px;"><%= link_to 'Pay', new_charge_path(invoice_id: invoice.id), target: :_blank , class: 'rick_button' %> </td>
-              <td><%= link_to 'Details', invoice_path(invoice.id, :format => :pdf) %></td>
-              <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-              <td><%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= button_to t('send_reminder'), invoices_payment_reminder_path(id: invoice.id), style: 'white-space: normal;', class: 'rick_button', method: :post, data: { confirm: 'Send an email?' } %> </td>
+              <td style="padding-top: 15px;"><%= link_to t('pay'), new_charge_path(invoice_id: invoice.id), target: :_blank , class: 'rick_button' %> </td>
+              <td><%= link_to t('details'), invoice_path(invoice.id, :format => :pdf) %></td>
+              <td><%= link_to t('letter'), invoice_letter_path(invoice.id, :format => :pdf) %></td>
+              <td><%= link_to t('edit'), edit_invoice_path(invoice) %></td>
+              <td><%= link_to t('delete'), invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
@@ -54,27 +55,27 @@
 </div>
 
 <span  class="page_footer">
-  <%= link_to 'Create all monthly invoices', create_monthly_invoices_path %> |
-  <%= link_to 'Print all invoices', show_all_path(:format => :pdf) %> |
+  <%= link_to t('create_all_monthly_invoices'), create_monthly_invoices_path %> |
+  <%= link_to t('print_all_invoices'), show_all_path(:format => :pdf) %> |
 </span>
 <span  class="page_footer">
-  Download:
+  <%= t('download') %>:
   <%= link_to "CSV", invoices_path(format: "csv") %>
 </span>
 <br/><br/>
 
 <span class="page_footer">
   <% company_receivables = Invoice.where("paid IS NOT TRUE").pluck(:total) %>
-  <b>Receivables:
+  <b><%= t('receivables') %>:
   <% if company_receivables.length<=0 %>
     <%= '$0' %>
   <% else %>
    <%= '$' %><%= company_receivables.inject(0){|sum,x| sum + x } %></b>
   <% end %>
   <br>
-  <b>Services without invoice: <%= Service.where("paid IS NOT TRUE").where(invoice_id: nil).count %>
+  <b><%= t('services_without_invoice') %>: <%= Service.where("paid IS NOT TRUE").where(invoice_id: nil).count %>
   <br>
-  <%= will_paginate @invoices %>
+  <%= will_paginate @invoices, :previous_label => t('previous'), :next_label => t('next'), inner_window: 1, outer_window: 0 %>
   <br/>
 </span>
 
