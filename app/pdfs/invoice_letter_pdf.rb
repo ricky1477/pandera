@@ -31,7 +31,8 @@ class InvoiceLetterPdf < Prawn::Document
 
 	def title
 		sa = ShippingAddress.where("is_default IS TRUE").first
-    indent(20, 0) do # left and right padding
+    indent(25, 0) do # left and right padding
+      move_down(10)
       text "#{sa.name}".html_safe, style: :bold
       text "#{sa.street}", style: :bold
       text "#{sa.city}, #{sa.state} #{sa.zipcode}", style: :bold
@@ -47,7 +48,7 @@ class InvoiceLetterPdf < Prawn::Document
 	end
 
 	def bill_to
-    indent(20, 0) do # left and right padding
+    indent(25, 0) do # left and right padding
       move_down(20)
       text 'Bill To', style: :bold, margin: [100, 100, 100, 100]
       text @invoice.client.name
