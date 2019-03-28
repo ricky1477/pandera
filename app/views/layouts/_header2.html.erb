@@ -163,7 +163,8 @@
 
     function success( data ) {
       if (data.service.price){
-        alert('Services were successfully added!')
+        alert('Services were successfully added!');
+        location.reload();
       } else {
         alert('Please add a price');
       }
