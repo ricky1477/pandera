@@ -7,7 +7,7 @@ class InvoiceLetterPdf < Prawn::Document
     @view = view
 		if invoices.class.to_s == 'Invoice'
 			@invoice = @invoices
-    	logo
+      #logo
 			title
 			bill_to
 			services
@@ -15,7 +15,7 @@ class InvoiceLetterPdf < Prawn::Document
 		else
 			@invoices.each_with_index do |invoice, i|
 				@invoice = invoice
-    		logo
+        #logo
 				title
 				bill_to
 				services
