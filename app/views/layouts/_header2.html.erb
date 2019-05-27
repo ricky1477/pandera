@@ -161,6 +161,15 @@
       }, 500 );
     }
 
+    function success( data ) {
+      if (data.service.price){
+        alert('Services were successfully added!');
+        location.reload();
+      } else {
+        alert('Please add a price');
+      }
+    }
+
     function addUser() {
       var valid = true;
       allFields.removeClass( "ui-state-error" );

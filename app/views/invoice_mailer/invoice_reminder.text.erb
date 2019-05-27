@@ -2,7 +2,7 @@ Hello <%= @invoice.client.name %>!
 
 Your monthly invoice is overdue: <%= invoice_url(@invoice.id, :format => :pdf) %>
 
-And can be paid at: https://garden-care.herokuapp.com/charges/new?invoice_id=<%=@invoice.id.>to_s%>
+And can be paid at: <%= root_url %>charges/new?invoice_id=<%= @invoice.id.to_s %>
 
 Thanks,
 
