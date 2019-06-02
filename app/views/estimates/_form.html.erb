@@ -20,7 +20,7 @@
   </span>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.select :description, Service::DESCRIPTION, {include_blank: true}, {class: 'description custom-select', style: "width: 30%" } %></td>
+    <%= select_tag('description', options_from_collection_for_select(ServiceType.all, 'description', 'description'), prompt: '', class: 'description custom-select', style: 'width: 30%') %>
   </div>
   <div class="field">
     <%= f.label :price %><br>
