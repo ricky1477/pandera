@@ -54,6 +54,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # For PDF's
 gem 'prawn'
 gem 'prawn-table'
+gem 'rollbar'
 
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
