@@ -3,7 +3,7 @@ class Invoice < ActiveRecord::Base
       before_save :check_if_paid
       before_create :link_services_to_invoice
       before_create :compute_total
-      before_destroy :unlink_services_to_invoice
+      # before_destroy :unlink_services_to_invoice
       belongs_to :client
       validates :client_id, presence: true
       has_many :services, dependent: :destroy
