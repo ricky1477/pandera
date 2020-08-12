@@ -3,7 +3,7 @@ class Service < ActiveRecord::Base
       belongs_to :invoice, dependent: :destroy
       validates :price, presence: true
       validates :client_id, presence: true
-      before_destroy :check_invoice_association
+      #before_destroy :check_invoice_association
       before_save :price
 
       DESCRIPTION = ['Weekly Cutting', 'Bi-weekly Cutting', 'Mulching', 'Gutter Cleaning', 'Trimming Bushes and Shrubs','Fall Clean-Up',
